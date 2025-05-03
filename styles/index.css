@@ -1,11 +1,7 @@
 /* GENERAL */
-
-body {
-  margin: 0;
-  font-family: inter;
-  background-color: #FFB703;
-}
-
+  h1, h2, h3 {
+    font-family: Sora;
+  }
 /* NAV BAR */
 
 nav {
@@ -15,13 +11,13 @@ nav {
   padding: 7px 65px;
   background-color: white;
   border-bottom: 1px solid #02304765;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .left-side {
   display: flex;
   margin-right: 180px;
-  font-weight: 600;
-  font-size: 16px;
   gap: 30px;
 }
 
@@ -41,9 +37,32 @@ nav {
   color: #FFB703;
 }
 
-.numPoints, .profileName {
+/* MAIN */
+
+main {
+  background-color: #FFB703;
+  padding: 40px 180px;
+}
+
+.planner-section {
+  background-color: white;
+  border: 1px solid #02304765;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.planner-section h1 {
+  font-weight: 700;
+  font-size: 48px;
+  width: 500px;
+  color: #023047;
+}
+
+.plan-trip-btn {
+  background-color: #219EBC;
   font-weight: 600;
-  font-size: 14px;
+  border: 1px solid #02304765;
+  border-radius: 10px;
 }
 
 /* FOOTER */
@@ -53,11 +72,12 @@ footer {
   display: flex;
   flex-direction: column;
   color: white;
+  font-family: inter;
 }
 
 .footer-top {
   display: flex;
-  gap: 200px;
+  gap: 170px;
 }
 
 
@@ -65,6 +85,7 @@ footer h3 {
   font-family: Sora;
   margin: 0px 0px 10px 0px;
   font-size: 24px;
+  font-weight: 700;
 }
 
 .footer-description {
@@ -78,7 +99,6 @@ footer h3 {
 }
 
 .navigation-footer > div {
-  text-decoration: underline;
   margin-bottom: 10px;
 }
 
@@ -93,7 +113,7 @@ footer h3 {
 
 hr {
   margin: 20px 0px;
-  border: 0,1px solid white;
+  border: 1px solid white;
   width: 100%;
 }
 
