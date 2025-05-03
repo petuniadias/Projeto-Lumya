@@ -1,0 +1,116 @@
+/* GENERAL */
+
+body {
+  margin: 0;
+  font-family: inter;
+  background-color: #FFB703;
+}
+
+/* NAV BAR */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 65px;
+  background-color: white;
+  border-bottom: 1px solid #02304765;
+}
+
+.left-side {
+  display: flex;
+  margin-right: 180px;
+  font-weight: 600;
+  font-size: 16px;
+  gap: 30px;
+}
+
+.right-side {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.profile, .points {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.numPoints {
+  color: #FFB703;
+}
+
+.numPoints, .profileName {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* FOOTER */
+footer {
+  background-color: #023047;
+  padding: 25px 50px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.footer-top {
+  display: flex;
+  gap: 200px;
+}
+
+
+footer h3 {
+  font-family: Sora;
+  margin: 0px 0px 10px 0px;
+  font-size: 24px;
+}
+
+.footer-description {
+  width: 500px;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.navigation-footer, .contacts-footer {
+  font-size: 14px;
+}
+
+.navigation-footer > div {
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
+.contacts-footer > div {
+  margin-bottom: 10px;
+}
+
+.contact-info {
+  text-decoration: underline;
+}
+
+
+hr {
+  margin: 20px 0px;
+  border: 0,1px solid white;
+  width: 100%;
+}
+
+.bottom-footer {
+  display: flex;
+  font-size: 14px;
+  font-weight: 300;
+  justify-content: space-between;
+}
+
+.footer-links {
+  display: flex;
+  gap: 30px;
+}
+
+.footer-links > a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
