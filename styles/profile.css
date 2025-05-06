@@ -33,6 +33,7 @@
 .collectables {
   display: flex;
   gap: 5px;
+  height: 100px;
 }
 
 .achievements, .countries-visited {
@@ -43,17 +44,70 @@
   gap: 10px;
   padding: 10px 15px;
   font-weight: 600;
-  width: 250px;
+  width: 280px;
 }
 
-.achievements-title, .countries-visited-title {
+.achievements-title, .countries-visited-title, .total-friends-title {
   width: 120px;
   font-weight: 700;
   font-family: inter;
 }
 
-.achievements-total, .countries-visited-total {
-  padding: 5px 12px;
+.achievement-title-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.achievements-total, .countries-visited-total, .total-friends-count {
+  padding: 3px 12px;
   background-color: #FFB703;
   border-radius: 10px;
+  font-weight: 600;
+}
+
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  width: 100%;
+  gap: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.progress-value {
+  font-family: inter;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.img-container {
+  width: 77px;
+  height: 77px;
+  display: flex;
+  justify-content: center;
+}
+
+.img-container img {
+  object-fit: cover;
+}
+
+.total-friends {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.div-header {
+  border: 1px solid black;
+  height: 100%;
+  width: 0;
+  margin: 0px 10px;
 }
