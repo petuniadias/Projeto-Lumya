@@ -13,6 +13,9 @@ nav {
   border-bottom: 1px solid #02304765;
   font-size: 16px;
   font-weight: 600;
+  position: fixed;
+  left: 0;
+  right: 0;
 }
 
 .left-side {
@@ -24,13 +27,69 @@ nav {
 .right-side {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 5px;
 }
 
-.profile, .points {
+.profile, .points, .notifications {
   display: flex;
   align-items: center;
   gap: 5px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.notifications-title {
+  display: none;
+}
+
+.notifications:active {
+  border: 1px solid #02304765;
+  border-radius: 10px;
+  background-color: #FFB703;
+}
+
+.notifications:hover .notifications-title {
+  display: flex;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.profile {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  background-color: white;
+  position: absolute;
+  top: 50px;
+  border: 1px solid #02304765;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.dropdown-content a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  width: 130px;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  border: 1px solid #02304765;
+  border-radius: 15px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+  
 }
 
 .numPoints {
@@ -41,8 +100,9 @@ nav {
 
 main {
   background-color: #FFB703;
-  padding: 40px 180px;
+  padding: 100px 180px;
 }
+
 
 .planner-section {
   background-color: white;

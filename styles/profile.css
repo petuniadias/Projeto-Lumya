@@ -1,0 +1,59 @@
+/* PROFILE HEADER */
+
+.profile-header {
+  background-color: white;
+  border: 1px solid #02304765;
+  border-radius: 20px;
+  padding: 20px 30px;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.profile-pic {
+  width: 100px;
+}
+
+.profile-pic img {
+  width: 100%;
+  border-radius: 100%;
+}
+
+.profile-box {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.profile-info {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.collectables {
+  display: flex;
+  gap: 5px;
+}
+
+.achievements, .countries-visited {
+  display: flex;
+  align-items: center;
+  border: 1px solid #02304765;
+  border-radius: 15px;
+  gap: 10px;
+  padding: 10px 15px;
+  font-weight: 600;
+  width: 250px;
+}
+
+.achievements-title, .countries-visited-title {
+  width: 120px;
+  font-weight: 700;
+  font-family: inter;
+}
+
+.achievements-total, .countries-visited-total {
+  padding: 5px 12px;
+  background-color: #FFB703;
+  border-radius: 10px;
+}
