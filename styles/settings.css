@@ -1,0 +1,33 @@
+.settings-menu-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 270px;
+  align-items: center;
+}
+
+.settings-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-pic {
+  width: 100px;
+}
+
+.profile-pic img {
+  width: 100%;
+  border-radius: 100%;
+}
+
+.profile-box {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.profile-info {
+  font-weight: 600;
+  font-size: 16px;
+}
+
