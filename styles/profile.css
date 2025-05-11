@@ -8,6 +8,7 @@
   display: flex;
   gap: 20px;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .profile-pic {
@@ -110,4 +111,64 @@ progress {
   height: 100%;
   width: 0;
   margin: 0px 10px;
+}
+
+/* PROFILE MAIN */ 
+
+.profile-main {
+  background-color: white;
+  border: 1px solid #02304765;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.achievements-section {
+  background-color: white;
+  border: 1px solid #02304765;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.achievements-categories {
+  background-color: white;
+  border: 1px solid #02304765;
+  border-radius: 15px;
+  padding: 10px 20px;
+  width: 250px;
+}
+
+.achievement-cards-section {
+  background-color: white;
+  border: 1px solid #02304765;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.achievement-card {
+  background-color: white;
+  border: 1px solid #02304765;
+  border-radius: 15px;
+  width: 188px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: 235px;
+  justify-content: center;
+}
+
+.achievement-card h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.achievement-card p {
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
 }
