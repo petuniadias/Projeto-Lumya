@@ -172,3 +172,28 @@ progress {
   text-align: center;
   margin: 0;
 }
+
+/* USER PROFILE MENU */
+.other-user-resources {
+  display: flex;
+}
+
+.user-profile-main-menu {
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #02304765;
+  border-radius: 10px;
+  width: 200px;
+}
+
+.main-menu-tab {
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #02304765;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}

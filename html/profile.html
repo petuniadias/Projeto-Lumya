@@ -12,9 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <link rel="icon" type="image/png" href="images/logo.png">
-  <link rel="stylesheet" href="styles/index.css">
-  <link rel="stylesheet" href="styles/profile.css">
+  <link rel="icon" type="" href="media/img/logo.png">
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
   <nav>
@@ -27,36 +27,40 @@
       </div>
     </div>
 
-    <img src="images/logo.png">
+    <div class="logo">
+      <img src="../media/img/logo.png">
+    </div>
+
     <div class="right-side">
       <div class="points">
-        <img src="icons/points.svg">
+        <img src="../media/icons/points.svg">
         <div class="numPoints">2000 Points</div>
       </div>
       <div class="notifications">
-        <img src="icons/notifications.svg">
+        <img src="../media/icons/notifications.svg">
         <div class="notifications-title">Notifications</div>
       </div>
       <div class="dropdown">
         <div class="profile">
-          <img src="icons/profile.svg">
+          <img src="../media/icons/profile.svg">
           <div class="profileName">Enya</div>
         </div>
         <div class="dropdown-content text-center">
-          <a href="">My profile</a>
+          <a href="profile.html">My profile</a>
           <a href="">Settings</a>
           <a href="">Log Out</a>
         </div>
       </div>
 
-      <img src="icons/searchUsers.svg">
+      <img src="../media/icons/searchUsers.svg">
     </div>
   </nav>
+
   <main>
     <div class="profile-header">
       <div class="profile-box">
         <div class="profile-pic">
-          <img src="images/profile-pic.jpg" alt="">
+          <img src="../media/img/profile-pic.jpg" alt="">
         </div>
         <div class="profile-info">
           <div>Enya</div>
@@ -66,7 +70,7 @@
       <div class="collectables">
         <div class="achievements">
           <div class="img-container">
-            <img src="icons/trophy.svg" alt="">
+            <img src="../media/icons/trophy.svg" alt="">
           </div>
           <div class="achievements-right">
             <div class="achievement-title-box">
@@ -82,7 +86,7 @@
         </div>
         <div class="countries-visited">
           <div class="img-container">
-            <img src="icons/countries-visited.svg" alt="">
+            <img src="../media/icons/countries-visited.svg" alt="">
           </div>
 
             <div class="achievements-right">
@@ -99,7 +103,7 @@
         <hr class="div-header">
         <div class="total-friends">
           <div class="img-container">
-            <img src="icons/friendsTotal.svg" alt="">
+            <img src="../media/icons/friendsTotal.svg" alt="">
           </div>
           <div class="achievement-title-box">
             <div class="total-friends-title">Friends</div>
@@ -165,14 +169,39 @@
       <div class="achievement-cards-section">
         <div class="achievement-card">
           <div class="img-container">
-            <img src="icons/friendsTotal.svg" alt="">
+            <img src="../media/icons/friendsTotal.svg" alt="">
           </div>
           <h3>Free Spirit</h3>
           <p>Bought a festival ticket less than 24 hours before the event</p>
         </div>
       </div>
+      <hr>
+      <div class="other-user-resources">
+        <div class="user-profile-main-menu">
+          <div class="main-menu-tab">Friend List</div>
+          <div class="main-menu-tab">Trip History</div>
+          <div class="main-menu-tab">Pending Trips</div>
+          <div class="main-menu-tab">Daily Mission</div>
+          <div class="main-menu-tab">Shop</div>
+        </div>
+        <div class="friend-list">
+          <div class="friend-card">
+
+          </div>
+        </div>
+        <ul class="pagination">
+          <li class="page-item"><a href="" class="page-link">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active">
+            <a class="page-link" href="" aria-current="page">2</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="">3</a></li>
+          <li class="page-item"><a class="page-link" href="">Next</a></li>
+        </ul>
+      </div>
     </div>
     
+
   </main>
 </body>
 </html>

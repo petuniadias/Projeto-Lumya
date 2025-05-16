@@ -2,6 +2,7 @@
   h1, h2, h3 {
     font-family: Sora;
   }
+  
 /* NAV BAR */
 
 nav {
@@ -28,6 +29,12 @@ nav {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.logo {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
 }
 
 .profile, .points, .notifications {
