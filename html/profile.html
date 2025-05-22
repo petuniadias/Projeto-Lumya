@@ -68,7 +68,7 @@
         </div>
       </div>
       <div class="collectables" role="tablist">
-        <button class="achievements" data-bs-toggle="pill" data-bs-target="#achievements" role="tab" aria-selected="true">
+        <button class="achievements show active" data-bs-toggle="pill" data-bs-target="#achievements" role="tab" aria-selected="true">
           <div class="img-container">
             <img src="../media/icons/trophy.svg" alt="">
           </div>
@@ -116,8 +116,8 @@
     <div class="profile-main">
       <div class="collectibles-content tab-content">
         <div class="achievement-content tab-pane fade show active" id="achievements" role="tabpanel">
-          <div class="achievements-section">
-            <div class="achievements-categories">
+          <div class="achievements-section" role="tablist">
+            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#festivals-achievements" role="tab" aria-selected="true">
               <div class="achievement-title-box">
                 <div class="countries-visited-title">Festivals</div>
                 <div class="countries-visited-total">10</div>
@@ -126,8 +126,8 @@
                 <div class="progress-value">10/32</div>
                 <progress value="10" max="32"></progress>
               </div>
-            </div>
-            <div class="achievements-categories">
+            </button>
+            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#user-interaction-achievements" role="tab" aria-selected="false">
               <div class="achievement-title-box">
                 <div class="countries-visited-title">User Interaction</div>
                 <div class="countries-visited-total">10</div>
@@ -136,8 +136,8 @@
                 <div class="progress-value">10/32</div>
                 <progress value="10" max="32"></progress>
               </div>
-            </div>
-            <div class="achievements-categories">
+            </button>
+            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#booking-achievements" role="tab" aria-selected="false">
               <div class="achievement-title-box">
                 <div class="countries-visited-title">Booking</div>
                 <div class="countries-visited-total">10</div>
@@ -146,8 +146,8 @@
                 <div class="progress-value">10/32</div>
                 <progress value="10" max="32"></progress>
               </div>
-            </div>
-            <div class="achievements-categories">
+            </button>
+            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#flight-achievements" role="tab" aria-selected="false">
               <div class="achievement-title-box">
                 <div class="countries-visited-title">Flights</div>
                 <div class="countries-visited-total">10</div>
@@ -156,8 +156,8 @@
                 <div class="progress-value">10/32</div>
                 <progress value="10" max="32"></progress>
               </div>
-            </div>
-            <div class="achievements-categories">
+            </button>
+            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#special-achievements" role="tab" aria-selected="false">
               <div class="achievement-title-box">
                 <div class="countries-visited-title">Special</div>
                 <div class="countries-visited-total">10</div>
@@ -166,23 +166,192 @@
                 <div class="progress-value">10/32</div>
                 <progress value="10" max="32"></progress>
               </div>
-            </div>
+            </button>
           </div>
-          <div class="achievement-cards-section">
-            <div class="achievement-card">
-              <div class="img-container">
-                <img src="../media/icons/friendsTotal.svg" alt="">
+          <div class="tab-content achievements-cards-category-content" role="tablist">
+            <div class="achievement-cards-section tab-pane show active" id="festivals-achievements" role="tabpanel">
+              <div class="achievement-card">
+                <div class="img-container">
+                  <img src="../media/icons/friendsTotal.svg" alt="">
+                </div>
+                <h3>Free Spirit</h3>
+                <p>Bought a festival ticket less than 24 hours before the event</p>
               </div>
-              <h3>Free Spirit</h3>
-              <p>Bought a festival ticket less than 24 hours before the event</p>
+              <div class="achievement-card">
+                <div class="img-container">
+                  <img src="../media/icons/friendsTotal.svg" alt="">
+                </div>
+                <h3>Free Spirit</h3>
+                <p>Bought a festival ticket less than 24 hours before the event</p>
+              </div>
+              <div class="achievement-card">
+                <div class="img-container">
+                  <img src="../media/icons/friendsTotal.svg" alt="">
+                </div>
+                <h3>Free Spirit</h3>
+                <p>Bought a festival ticket less than 24 hours before the event</p>
+              </div>
+            </div>
+            <div class="achievement-cards-section tab-pane" id="user-interaction-achievements" role="tabpanel">
+              <div class="achievement-card">
+                <div class="img-container">
+                  <img src="../media/icons/friendsTotal.svg" alt="">
+                </div>
+                <h3>User Interaction</h3>
+                <p>Bought a festival ticket less than 24 hours before the event</p>
+              </div>
+            </div>
+            <div class="achievement-cards-section tab-pane" id="booking-achievements" role="tabpanel">
+              <div class="achievement-card">
+                <div class="img-container">
+                  <img src="../media/icons/friendsTotal.svg" alt="">
+                </div>
+                <h3>Booking</h3>
+                <p>Bought a festival ticket less than 24 hours before the event</p>
+              </div>
+            </div>
+            <div class="achievement-cards-section tab-pane" id="flight-achievements" role="tabpanel">
+              <div class="achievement-card">
+                <div class="img-container">
+                  <img src="../media/icons/friendsTotal.svg" alt="">
+                </div>
+                <h3>Flights</h3>
+                <p>Bought a festival ticket less than 24 hours before the event</p>
+              </div>
+            </div>
+            <div class="achievement-cards-section tab-pane" id="special-achievements" role="tabpanel">
+              <div class="achievement-card">
+                <div class="img-container">
+                  <img src="../media/icons/friendsTotal.svg" alt="">
+                </div>
+                <h3>Special</h3>
+                <p>Bought a festival ticket less than 24 hours before the event</p>
+              </div>
             </div>
           </div>
+
         </div>
         <div class="countries-visited-content tab-pane fade" id="countries-visited" role="tabpanel">
-          ...
+          <div class="achievements-section" role="tablist">
+            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#asia-category" role="tab">
+              <div class="achievement-title-box">
+                <div class="countries-visited-title">Asia</div>
+                <div class="countries-visited-total">10</div>
+              </div>
+              <div class="progress">
+                <div class="progress-value">10/32</div>
+                <progress value="10" max="32"></progress>
+              </div>
+            </button>
+            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#europe-category" role="tab">
+              <div class="achievement-title-box">
+                <div class="countries-visited-title">Europe</div>
+                <div class="countries-visited-total">10</div>
+              </div>
+              <div class="progress">
+                <div class="progress-value">10/32</div>
+                <progress value="10" max="32"></progress>
+              </div>
+            </button>
+            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#africa-category" role="tab">
+              <div class="achievement-title-box">
+                <div class="countries-visited-title">Africa</div>
+                <div class="countries-visited-total">10</div>
+              </div>
+              <div class="progress">
+                <div class="progress-value">10/32</div>
+                <progress value="10" max="32"></progress>
+              </div>
+            </button>
+            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#south-america-category" role="tab">
+              <div class="achievement-title-box">
+                <div class="countries-visited-title">South America</div>
+                <div class="countries-visited-total">10</div>
+              </div>
+              <div class="progress">
+                <div class="progress-value">10/32</div>
+                <progress value="10" max="32"></progress>
+              </div>
+            </button>
+            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#north-america-category" role="tab">
+              <div class="achievement-title-box">
+                <div class="countries-visited-title">North America</div>
+                <div class="countries-visited-total">10</div>
+              </div>
+              <div class="progress">
+                <div class="progress-value">10/32</div>
+                <progress value="10" max="32"></progress>
+              </div>
+            </button>
+            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#oceania-category" role="tab">
+              <div class="achievement-title-box">
+                <div class="countries-visited-title">North America</div>
+                <div class="countries-visited-total">10</div>
+              </div>
+              <div class="progress">
+                <div class="progress-value">10/32</div>
+                <progress value="10" max="32"></progress>
+              </div>
+            </button>
+          </div>
+          <div class="tab-content achievements-cards-category-content" role="tablist">
+            <div class="achievement-cards-section tab-pane show active" id="asia-category" role="tabpanel">
+              <div class="achievement-card">
+                <div class="img-container">
+                  <img src="../media/icons/friendsTotal.svg" alt="">
+                </div>
+                <h3>Asia</h3>
+                <p>Bought a festival ticket less than 24 hours before the event</p>
+              </div>
+            </div>
+            <div class="achievement-cards-section tab-pane" id="europe-category" role="tabpanel">
+              <div class="achievement-card">
+                <div class="img-container">
+                  <img src="../media/icons/friendsTotal.svg" alt="">
+                </div>
+                <h3>Europe</h3>
+                <p>Bought a festival ticket less than 24 hours before the event</p>
+              </div>
+            </div>
+            <div class="achievement-cards-section tab-pane" id="africa-category" role="tabpanel">
+              <div class="achievement-card">
+                <div class="img-container">
+                  <img src="../media/icons/friendsTotal.svg" alt="">
+                </div>
+                <h3>Africa</h3>
+                <p>Bought a festival ticket less than 24 hours before the event</p>
+              </div>
+            </div>
+            <div class="achievement-cards-section tab-pane" id="south-america-category" role="tabpanel">
+              <div class="achievement-card">
+                <div class="img-container">
+                  <img src="../media/icons/friendsTotal.svg" alt="">
+                </div>
+                <h3>South America</h3>
+                <p>Bought a festival ticket less than 24 hours before the event</p>
+              </div>
+            </div>
+            <div class="achievement-cards-section tab-pane" id="north-america-category" role="tabpanel">
+              <div class="achievement-card">
+                <div class="img-container">
+                  <img src="../media/icons/friendsTotal.svg" alt="">
+                </div>
+                <h3>North America</h3>
+                <p>Bought a festival ticket less than 24 hours before the event</p>
+              </div>
+            </div>
+            <div class="achievement-cards-section tab-pane" id="oceania-category" role="tabpanel">
+              <div class="achievement-card">
+                <div class="img-container">
+                  <img src="../media/icons/friendsTotal.svg" alt="">
+                </div>
+                <h3>Oceania</h3>
+                <p>Bought a festival ticket less than 24 hours before the event</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      
 
       <hr>
       <div class="other-user-resources">

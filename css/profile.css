@@ -138,7 +138,7 @@ progress {
   border: 1px solid #02304765;
   border-radius: 15px;
   padding: 10px 20px;
-  width: 250px;
+  min-width: 100px;
 }
 
 .achievement-cards-section {
@@ -146,6 +146,7 @@ progress {
   border: 1px solid #02304765;
   border-radius: 20px;
   padding: 20px;
+  display: flex;
 }
 
 .achievement-card {
