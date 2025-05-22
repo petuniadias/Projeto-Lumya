@@ -196,4 +196,10 @@ progress {
   padding: 10px;
   display: flex;
   justify-content: center;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.main-menu-tab:hover {
+  background-color: #FFB703;
 }
