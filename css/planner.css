@@ -1,9 +1,19 @@
+body {
+  background-color: #FFB703;
+}
+
+.tab-content {
+  padding: 40px 180px;
+}
+
 /* STEPS NAV */
 .steps-nav {
   display: flex;
   gap: 200px;
   justify-content: center;
   padding: 20px;
+  border: 1px solid #02304765;
+  background-color: white;
 }
 
 .steps-box {
@@ -15,7 +25,7 @@
 
 .step-title {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   width: 70px;
   text-align: center;
 }
@@ -23,10 +33,201 @@
 .steps-btn {
   font-size: 12px;
   font-weight: 600;
-  padding: 5px 10px;
+  padding: 5px 14px;
   background-color: #FFB703;
   border-radius: 50px;
   width: 27px;
   display: flex;
   justify-content: center;
+  border: none;
+}
+
+/* STEP ONE */
+#step-one.tab-pane.show.active {
+  display: flex;
+  gap: 50px;
+}
+
+.travelers {
+  background-color: white;
+  width: 730px;
+  border-radius: 0px 0px 20px 20px;
+  border: 1px solid #02304765;
+  padding: 20px;
+}
+
+.travelers-title {
+  background-color: #219EBC;
+  padding: 15px 20px;
+  border-radius: 20px 20px 0px 0px;
+  width: 730px;
+}
+
+.traveler-card {
+  background-color: white;
+  width: 130px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #02304765;
+}
+
+.traveler-name {
+  font-weight: 600;
+}
+
+.traveler-pic {
+  width: 85px;
+}
+
+.traveler-pic img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 100px;
+}
+
+/* TRAVELERS QUANTITY */
+
+.travelers-count {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.travelers-quantity {
+  background-color: white;
+  border-radius: 20px;
+  padding: 25px 30px;
+  width: 355px;
+  height: 106px;
+  border: 1px solid #02304765;
+}
+
+.remove-all-travelers {
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: underline;
+}
+
+/* STEP TWO */
+
+.destination {
+  background-color: white;
+  border: 1px solid #02304765;
+  border-radius: 20px;
+  padding: 25px 30px;
+  width: 1132px;
+  gap: 20px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.place-of-departure {
+  border-radius: 15px;
+  border: 1px solid #02304765;
+  padding: 10px 20px;
+  font-size: 14px;
+  width: 220px;
+}
+
+.destination-top-section,
+.tourism-type-top-section {
+  gap: 10px;
+  align-items: center;
+}
+
+.random-btn {
+  display: flex;
+  background-color: #219EBC;
+  border: 1px solid #02304765;
+  border-radius: 10px;
+  padding: 5px 10px;
+  width: min-content;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.random-icon img {
+  object-fit: cover;
+  width: 20px;
+}
+
+.random-text {
+  color: #023047;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* STEP FOUR */
+.sugestions {
+  background-color: white;
+  width: 1136px;
+  border-radius: 20px;
+  border: 1px solid #02304765;
+  padding: 25px 30px;
+}
+
+.sugestions-cards {
+  gap: 10px;
+}
+
+.sugestions-grid {
+  gap: 10px;
+}
+
+/* FILTER */
+
+.filters {
+}
+
+.btn-outline-primary {
+  border: 1px solid #02304765;
+  color: #023047;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.form-range {
+  width: 245px;
+}
+
+/* FLIGHT CARD */
+
+.flight-card {
+  width: 262px;
+  border: 1px solid #02304765;
+  padding: 20px;
+  gap: 10px;
+  border-radius: 15px;
+}
+
+.flight-destination {
+  font-size: 16px;
+}
+
+.flight-bottom {
+  gap: 20px;
+}
+
+.favorite-select {
+  gap: 10px;
+}
+
+.cabin-sugestion {
+  font-size: 12px;
+}
+
+.select-btn {
+  padding: 7px 20px;
+  border-radius: 10px;
 }

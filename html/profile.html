@@ -10,11 +10,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="media/img/logo.png">
+
+  <!--BOOTSTRAP-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <link rel="icon" type="" href="media/img/logo.png">
+  <!--STYLES-->
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="../css/profile.css">
+
 </head>
 <body>
   <nav>
@@ -58,6 +62,7 @@
 
   <main>
     <div class="profile-header">
+      
       <div class="profile-box">
         <div class="profile-pic">
           <img src="../media/img/profile-pic.jpg" alt="">
@@ -67,8 +72,9 @@
           <div>@enya123</div>
         </div>
       </div>
-      <div class="collectables" role="tablist">
-        <button class="achievements show active" data-bs-toggle="pill" data-bs-target="#achievements" role="tab" aria-selected="true">
+
+      <div class="collectables nav nav-pills" role="tablist">
+        <button class="achievements show active nav-link" data-bs-toggle="pill" data-bs-target="#achievements" role="tab" aria-selected="true">
           <div class="img-container">
             <img src="../media/icons/trophy.svg" alt="">
           </div>
@@ -84,7 +90,7 @@
           </div>
 
         </button>
-        <button class="countries-visited" data-bs-toggle="pill" data-bs-target="#countries-visited" role="tab" aria-selected="false">
+        <button class="countries-visited nav-link" data-bs-toggle="pill" data-bs-target="#countries-visited" role="tab" aria-selected="false">
           <div class="img-container">
             <img src="../media/icons/countries-visited.svg" alt="">
           </div>
@@ -99,7 +105,7 @@
                 <progress value="10" max="32"></progress>
               </div>
             </div>
-          </button>
+        </button>
         <hr class="div-header">
         <div class="total-friends">
           <div class="img-container">
@@ -115,9 +121,10 @@
     
     <div class="profile-main">
       <div class="collectibles-content tab-content">
+
         <div class="achievement-content tab-pane fade show active" id="achievements" role="tabpanel">
-          <div class="achievements-section" role="tablist">
-            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#festivals-achievements" role="tab" aria-selected="true">
+          <div class="achievements-section nav nav-pills" role="tablist">
+            <button class="achievements-categories nav-link" data-bs-toggle="pill" data-bs-target="#festivals-achievements" role="tab" aria-selected="true">
               <div class="achievement-title-box">
                 <div class="countries-visited-title">Festivals</div>
                 <div class="countries-visited-total">10</div>
@@ -127,7 +134,7 @@
                 <progress value="10" max="32"></progress>
               </div>
             </button>
-            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#user-interaction-achievements" role="tab" aria-selected="false">
+            <button class="achievements-categories nav-link" data-bs-toggle="pill" data-bs-target="#user-interaction-achievements" role="tab" aria-selected="false">
               <div class="achievement-title-box">
                 <div class="countries-visited-title">User Interaction</div>
                 <div class="countries-visited-total">10</div>
@@ -137,7 +144,7 @@
                 <progress value="10" max="32"></progress>
               </div>
             </button>
-            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#booking-achievements" role="tab" aria-selected="false">
+            <button class="achievements-categories nav-link" data-bs-toggle="pill" data-bs-target="#booking-achievements" role="tab" aria-selected="false">
               <div class="achievement-title-box">
                 <div class="countries-visited-title">Booking</div>
                 <div class="countries-visited-total">10</div>
@@ -147,7 +154,7 @@
                 <progress value="10" max="32"></progress>
               </div>
             </button>
-            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#flight-achievements" role="tab" aria-selected="false">
+            <button class="achievements-categories nav-link" data-bs-toggle="pill" data-bs-target="#flight-achievements" role="tab" aria-selected="false">
               <div class="achievement-title-box">
                 <div class="countries-visited-title">Flights</div>
                 <div class="countries-visited-total">10</div>
@@ -157,7 +164,7 @@
                 <progress value="10" max="32"></progress>
               </div>
             </button>
-            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#special-achievements" role="tab" aria-selected="false">
+            <button class="achievements-categories nav-link" data-bs-toggle="pill" data-bs-target="#special-achievements" role="tab" aria-selected="false">
               <div class="achievement-title-box">
                 <div class="countries-visited-title">Special</div>
                 <div class="countries-visited-total">10</div>
@@ -168,70 +175,105 @@
               </div>
             </button>
           </div>
+
           <div class="tab-content achievements-cards-category-content" role="tablist">
-            <div class="achievement-cards-section tab-pane show active" id="festivals-achievements" role="tabpanel">
-              <div class="achievement-card">
-                <div class="img-container">
-                  <img src="../media/icons/friendsTotal.svg" alt="">
-                </div>
-                <h3>Free Spirit</h3>
-                <p>Bought a festival ticket less than 24 hours before the event</p>
+            <div class="scroll-btns">
+              <div class="scroll-btn-left">
+                <img src="../media/icons/arrow.svg" alt="" class="arrow-right">
               </div>
-              <div class="achievement-card">
-                <div class="img-container">
-                  <img src="../media/icons/friendsTotal.svg" alt="">
-                </div>
-                <h3>Free Spirit</h3>
-                <p>Bought a festival ticket less than 24 hours before the event</p>
-              </div>
-              <div class="achievement-card">
-                <div class="img-container">
-                  <img src="../media/icons/friendsTotal.svg" alt="">
-                </div>
-                <h3>Free Spirit</h3>
-                <p>Bought a festival ticket less than 24 hours before the event</p>
+              <div class="scroll-btn-right">
+                <img src="../media/icons/arrow.svg" alt="" class="arrow-right">
               </div>
             </div>
-            <div class="achievement-cards-section tab-pane" id="user-interaction-achievements" role="tabpanel">
-              <div class="achievement-card">
-                <div class="img-container">
-                  <img src="../media/icons/friendsTotal.svg" alt="">
+            <div class="tab-pane show active" id="festivals-achievements" role="tabpanel">
+              <div class="achievement-cards-section d-flex">
+                <div class="achievement-card">
+                  <div class="img-container">
+                    <img src="../media/icons/friendsTotal.svg" alt="">
+                  </div>
+                  <h3>Free Spirit</h3>
+                  <p>Bought a festival ticket less than 24 hours before the event</p>
                 </div>
-                <h3>User Interaction</h3>
-                <p>Bought a festival ticket less than 24 hours before the event</p>
+                <div class="achievement-card">
+                  <div class="img-container">
+                    <img src="../media/icons/friendsTotal.svg" alt="">
+                  </div>
+                  <h3>Free Spirit</h3>
+                  <p>Bought a festival ticket less than 24 hours before the event</p>
+                </div>
+                <div class="achievement-card">
+                  <div class="img-container">
+                    <img src="../media/icons/friendsTotal.svg" alt="">
+                  </div>
+                  <h3>Free Spirit</h3>
+                  <p>Bought a festival ticket less than 24 hours before the event</p>
+                </div>
+                <div class="achievement-card">
+                  <div class="img-container">
+                    <img src="../media/icons/friendsTotal.svg" alt="">
+                  </div>
+                  <h3>Free Spirit</h3>
+                  <p>Bought a festival ticket less than 24 hours before the event</p>
+                </div>
+                <div class="achievement-card">
+                  <div class="img-container">
+                    <img src="../media/icons/friendsTotal.svg" alt="">
+                  </div>
+                  <h3>Free Spirit</h3>
+                  <p>Bought a festival ticket less than 24 hours before the event</p>
+                </div>
               </div>
             </div>
-            <div class="achievement-cards-section tab-pane" id="booking-achievements" role="tabpanel">
-              <div class="achievement-card">
-                <div class="img-container">
-                  <img src="../media/icons/friendsTotal.svg" alt="">
+            <div class="tab-pane" id="user-interaction-achievements" role="tabpanel">
+              <div class="achievement-cards-section d-flex">
+                <div class="achievement-card">
+                  <div class="img-container">
+                    <img src="../media/icons/friendsTotal.svg" alt="">
+                  </div>
+                  <h3>User Interaction</h3>
+                  <p>Bought a festival ticket less than 24 hours before the event</p>
                 </div>
-                <h3>Booking</h3>
-                <p>Bought a festival ticket less than 24 hours before the event</p>
               </div>
             </div>
-            <div class="achievement-cards-section tab-pane" id="flight-achievements" role="tabpanel">
-              <div class="achievement-card">
-                <div class="img-container">
-                  <img src="../media/icons/friendsTotal.svg" alt="">
+            <div class="tab-pane" id="booking-achievements" role="tabpanel">
+              <div class="achievement-cards-section d-flex">
+                <div class="achievement-card">
+                  <div class="img-container">
+                    <img src="../media/icons/friendsTotal.svg" alt="">
+                  </div>
+                  <h3>Booking</h3>
+                  <p>Bought a festival ticket less than 24 hours before the event</p>
                 </div>
-                <h3>Flights</h3>
-                <p>Bought a festival ticket less than 24 hours before the event</p>
               </div>
             </div>
-            <div class="achievement-cards-section tab-pane" id="special-achievements" role="tabpanel">
-              <div class="achievement-card">
-                <div class="img-container">
-                  <img src="../media/icons/friendsTotal.svg" alt="">
+            <div class="tab-pane" id="flight-achievements" role="tabpanel">
+              <div class="achievement-cards-section d-flex">
+                <div class="achievement-card">
+                  <div class="img-container">
+                    <img src="../media/icons/friendsTotal.svg" alt="">
+                  </div>
+                  <h3>Flights</h3>
+                  <p>Bought a festival ticket less than 24 hours before the event</p>
                 </div>
-                <h3>Special</h3>
-                <p>Bought a festival ticket less than 24 hours before the event</p>
+              </div>
+            </div>
+            <div class="tab-pane" id="special-achievements" role="tabpanel">
+              <div class="achievement-cards-section d-flex" >
+                <div class="achievement-card">
+                  <div class="img-container">
+                    <img src="../media/icons/friendsTotal.svg" alt="">
+                  </div>
+                  <h3>Special</h3>
+                  <p>Bought a festival ticket less than 24 hours before the event</p>
+                </div>
               </div>
             </div>
           </div>
 
         </div>
+
         <div class="countries-visited-content tab-pane fade" id="countries-visited" role="tabpanel">
+
           <div class="achievements-section" role="tablist">
             <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#asia-category" role="tab">
               <div class="achievement-title-box">
@@ -294,14 +336,14 @@
               </div>
             </button>
           </div>
+
           <div class="tab-content achievements-cards-category-content" role="tablist">
             <div class="achievement-cards-section tab-pane show active" id="asia-category" role="tabpanel">
-              <div class="achievement-card">
+              <div class="achievement-card country">
                 <div class="img-container">
-                  <img src="../media/icons/friendsTotal.svg" alt="">
+                  <img src="../media/img/japan-flag.png" alt="">
                 </div>
-                <h3>Asia</h3>
-                <p>Bought a festival ticket less than 24 hours before the event</p>
+                <h3>Japan</h3>
               </div>
             </div>
             <div class="achievement-cards-section tab-pane" id="europe-category" role="tabpanel">
@@ -355,19 +397,19 @@
 
       <hr>
       <div class="other-user-resources">
-        <div class="user-profile-main-menu" role="tablist">
-          <button class="main-menu-tab" data-bs-toggle="pill" data-bs-target="#friend-list" role="tab" aria-selected="true">Friend List</button>
-          <button class="main-menu-tab" data-bs-toggle="pill" data-bs-target="#trip-history" role="tab" aria-selected="false">Trip History</button>
-          <button class="main-menu-tab" data-bs-toggle="pill" data-bs-target="#pending-trips" role="tab" aria-selected="false">Pending Trips</button>
-          <button class="main-menu-tab" data-bs-toggle="pill" data-bs-target="#daily-mission" role="tab" aria-selected="false">Daily Mission</button>
-          <button class="main-menu-tab" data-bs-toggle="pill" data-bs-target="#shop" role="tab" aria-selected="false">Shop</button>
+        <div class="user-profile-main-menu nav nav-pills" role="tablist">
+          <button class="main-menu-tab nav-link" data-bs-toggle="pill" data-bs-target="#friend-list" role="tab" aria-selected="true">Friend List</button>
+          <button class="main-menu-tab nav-link" data-bs-toggle="pill" data-bs-target="#trip-history" role="tab" aria-selected="false">Trip History</button>
+          <button class="main-menu-tab nav-link" data-bs-toggle="pill" data-bs-target="#pending-trips" role="tab" aria-selected="false">Pending Trips</button>
+          <button class="main-menu-tab nav-link" data-bs-toggle="pill" data-bs-target="#daily-mission" role="tab" aria-selected="false">Daily Mission</button>
+          <button class="main-menu-tab nav-link" data-bs-toggle="pill" data-bs-target="#shop" role="tab" aria-selected="false">Shop</button>
         </div>
-        <div class="tab-content user-profile-main-menu-content">
-          <div class="tab-pane fade show active" id="friend-list" role="tabpanel">Friend List</div>
-          <div class="tab-pane fade" id="trip-history" role="tabpanel">Trip History</div>
-          <div class="tab-pane fade" id="pending-trips" role="tabpanel">Pending Trips</div>
-          <div class="tab-pane fade" id="daily-mission" role="tabpanel">Daily Mission</div>
-          <div class="tab-pane fade" id="shop" role="tabpanel">Shop</div>
+        <div class="user-profile-main-menu-content tab-content nav nav-pills">
+          <div class="tab-pane nav-link show active" id="friend-list" role="tabpanel">Friend List</div>
+          <div class="tab-pane nav-link fade" id="trip-history" role="tabpanel">Trip History</div>
+          <div class="tab-pane nav-link fade" id="pending-trips" role="tabpanel">Pending Trips</div>
+          <div class="tab-pane nav-link fade" id="daily-mission" role="tabpanel">Daily Mission</div>
+          <div class="tab-pane nav-link fade" id="shop" role="tabpanel">Shop</div>
         </div>
       </div>
     </div>

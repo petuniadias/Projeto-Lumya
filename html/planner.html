@@ -12,37 +12,449 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
+   <!--BOOTSTRAP-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <!--STYLES-->
   <link rel="stylesheet" href="../css/planner.css">
+  <link rel="stylesheet" href="../css/index.css">
+
 </head>
+
 <body>
-  <div class="steps-nav">
+
+  <!-- STEPS NAVIGATION -->
+  <div class="steps-nav tab-list nav nav-pills">
     <div class="steps-box">
-      <div class="steps-btn">1</div>
+      <button class="steps-btn nav-link active" data-bs-toggle="pill" data-bs-target="#step-one" role="tab" aria-selected="true">1</button>
       <div class="step-title">Number of travelers</div>
     </div>
     <div class="steps-box">
-      <div class="steps-btn">2</div>
+      <button class="steps-btn nav-link" data-bs-toggle="pill" data-bs-target="#step-two" role="tab" aria-selected="false">2</button>
       <div class="step-title">Destination</div>
     </div>
     <div class="steps-box">
-      <div class="steps-btn">3</div>
+      <button class="steps-btn nav-link" data-bs-toggle="pill" data-bs-target="#step-three" role="tab" aria-selected="false">3</button>
       <div class="step-title">Dates</div>
     </div>
     <div class="steps-box">
-      <div class="steps-btn">4</div>
+      <button class="steps-btn nav-link" data-bs-toggle="pill" data-bs-target="#step-four" role="tab" aria-selected="false">4</button>
       <div class="step-title">Sugestions</div>
     </div>
     <div class="steps-box">
-      <div class="steps-btn">5</div>
+      <button class="steps-btn nav-link" data-bs-toggle="pill" data-bs-target="#step-five" role="tab" aria-selected="false">5</button>
       <div class="step-title">Payment</div>
     </div>
-
-
-
-
-
   </div>
 
+  <!-- TAB CONTENTS -->
+
+  <div class="tab-content nav nav-pills" role="tablist">
+
+  <!-- STEP ONE -->
+    <div class="tab-pane show active" id="step-one" role="tabpanel">
+      <div class="travelers-section">
+        <div class="travelers-title">
+          Travelers
+        </div>
+        <div class="travelers">
+          <div class="traveler-card">
+            <div class="traveler-pic">
+              <img src="../media/img/profile-pic.jpg" alt="">
+            </div>
+            <div class="traveler-name">You</div>
+          </div>
+        </div>
+      </div>
+      <div class="travelers-quantity">
+        <h3 class="travelers-count">
+          3 Travelers
+        </h3>
+        <div class="remove-all-travelers">
+          Remove all
+        </div>
+      </div>
+    </div>
+
+  <!-- STEP TWO -->
+    <div class="tab-pane" id="step-two" role="tabpanel">
+      <div class="destination d-flex flex-column nav">
+        <div class="place-of-departure-section d-flex flex-column">
+          <label for="place-of-departure">Place of departure &ast; </label>
+          <input class="place-of-departure" type="text" name="place-of-departure" placeholder="Porto, Portugal">
+        </div>
+        <div class="tourism-type-top-section d-flex">
+          <label for="tourism-type">Select a type of tourism</label>
+          <button type="button" class="random-btn btn btn-primary">
+            <div class="random-icon">
+              <img src="../media/icons/random.svg" alt="">
+            </div>
+            <div class="random-text">random</div>
+          </button>
+        </div>
+
+        <div class="destination-top-section d-flex">
+          <label for="select-destination">Select a destination &ast; </label>
+          <button type="button" class="random-btn btn btn-primary">
+            <div class="random-icon">
+              <img src="../media/icons/random.svg" alt="">
+            </div>
+            <div class="random-text">random</div>
+          </button>
+        </div>
+        <div class="destination-selection">
+
+        </div>
+
+      </div>
+    </div>
+
+  <!-- STEP FOUR -->
+    <div class="tab-pane" id="step-four" role="tabpanel">
+      <div class="sugestions d-flex">
+        <div class="filters d-flex flex-column">
+          <label for="price" class="form-label">Price</label>
+          <input type="range" class="form-range" id="price">
+
+          <label class="flight-type">
+            Flight type
+          </label>
+          <input type="checkbox" class="btn-check" name="" id="one-way" autocomplete="off">
+          <label class="btn btn-outline-primary" for="one-way">One way</label>
+
+          <input type="checkbox" class="btn-check" name="" id="round-trip" autocomplete="off">
+          <label class="btn btn-outline-primary" for="round-trip">Round trip</label>
+
+          <label for="cabin" class="cabin-filter">
+            Cabin
+          </label>
+
+          <input type="checkbox" class="btn-check" name="" id="basic-economy" autocomplete="off">
+          <label class="btn btn-outline-primary" for="basic-economy">Basic Economy</label>
+
+          <input type="checkbox" class="btn-check" name="" id="economy" autocomplete="off">
+          <label class="btn btn-outline-primary" for="economy">Economy</label>
+
+          <input type="checkbox" class="btn-check" name="" id="business" autocomplete="off">
+          <label class="btn btn-outline-primary" for="business">Business</label>
+
+          <input type="checkbox" class="btn-check" name="" id="mixed" autocomplete="off">
+          <label class="btn btn-outline-primary" for="mixed">Mixed</label>
+        </div>
+
+        <div class="sugestions-cards d-flex flex-column align-items-center">
+          <div class="sugestions-grid row">
+            <div class="flight-card d-flex flex-column">
+              <h3 class="flight-destination">
+                Paris, France
+              </h3>
+              <div class="flight-info">
+                <div class="flight-take-off">
+                  <div class="time">
+                    6:30 - 7:39
+                  </div>
+                  <div class="airport">
+                    Francisco Sá Carneiro Airport
+                  </div>
+                </div>
+              </div>
+              <div class="flight-bottom d-flex align-items-center">
+                <div class="price-cabin">
+                  <div class="price">
+                    10.00 €
+                  </div>
+                  <div class="cabin-sugestion">
+                    Basic Economy
+                  </div>
+                </div>
+                <div class="favorite-select d-flex align-items-center">
+                  <div class="favorite">
+                    <img src="../media/icons/favorite.svg" alt="">
+                  </div>
+                  <div class="select-btn btn btn-primary">Select</div>
+                </div>
+
+              </div>
+            </div>
+            <div class="flight-card d-flex flex-column">
+              <h3 class="flight-destination">
+                Paris, France
+              </h3>
+              <div class="flight-info">
+                <div class="flight-take-off">
+                  <div class="time">
+                    6:30 - 7:39
+                  </div>
+                  <div class="airport">
+                    Francisco Sá Carneiro Airport
+                  </div>
+                </div>
+              </div>
+              <div class="flight-bottom d-flex align-items-center">
+                <div class="price-cabin">
+                  <div class="price">
+                    10.00 €
+                  </div>
+                  <div class="cabin-sugestion">
+                    Basic Economy
+                  </div>
+                </div>
+                <div class="favorite-select d-flex align-items-center">
+                  <div class="favorite">
+                    <img src="../media/icons/favorite.svg" alt="">
+                  </div>
+                  <div class="select-btn btn btn-primary">Select</div>
+                </div>
+
+              </div>
+            </div>
+            <div class="flight-card d-flex flex-column">
+              <h3 class="flight-destination">
+                Paris, France
+              </h3>
+              <div class="flight-info">
+                <div class="flight-take-off">
+                  <div class="time">
+                    6:30 - 7:39
+                  </div>
+                  <div class="airport">
+                    Francisco Sá Carneiro Airport
+                  </div>
+                </div>
+              </div>
+              <div class="flight-bottom d-flex align-items-center">
+                <div class="price-cabin">
+                  <div class="price">
+                    10.00 €
+                  </div>
+                  <div class="cabin-sugestion">
+                    Basic Economy
+                  </div>
+                </div>
+                <div class="favorite-select d-flex align-items-center">
+                  <div class="favorite">
+                    <img src="../media/icons/favorite.svg" alt="">
+                  </div>
+                  <div class="select-btn btn btn-primary">Select</div>
+                </div>
+
+              </div>
+            </div>
+            <div class="flight-card d-flex flex-column">
+              <h3 class="flight-destination">
+                Paris, France
+              </h3>
+              <div class="flight-info">
+                <div class="flight-take-off">
+                  <div class="time">
+                    6:30 - 7:39
+                  </div>
+                  <div class="airport">
+                    Francisco Sá Carneiro Airport
+                  </div>
+                </div>
+              </div>
+              <div class="flight-bottom d-flex align-items-center">
+                <div class="price-cabin">
+                  <div class="price">
+                    10.00 €
+                  </div>
+                  <div class="cabin-sugestion">
+                    Basic Economy
+                  </div>
+                </div>
+                <div class="favorite-select d-flex align-items-center">
+                  <div class="favorite">
+                    <img src="../media/icons/favorite.svg" alt="">
+                  </div>
+                  <div class="select-btn btn btn-primary">Select</div>
+                </div>
+
+              </div>
+            </div>
+            <div class="flight-card d-flex flex-column">
+              <h3 class="flight-destination">
+                Paris, France
+              </h3>
+              <div class="flight-info">
+                <div class="flight-take-off">
+                  <div class="time">
+                    6:30 - 7:39
+                  </div>
+                  <div class="airport">
+                    Francisco Sá Carneiro Airport
+                  </div>
+                </div>
+              </div>
+              <div class="flight-bottom d-flex align-items-center">
+                <div class="price-cabin">
+                  <div class="price">
+                    10.00 €
+                  </div>
+                  <div class="cabin-sugestion">
+                    Basic Economy
+                  </div>
+                </div>
+                <div class="favorite-select d-flex align-items-center">
+                  <div class="favorite">
+                    <img src="../media/icons/favorite.svg" alt="">
+                  </div>
+                  <div class="select-btn btn btn-primary">Select</div>
+                </div>
+
+              </div>
+            </div>
+            <div class="flight-card d-flex flex-column">
+              <h3 class="flight-destination">
+                Paris, France
+              </h3>
+              <div class="flight-info">
+                <div class="flight-take-off">
+                  <div class="time">
+                    6:30 - 7:39
+                  </div>
+                  <div class="airport">
+                    Francisco Sá Carneiro Airport
+                  </div>
+                </div>
+              </div>
+              <div class="flight-bottom d-flex align-items-center">
+                <div class="price-cabin">
+                  <div class="price">
+                    10.00 €
+                  </div>
+                  <div class="cabin-sugestion">
+                    Basic Economy
+                  </div>
+                </div>
+                <div class="favorite-select d-flex align-items-center">
+                  <div class="favorite">
+                    <img src="../media/icons/favorite.svg" alt="">
+                  </div>
+                  <div class="select-btn btn btn-primary">Select</div>
+                </div>
+
+              </div>
+            </div>
+            <div class="flight-card d-flex flex-column">
+              <h3 class="flight-destination">
+                Paris, France
+              </h3>
+              <div class="flight-info">
+                <div class="flight-take-off">
+                  <div class="time">
+                    6:30 - 7:39
+                  </div>
+                  <div class="airport">
+                    Francisco Sá Carneiro Airport
+                  </div>
+                </div>
+              </div>
+              <div class="flight-bottom d-flex align-items-center">
+                <div class="price-cabin">
+                  <div class="price">
+                    10.00 €
+                  </div>
+                  <div class="cabin-sugestion">
+                    Basic Economy
+                  </div>
+                </div>
+                <div class="favorite-select d-flex align-items-center">
+                  <div class="favorite">
+                    <img src="../media/icons/favorite.svg" alt="">
+                  </div>
+                  <div class="select-btn btn btn-primary">Select</div>
+                </div>
+
+              </div>
+            </div>
+            <div class="flight-card d-flex flex-column">
+              <h3 class="flight-destination">
+                Paris, France
+              </h3>
+              <div class="flight-info">
+                <div class="flight-take-off">
+                  <div class="time">
+                    6:30 - 7:39
+                  </div>
+                  <div class="airport">
+                    Francisco Sá Carneiro Airport
+                  </div>
+                </div>
+              </div>
+              <div class="flight-bottom d-flex align-items-center">
+                <div class="price-cabin">
+                  <div class="price">
+                    10.00 €
+                  </div>
+                  <div class="cabin-sugestion">
+                    Basic Economy
+                  </div>
+                </div>
+                <div class="favorite-select d-flex align-items-center">
+                  <div class="favorite">
+                    <img src="../media/icons/favorite.svg" alt="">
+                  </div>
+                  <div class="select-btn btn btn-primary">Select</div>
+                </div>
+              </div>
+            </div>
+            <div class="flight-card d-flex flex-column">
+              <h3 class="flight-destination">
+                Paris, France
+              </h3>
+              <div class="flight-info">
+                <div class="flight-take-off">
+                  <div class="time">
+                    6:30 - 7:39
+                  </div>
+                  <div class="airport">
+                    Francisco Sá Carneiro Airport
+                  </div>
+                </div>
+              </div>
+              <div class="flight-bottom d-flex align-items-center">
+                <div class="price-cabin">
+                  <div class="price">
+                    10.00 €
+                  </div>
+                  <div class="cabin-sugestion">
+                    Basic Economy
+                  </div>
+                </div>
+                <div class="favorite-select d-flex align-items-center">
+                  <div class="favorite">
+                    <img src="../media/icons/favorite.svg" alt="">
+                  </div>
+                  <div class="select-btn btn btn-primary">Select</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="pagination">
+            <li class="page-item">
+              <a href="#" class="page-link">&lt;</a>
+            </li>
+            <li class="page-item">
+              <a href="#" class="page-link">1</a>
+            </li>
+            <li class="page-item">
+              <a href="#" class="page-link">2</a>
+            </li>
+            <li class="page-item">
+              <a href="#" class="page-link">2</a>
+            </li>
+            <li class="page-item">
+              <a href="#" class="page-link">&gt;</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>

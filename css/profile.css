@@ -146,7 +146,11 @@ progress {
   border: 1px solid #02304765;
   border-radius: 20px;
   padding: 20px;
-  display: flex;
+  gap: 10px;
+}
+
+.achievements-cards-category-content {
+  position: relative;
 }
 
 .achievement-card {
@@ -163,6 +167,11 @@ progress {
   justify-content: center;
 }
 
+.country {
+  display: flex;
+  gap: 30px;
+}
+
 .achievement-card h3 {
   font-size: 16px;
   margin: 0;
@@ -174,9 +183,32 @@ progress {
   margin: 0;
 }
 
+/* SCROLL BUTTONS */
+.scroll-btns {
+  position: absolute;
+  display: flex;
+  top: 50%;
+  transform: translateY(-50%);
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px;
+}
+
+.scroll-btn-right, .scroll-btn-left {
+  background-color: white;
+  border: 1px solid #02304765;
+  padding: 10px 12px;
+  border-radius: 30px;
+}
+
+.scroll-btn-left {
+  transform: rotate(180deg);
+}
+
 /* USER PROFILE MENU */
 .other-user-resources {
   display: flex;
+  gap: 10px;
 }
 
 .user-profile-main-menu {
