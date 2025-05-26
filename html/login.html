@@ -13,6 +13,27 @@
   <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
+
+  <nav>
+    <div class="left-side">
+      <div>
+        Planner
+      </div>
+      <div>
+        FAQ
+      </div>
+    </div>
+
+    <div class="logo">
+      <img src="../media/img/logo.png">
+    </div>
+
+    <div class="right-side">
+      <a class="login-nav-btn" href="../html/login.html">Login</a>
+      <a class="register-nav-btn" href="../html/register.html">Register</a>
+    </div>
+
+  </nav>
   <main>
     <div class="login-container d-flex justify-content-center">
       <div class="d-flex flex-column align-items-center">
@@ -31,11 +52,11 @@
           <label for="username">
             Username
           </label>
-          <input type="text" placeholder="Username">
+          <input class="form-input" type="text" placeholder="Username">
           <label for="password">
             Password
           </label>
-          <input type="password" placeholder="Passoword">
+          <input class="form-input" type="password" placeholder="Passoword">
           <a class="forgot-password-link d-flex justify-content-end" href="#">Forgot password?</a>
           <button class="login-btn">
             Login

@@ -30,6 +30,7 @@ h3 {
 
 .login-form {
   gap: 5px;
+  width: 364px;
 }
 
 form {
@@ -41,7 +42,7 @@ form {
   font-weight: 500;
 }
 
-input {
+.form-input {
   padding: 10px 15px;
   border-radius: 10px;
   border: 1px solid #02304765;
@@ -71,6 +72,16 @@ a {
   color: #FFB703;
 }
 
+
+/* REGISTER */
+
+.username-name {
+  gap: 10px;
+}
+
+.accept-terms {
+  gap: 10px;
+}
 
 
 

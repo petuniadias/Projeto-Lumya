@@ -26,16 +26,35 @@ nav {
   gap: 30px;
 }
 
-.right-side {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
 .logo {
   position: absolute;
   transform: translateX(-50%);
   left: 50%;
+}
+
+/* UNLOGGED */
+
+.login-nav-btn {
+  padding: 8px 20px;
+  background-color: #FFB703;
+  border: 2px solid #FFB703;
+  border-radius: 10px;
+}
+
+.register-nav-btn {
+  padding: 8px 20px;
+  background-color: transparent;
+  border: 2px solid #FFB703;
+  border-radius: 10px;
+  color: #FFB703;
+}
+
+/* LOGGED */
+
+.right-side {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .profile, .points, .notifications {
