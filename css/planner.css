@@ -166,17 +166,25 @@ label {
   font-size: 14px;
 }
 
+.destination-selection {
+  width: 130px !important;
+  height: 130px;
+  border-radius: 20px !important;
+}
+
+
 /* STEP FOUR */
 .sugestions {
   background-color: white;
   width: 1136px;
   border-radius: 20px;
   border: 1px solid #02304765;
-  padding: 25px 30px;
+  padding: 20px 15px;
 }
 
-.sugestions-cards {
-  gap: 10px;
+.row {
+  gap: 5px;
+  margin-bottom: 5px;
 }
 
 .sugestions-grid {
@@ -185,7 +193,8 @@ label {
 
 /* FILTER */
 
-.filters {
+.checkboxes {
+  gap: 3px;
 }
 
 .btn-outline-primary {
@@ -199,6 +208,22 @@ label {
 
 .form-range {
   width: 245px;
+}
+
+.times-tab {
+  gap: 5px;
+  padding: 5px;
+  border: 1px solid #02304765;
+  border-radius: 15px;
+}
+
+.take-off,
+.landing {
+  gap: 5px;
+  font-size: 14px;
+  border: 1px solid #02304765 !important;
+  border-radius: 10px !important;
+  color: black;
 }
 
 /* FLIGHT CARD */
@@ -230,4 +255,73 @@ label {
 .select-btn {
   padding: 7px 20px;
   border-radius: 10px;
+}
+
+/* STEP FIVE */
+
+.checkout {
+  background-color: white;
+  padding: 20px;
+  width: 329px;
+  border: 1px solid #02304765;
+  border-radius: 20px;
+  gap: 10px;
+}
+
+.checkout-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.order-summary {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.summary {
+  font-size: 14px;
+}
+
+.sub-total-quantity,
+.discount-quantity {
+  font-weight: bold;
+}
+
+.total-title,
+.total-quantity {
+  font-weight: 700;
+}
+
+.total-title {
+  font-size: 16px;
+}
+
+.total-quantity {
+  font-size: 20px;
+}
+
+.checkout-btn-group {
+  gap: 10px;
+}
+
+.checkout-btn,
+.coupon-btn {
+  border-radius: 10px;
+  gap: 5px;
+}
+
+.checkout-btn {
+  font-size: 14px;
+  color: black;
+  font-weight: 500;
+  background-color: #FFB703;
+  border: 2px solid #FFB703;
+}
+
+.coupon-btn {
+  font-size: 14px;
+  color: #FFB703;
+  font-weight: 500;
+  border: 2px solid #FFB703;
 }
