@@ -212,12 +212,6 @@ label {
   font-size: 14px;
 }
 
-.destination-selection {
-  width: 130px !important;
-  height: 130px;
-  border-radius: 20px !important;
-}
-
 /* TYPES OF TOURISM */
 .tourism-type-card {
   border: 1px solid #02304765;
@@ -259,6 +253,74 @@ label {
   transform: rotate(180deg);
 }
 
+/* DESTINATION */
+
+.destination-selection-box {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #02304765;
+  border-radius: 20px;
+  padding: 20px;
+  gap: 10px;
+  width: 555px;
+  flex-direction: column;
+  left: 140px;
+  bottom: 0px;
+  display: none;
+}
+
+.destination-title {
+  font-size: 16px;
+  text-align: start;
+}
+
+.close-btn {
+  cursor: pointer;
+}
+
+.search-bar {
+  border: 1px solid #02304765;
+  padding: 5px 10px;
+  border-radius: 10px;
+  gap: 5px;
+}
+
+.search-input {
+  border: none;
+}
+
+.destination-selection {
+  width: 130px !important;
+  height: 130px;
+  border-radius: 20px !important;
+  position: relative;
+  border: 1px solid #02304765;
+  cursor: pointer;
+}
+
+.destination-selection:hover {
+  background-color: #219EBC;
+}
+
+.destination-card-section {
+  gap: 5px;
+  overflow: hidden;
+  position: relative;
+  padding: 0px 10px;
+}
+
+.destination-card {
+  border-radius: 15px;
+  border: 1px solid #02304765;
+  width: 155px;
+  height: 180px;
+  gap: 5px;
+  flex: 0 0 145px;
+}
+
+.destination-img {
+  width: 135px;
+}
 
 /* STEP FOUR */
 .sugestions {
