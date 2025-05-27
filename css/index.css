@@ -121,7 +121,10 @@ nav {
 
 .dropdown:hover .dropdown-content {
   display: flex;
-  
+}
+
+.dropdown-content:focus {
+  display: flex;
 }
 
 .numPoints {

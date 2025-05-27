@@ -1,3 +1,11 @@
+/* APPLIED TO ALL */
+
+.line-div {
+  margin: 10px 0px;
+  height: 1px;
+  background-color: #02304765;
+}
+
 body {
   background-color: #FFB703;
 }
@@ -323,6 +331,7 @@ label {
 }
 
 /* STEP FOUR */
+
 .sugestions {
   background-color: white;
   width: 1136px;
@@ -340,7 +349,46 @@ label {
   gap: 10px;
 }
 
+.sugestions-category-contents.tab-content {
+  padding: 0px 20px 0px 0px;
+  justify-content: flex-end;
+}
+
+/* SUGESTIONS CATEGORY TAB */
+
+.sugestion-category {
+  border: 1px solid #02304765;
+  border-radius: 15px;
+  padding: 5px;
+  gap: 5px;
+}
+
+.flight-category,
+.stays-category,
+.festivals-category {
+  border: 1px solid #02304765;
+  border-radius: 10px;
+  padding: 5px;
+  gap: 5px;
+}
+
+.tab-label {
+  font-size: 14px;
+  font-weight: 500;
+  display: none;
+}
+
 /* FILTER */
+
+.filters {
+  border-right: 1px solid #02304765;
+  padding-right: 10px;
+  width: 610px;
+}
+
+.filters .tab-content {
+  padding: 0px;
+}
 
 .checkboxes {
   gap: 3px;
@@ -355,8 +403,14 @@ label {
   width: fit-content;
 }
 
-.form-range {
-  width: 245px;
+/* RANGE FORMS */
+.form-range::-webkit-slider-runnable-track {
+  background-color: transparent;
+  border: 1px solid #02304765;
+}
+
+.form-range::-webkit-slider-thumb {
+  background-color: #FFB703;
 }
 
 .times-tab {
@@ -373,6 +427,8 @@ label {
   border: 1px solid #02304765 !important;
   border-radius: 10px !important;
   color: black;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 /* FLIGHT CARD */
@@ -387,6 +443,17 @@ label {
 
 .flight-destination {
   font-size: 16px;
+}
+
+.flight-info {
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.flight-airline-img {
+  width: 35px;
+  height: 35px;
 }
 
 .flight-bottom {
