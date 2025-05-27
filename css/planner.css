@@ -2,6 +2,10 @@ body {
   background-color: #FFB703;
 }
 
+main {
+  padding: 55px 0px 0px 0px !important;
+}
+
 .tab-content {
   padding: 40px 180px;
 }
@@ -21,7 +25,7 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 10px;
-  z-index: 2;
+  z-index: 1;
 }
 
 .steps-container {
@@ -58,6 +62,10 @@ body {
   border: none;
 }
 
+.steps-btn:active {
+  background-color: #FF6E1F;
+}
+
 /* STEP ONE */
 #step-one.tab-pane.show.active {
   display: flex;
@@ -70,6 +78,7 @@ body {
   border-radius: 0px 0px 20px 20px;
   border: 1px solid #02304765;
   padding: 20px;
+  gap: 10px;
 }
 
 .travelers-title {
@@ -79,7 +88,8 @@ body {
   width: 730px;
 }
 
-.traveler-card {
+.traveler-card,
+.add-traveler {
   background-color: white;
   width: 130px;
   height: 170px;
@@ -93,7 +103,8 @@ body {
   border: 1px solid #02304765;
 }
 
-.traveler-name {
+.traveler-name,
+.add-traveler-txt {
   font-weight: 600;
 }
 
@@ -105,6 +116,25 @@ body {
   width: 100%;
   object-fit: cover;
   border-radius: 100px;
+}
+
+/* ADD TRAVELER */
+.add-traveler {
+  gap: 20px;
+  cursor: pointer;
+}
+
+.add-traveler:hover {
+  background-color: #219EBC;
+}
+
+.add-traveler-txt {
+  text-align: center;
+  width: 100px;
+}
+
+.add-traveler-icon {
+  width: 33px;
 }
 
 /* TRAVELERS QUANTITY */

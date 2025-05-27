@@ -17,13 +17,18 @@ nav {
   position: fixed;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .left-side {
   display: flex;
   margin-right: 180px;
   gap: 30px;
+}
+
+.planner-nav {
+  text-decoration: none;
+  color: black;
 }
 
 .logo {
