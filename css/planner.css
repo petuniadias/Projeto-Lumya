@@ -9,11 +9,11 @@ body {
 /* STEPS NAV */
 .steps-nav {
   display: flex;
-  gap: 200px;
   justify-content: center;
   padding: 20px;
   border: 1px solid #02304765;
   background-color: white;
+  flex-wrap: nowrap;
 }
 
 .steps-box {
@@ -21,6 +21,22 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 10px;
+  z-index: 2;
+}
+
+.steps-container {
+  position: relative;
+  gap: 200px;
+}
+
+.connection-line {
+  left: 30px;
+  top: 17%;
+  position: absolute;
+  display: flex;
+  width: 95%;
+  height: 3px;
+  background-color: #FFB703;
 }
 
 .step-title {
