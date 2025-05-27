@@ -263,15 +263,15 @@
           <!-- SUGESTIONS CATEGORY TABS -->
 
             <div class="sugestion-category d-flex nav nav-pills justify-content-center" role="tablist">
-              <button class="flight-category d-flex align-items-center" data-bs-toggle="pill" data-bs-target="#flights-category" role="tab" aria-selected="true">
+              <button class="category-tab flight-category d-flex align-items-center justify-content-center" data-bs-toggle="pill" data-bs-target="#flights-category" role="tab" aria-selected="true">
                 <img src="../media/icons/take-off.svg" alt="">
                 <div class="tab-label">Flights</div>
               </button>
-              <button class="stays-category d-flex align-items-center" data-bs-toggle="pill" data-bs-target="#stays-category" role="tab" aria-selected="false">
+              <button class="category-tab stays-category d-flex align-items-center justify-content-center" data-bs-toggle="pill" data-bs-target="#stays-category" role="tab" aria-selected="false">
                 <img src="../media/icons/stays.svg" alt="">
                 <div class="tab-label">Stays</div>
               </button>
-              <button class="festivals-category d-flex align-items-center" data-bs-toggle="pill" data-bs-target="#festivals-category" role="tab" aria-selected="false">
+              <button class="category-tab festivals-category d-flex align-items-center justify-content-center" data-bs-toggle="pill" data-bs-target="#festivals-category" role="tab" aria-selected="false">
                 <img src="../media/icons/festivals.svg" alt="">
                 <div class="tab-label">Festivals</div>
               </button>
@@ -284,7 +284,7 @@
 
             <div class="line-div"></div>
 
-            <label class="flight-type">
+            <label class="flight-type form-label">
               Flight type
             </label>
             <div class="checkboxes d-flex flex-wrap">
@@ -297,7 +297,7 @@
 
             <div class="line-div"></div>
 
-            <label for="cabin" class="cabin-filter">
+            <label for="cabin" class="cabin-filter form-label">
               Cabin
             </label>
 
@@ -317,14 +317,14 @@
 
             <div class="line-div"></div>
 
-            <label for="">Times</label>
+            <label for="" class="form-label">Times</label>
 
             <div class="times-tab nav nav-pills d-flex justify-content-center" role="tablist">
-              <button class="take-off d-flex align-items-center" data-bs-toggle="pill" data-bs-target="#take-off" role="tab" aria-selected="true">
+              <button class="times-btn-tab take-off d-flex align-items-center" data-bs-toggle="pill" data-bs-target="#take-off" role="tab" aria-selected="true">
                 <img src="../media/icons/take-off.svg" alt="">
                 <div>Take-off</div>
               </button>
-              <button class="landing d-flex align-items-center" data-bs-toggle="pill" data-bs-target="#landing" role="tab" aria-selected="false">
+              <button class="times-btn-tab landing d-flex align-items-center" data-bs-toggle="pill" data-bs-target="#landing" role="tab" aria-selected="false">
                 <img src="../media/icons/landing.svg" alt="">
                 <div>Landing</div>
               </button>
@@ -369,10 +369,10 @@
 
             <div class="line-div"></div>
 
-            <label for="airlines">
+            <label for="airlines" class="form-label">
               Airlines
             </label>
-            <div class="checkboxes">
+            <div class="checkboxes d-flex flex-wrap">
               <input type="checkbox" class="btn-check" name="" id="ryanair" autocomplete="off">
               <label class="btn btn-outline-primary" for="ryanair">Ryanair</label>
 
@@ -397,937 +397,298 @@
           <div class="sugestions-category-contents tab-content nav nav-pills">
             <div class="sugestions-cards d-flex flex-column align-items-center tab-pane show active" id="flights-category" role="tabpanel">
               <div class="sugestions-grid">
-                <div class="row">
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info d-flex">
-                      <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
+                <div class="flight-card d-flex flex-column">
+                  <h3 class="flight-destination">
+                    Paris, France
+                  </h3>
+                  <div class="flight-info d-flex">
+                    <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
+                    <div class="flight-take-off">
+                      <div class="time">
+                        6:30 - 7:39
                       </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
+                      <div class="airport">
+                        Francisco Sá Carneiro Airport
                       </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
                     </div>
                   </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info d-flex">
-                      <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
+                  <div class="flight-bottom d-flex align-items-center">
+                    <div class="price-cabin">
+                      <div class="price">
+                        10.00 €
+                      </div>
+                      <div class="cabin-sugestion">
+                        Basic Economy
                       </div>
                     </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
+                    <div class="favorite-select d-flex align-items-center">
+                      <div class="favorite">
+                        <img src="../media/icons/favorite.svg" alt="">
                       </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
+                      <div class="select-btn">Select</div>
+                    </div>
 
+                  </div>
+                </div>
+                <div class="flight-card d-flex flex-column">
+                  <h3 class="flight-destination">
+                    Paris, France
+                  </h3>
+                  <div class="flight-info d-flex">
+                    <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
+                    <div class="flight-take-off">
+                      <div class="time">
+                        6:30 - 7:39
+                      </div>
+                      <div class="airport">
+                        Francisco Sá Carneiro Airport
+                      </div>
                     </div>
                   </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info d-flex">
-                      <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
+                  <div class="flight-bottom">
+                    <div class="price-cabin">
+                      <div class="price">
+                        10.00 €
+                      </div>
+                      <div class="cabin-sugestion">
+                        Basic Economy
                       </div>
                     </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
+                    <div class="favorite-select d-flex align-items-center">
+                      <div class="favorite">
+                        <img src="../media/icons/favorite.svg" alt="">
                       </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
+                      <div class="select-btn">Select</div>
+                    </div>
 
+                  </div>
+                </div>
+                <div class="flight-card d-flex flex-column">
+                  <h3 class="flight-destination">
+                    Paris, France
+                  </h3>
+                  <div class="flight-info d-flex">
+                    <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
+                    <div class="flight-take-off">
+                      <div class="time">
+                        6:30 - 7:39
+                      </div>
+                      <div class="airport">
+                        Francisco Sá Carneiro Airport
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flight-bottom">
+                    <div class="price-cabin">
+                      <div class="price">
+                        10.00 €
+                      </div>
+                      <div class="cabin-sugestion">
+                        Basic Economy
+                      </div>
+                    </div>
+                    <div class="favorite-select d-flex align-items-center">
+                      <div class="favorite">
+                        <img src="../media/icons/favorite.svg" alt="">
+                      </div>
+                      <div class="select-btn">Select</div>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
+                <div class="flight-card d-flex flex-column">
+                  <h3 class="flight-destination">
+                    Paris, France
+                  </h3>
+                  <div class="flight-info d-flex">
+                    <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
+                    <div class="flight-take-off">
+                      <div class="time">
+                        6:30 - 7:39
                       </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
+                      <div class="airport">
+                        Francisco Sá Carneiro Airport
                       </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
                     </div>
                   </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
+                  <div class="flight-bottom">
+                    <div class="price-cabin">
+                      <div class="price">
+                        10.00 €
+                      </div>
+                      <div class="cabin-sugestion">
+                        Basic Economy
                       </div>
                     </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
+                    <div class="favorite-select d-flex align-items-center">
+                      <div class="favorite">
+                        <img src="../media/icons/favorite.svg" alt="">
                       </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
+                      <div class="select-btn">Select</div>
+                    </div>
 
+                  </div>
+                </div>
+                <div class="flight-card d-flex flex-column">
+                  <h3 class="flight-destination">
+                    Paris, France
+                  </h3>
+                  <div class="flight-info d-flex">
+                    <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
+                    <div class="flight-take-off">
+                      <div class="time">
+                        6:30 - 7:39
+                      </div>
+                      <div class="airport">
+                        Francisco Sá Carneiro Airport
+                      </div>
                     </div>
                   </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
+                  <div class="flight-bottom">
+                    <div class="price-cabin">
+                      <div class="price">
+                        10.00 €
+                      </div>
+                      <div class="cabin-sugestion">
+                        Basic Economy
                       </div>
                     </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
+                    <div class="favorite-select d-flex align-items-center">
+                      <div class="favorite">
+                        <img src="../media/icons/favorite.svg" alt="">
                       </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
+                      <div class="select-btn">Select</div>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
+                <div class="flight-card d-flex flex-column">
+                  <h3 class="flight-destination">
+                    Paris, France
+                  </h3>
+                  <div class="flight-info d-flex">
+                    <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
+                    <div class="flight-take-off">
+                      <div class="time">
+                        6:30 - 7:39
                       </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
+                      <div class="airport">
+                        Francisco Sá Carneiro Airport
                       </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
                     </div>
                   </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
+                  <div class="flight-bottom d-flex align-items-center">
+                    <div class="price-cabin">
+                      <div class="price">
+                        10.00 €
+                      </div>
+                      <div class="cabin-sugestion">
+                        Basic Economy
                       </div>
                     </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
+                    <div class="favorite-select d-flex align-items-center">
+                      <div class="favorite">
+                        <img src="../media/icons/favorite.svg" alt="">
                       </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
+                      <div class="select-btn">Select</div>
+                    </div>
 
+                  </div>
+                </div>
+                <div class="flight-card d-flex flex-column">
+                  <h3 class="flight-destination">
+                    Paris, France
+                  </h3>
+                  <div class="flight-info d-flex">
+                    <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
+                    <div class="flight-take-off">
+                      <div class="time">
+                        6:30 - 7:39
+                      </div>
+                      <div class="airport">
+                        Francisco Sá Carneiro Airport
+                      </div>
                     </div>
                   </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
+                  <div class="flight-bottom">
+                    <div class="price-cabin">
+                      <div class="price">
+                        10.00 €
+                      </div>
+                      <div class="cabin-sugestion">
+                        Basic Economy
                       </div>
                     </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
+                    <div class="favorite-select d-flex align-items-center">
+                      <div class="favorite">
+                        <img src="../media/icons/favorite.svg" alt="">
                       </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
+                      <div class="select-btn">Select</div>
+                    </div>
 
+                  </div>
+                </div>
+                <div class="flight-card d-flex flex-column">
+                  <h3 class="flight-destination">
+                    Paris, France
+                  </h3>
+                  <div class="flight-info d-flex">
+                    <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
+                    <div class="flight-take-off">
+                      <div class="time">
+                        6:30 - 7:39
+                      </div>
+                      <div class="airport">
+                        Francisco Sá Carneiro Airport
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flight-bottom">
+                    <div class="price-cabin">
+                      <div class="price">
+                        10.00 €
+                      </div>
+                      <div class="cabin-sugestion">
+                        Basic Economy
+                      </div>
+                    </div>
+                    <div class="favorite-select d-flex align-items-center">
+                      <div class="favorite">
+                        <img src="../media/icons/favorite.svg" alt="">
+                      </div>
+                      <div class="select-btn">Select</div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <ul class="pagination">
-                <li class="page-item">
-                  <a href="#" class="page-link">&lt;</a>
-                </li>
-                <li class="page-item">
-                  <a href="#" class="page-link">1</a>
-                </li>
-                <li class="page-item">
-                  <a href="#" class="page-link">2</a>
-                </li>
-                <li class="page-item">
-                  <a href="#" class="page-link">2</a>
-                </li>
-                <li class="page-item">
-                  <a href="#" class="page-link">&gt;</a>
-                </li>
-              </ul>
-            </div>
-            <div class="sugestions-cards d-flex flex-column align-items-center col tab-pane fade" id="stays-category" role="tabpanel">
-              <div class="sugestions-grid">
-                <div class="row">
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info d-flex">
-                      <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
+                <div class="flight-card d-flex flex-column">
+                  <h3 class="flight-destination">
+                    Paris, France
+                  </h3>
+                  <div class="flight-info d-flex">
+                    <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
+                    <div class="flight-take-off">
+                      <div class="time">
+                        6:30 - 7:39
                       </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
+                      <div class="airport">
+                        Francisco Sá Carneiro Airport
                       </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
                     </div>
                   </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info d-flex">
-                      <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
+                  <div class="flight-bottom">
+                    <div class="price-cabin">
+                      <div class="price">
+                        10.00 €
+                      </div>
+                      <div class="cabin-sugestion">
+                        Basic Economy
                       </div>
                     </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
+                    <div class="favorite-select d-flex align-items-center">
+                      <div class="favorite">
+                        <img src="../media/icons/favorite.svg" alt="">
                       </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
+                      <div class="select-btn">Select</div>
+                    </div>
 
-                    </div>
-                  </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info d-flex">
-                      <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <ul class="pagination">
-                <li class="page-item">
-                  <a href="#" class="page-link">&lt;</a>
-                </li>
-                <li class="page-item">
-                  <a href="#" class="page-link">1</a>
-                </li>
-                <li class="page-item">
-                  <a href="#" class="page-link">2</a>
-                </li>
-                <li class="page-item">
-                  <a href="#" class="page-link">2</a>
-                </li>
-                <li class="page-item">
-                  <a href="#" class="page-link">&gt;</a>
-                </li>
-              </ul>
-            </div>
-            <div class="sugestions-cards d-flex flex-column align-items-center col tab-pane fade" id="festivals-category" role="tabpanel">
-              <div class="sugestions-grid">
-                <div class="row">
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info d-flex">
-                      <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info d-flex">
-                      <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info d-flex">
-                      <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="flight-card d-flex flex-column">
-                    <h3 class="flight-destination">
-                      Paris, France
-                    </h3>
-                    <div class="flight-info">
-                      <div class="flight-take-off">
-                        <div class="time">
-                          6:30 - 7:39
-                        </div>
-                        <div class="airport">
-                          Francisco Sá Carneiro Airport
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flight-bottom d-flex align-items-center">
-                      <div class="price-cabin">
-                        <div class="price">
-                          10.00 €
-                        </div>
-                        <div class="cabin-sugestion">
-                          Basic Economy
-                        </div>
-                      </div>
-                      <div class="favorite-select d-flex align-items-center">
-                        <div class="favorite">
-                          <img src="../media/icons/favorite.svg" alt="">
-                        </div>
-                        <div class="select-btn btn btn-primary">Select</div>
-                      </div>
-
-                    </div>
                   </div>
                 </div>
               </div>

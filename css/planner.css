@@ -70,7 +70,7 @@ main {
   border: none;
 }
 
-.steps-btn:active {
+.steps-btn.active {
   background-color: #FF6E1F;
 }
 
@@ -347,11 +347,15 @@ label {
 
 .sugestions-grid {
   gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 10px;
 }
 
 .sugestions-category-contents.tab-content {
   padding: 0px 20px 0px 0px;
   justify-content: flex-end;
+  width: 100%;
 }
 
 /* SUGESTIONS CATEGORY TAB */
@@ -363,13 +367,12 @@ label {
   gap: 5px;
 }
 
-.flight-category,
-.stays-category,
-.festivals-category {
+.category-tab {
   border: 1px solid #02304765;
   border-radius: 10px;
-  padding: 5px;
+  padding: 10px;
   gap: 5px;
+  background-color: transparent;
 }
 
 .tab-label {
@@ -378,12 +381,22 @@ label {
   display: none;
 }
 
+.category-tab.active .tab-label {
+  display: flex;
+}
+
+.category-tab.active {
+  flex-grow: 1;
+  background-color: #FFB703;
+}
+
 /* FILTER */
 
 .filters {
   border-right: 1px solid #02304765;
   padding-right: 10px;
-  width: 610px;
+  width: 230px;
+  flex-shrink: 0;
 }
 
 .filters .tab-content {
@@ -420,8 +433,7 @@ label {
   border-radius: 15px;
 }
 
-.take-off,
-.landing {
+.times-btn-tab {
   gap: 5px;
   font-size: 14px;
   border: 1px solid #02304765 !important;
@@ -429,20 +441,29 @@ label {
   color: black;
   padding: 5px 10px;
   cursor: pointer;
+  background-color: transparent;
 }
+
+.times-btn-tab.active {
+  background-color: #FFB703;
+}
+
 
 /* FLIGHT CARD */
 
 .flight-card {
   width: 262px;
   border: 1px solid #02304765;
-  padding: 20px;
+  padding: 15px;
   gap: 10px;
   border-radius: 15px;
+  justify-content: center;
+  align-items: center;
 }
 
 .flight-destination {
   font-size: 16px;
+  width: 100%;
 }
 
 .flight-info {
@@ -457,7 +478,10 @@ label {
 }
 
 .flight-bottom {
-  gap: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .favorite-select {
@@ -471,6 +495,10 @@ label {
 .select-btn {
   padding: 7px 20px;
   border-radius: 10px;
+  border: 1px solid #02304765;
+  background-color: #FFB703;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 /* STEP FIVE */
