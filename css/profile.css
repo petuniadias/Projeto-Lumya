@@ -48,6 +48,10 @@
   width: 280px;
 }
 
+.achievements.active, .countries-visited.active {
+  background-color: #219EBC;
+}
+
 .achievements-title, .countries-visited-title, .total-friends-title {
   width: 120px;
   font-weight: 700;

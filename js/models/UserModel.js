@@ -9,3 +9,17 @@ export function init() {}
 /* quando tratar de erros usar throw */
 
 export function isLogged() {}
+
+/**
+ * CLASSE QUE MODELA UM UTILIZADOR NA APLICAÇÃO
+ */
+
+class User {
+  username = "";
+  password = "";
+
+  constructor(username, password) {
+    this.username = username;
+    this.password = password;
+  }
+}
