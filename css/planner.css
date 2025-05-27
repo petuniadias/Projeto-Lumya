@@ -218,6 +218,47 @@ label {
   border-radius: 20px !important;
 }
 
+/* TYPES OF TOURISM */
+.tourism-type-card {
+  border: 1px solid #02304765;
+  width: 130px;
+  padding: 10px;
+  font-weight: 600;
+  gap: 10px;
+  border-radius: 20px;
+}
+
+.tourism-type-selection {
+    gap: 5px;
+    width: 100%;
+    overflow: hidden;
+    padding: 0px 30px;
+    position: relative;
+}
+
+/* SCROLL BUTTONS */
+.scroll-btns {
+  position: absolute;
+  display: flex;
+  top: 50%;
+  transform: translateY(-50%);
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px;
+  left: 0;
+}
+
+.scroll-btn-right, .scroll-btn-left {
+  background-color: white;
+  border: 1px solid #02304765;
+  padding: 10px 12px;
+  border-radius: 30px;
+}
+
+.scroll-btn-left {
+  transform: rotate(180deg);
+}
+
 
 /* STEP FOUR */
 .sugestions {
