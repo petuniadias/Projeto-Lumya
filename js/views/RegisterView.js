@@ -1,4 +1,4 @@
-import * as User from '../models/UserModel';
+import * as User from '../models/UserModel.js';
 
 User.init();
 
@@ -11,17 +11,15 @@ const password = document.querySelector('.password');
   //REGISTER BTN
 const registerBtn = document.querySelector('.register-btn');
 
- //LOGIN BTN
-const loginBtn = document.querySelector('.login-btn');
+registerBtn.addEventListener('click', (event) => {
+  event.preventDefault();
 
-registerBtn.addEventListener('click', () => {
   try {
-    User.add(name.value, username.value, mail.value, password.value)
+    User.add(name.value, username.value, mail.value, password.value);
+    alert('Conta criada com sucesso!')
   } catch (err) {
-
+    alert(err.message);
   }
 });
 
-loginBtn.addEventListener('click', () => {
-
-})
+console.log(name.value, username.value, mail.value, password.value);

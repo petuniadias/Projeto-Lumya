@@ -11,6 +11,10 @@ body {
   gap: 50px;
 }
 
+.login-landing {
+  gap: 50px;
+}
+
 .login-img {
   width: 218px;
 }
@@ -46,6 +50,7 @@ form {
   padding: 10px 15px;
   border-radius: 10px;
   border: 1px solid #02304765;
+  width: 100%;
 }
 
 .login-btn {

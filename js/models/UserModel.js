@@ -4,17 +4,17 @@ let users;
   carrega os users com dados
 */
 
-
 // CARREGAR UTILIZADORES DA LOCALSTORAGE
 export function init() {
-  users = localStorage.users ? JSON.parse(localStorage.users)
+  users = localStorage.users ? JSON.parse(localStorage.users) : [];
 }
+
 /* Funções para gerir utilizador */
 /* quando tratar de erros usar throw */
 
 //ADICIONAR UTILIZADOR
 export function add(name, username, mail, password) {
-  if(username.some(user => user.username === username)) {
+  if (users.some((user) => user.username === username)) {
     throw Error(`User with username "${username}" already exists!`);
   } else {
     users.push(new User(name, username, mail, password));

@@ -38,9 +38,12 @@
   <main>
 
     <div class="login-container d-flex justify-content-center">
-      <div class="d-flex flex-column align-items-center">
-        <h1>Explore new destinations with ease</h1>
-        <h3>Discover the perfect travel plan for every ocasion</h2>
+      <div class="login-landing d-flex flex-column align-items-center">
+        <div>
+          <h1>Explore new destinations with ease</h1>
+          <h3>Discover the perfect travel plan for every ocasion</h2>
+        </div>
+
         <img class="login-img" src="../media/img/login.png" alt="">
       </div>
       <div class="login-form d-flex flex-column">
@@ -54,17 +57,17 @@
           <label for="username">
             Username
           </label>
-          <input class="form-input username" type="text" placeholder="Username">
+          <input class="form-input username" type="text" placeholder="Username" required>
           <label for="password">
             Password
           </label>
-          <input class="form-input password" type="password" placeholder="Passoword">
+          <input class="form-input password" type="password" placeholder="Passoword" required>
           <a class="forgot-password-link d-flex justify-content-end" href="#">Forgot password?</a>
           <button class="login-btn">
             Login
           </button>
           <div class="register-link d-flex justify-content-center">
-            Don't have an account yet?&ensp;<a href="#">Register </a>.
+            Don't have an account yet?&ensp;<a href="../html/register.html">Register </a>.
           </div>
         </form>   
       </div>
@@ -73,8 +76,7 @@
   </main>
   
   <!-- SCRIPTS -->
-  <script src="../js/views/LoginView.js"></script>
-  <script src="../js/models/UserModel.js"></script>
+  <script type="module" src="../js/views/LoginView.js"></script>
 
   <!-- BOOTSTRAP -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
