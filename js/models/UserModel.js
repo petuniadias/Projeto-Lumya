@@ -35,8 +35,19 @@ export function login(username, password) {
   }
 }
 
-export function isLogged() {
+// LOGOUT DO UTILIZADOR
+export function logout() {
+  sessionStorage.removeItem("loggedUser");
+}
 
+// VERIFICA EXISTÊNCIA DE ALGUÉM AUTENTICADO
+export function isLogged() {
+  return sessionStorage.getItem("loggedUser") ? true : false;
+}
+
+// DEVOLVE UTILIZADOR AUTENTICADO
+export function getUserLogged() {
+  return JSON.parse(sessionStorage.getItem("loggedUser"));
 }
 
 /**
@@ -48,11 +59,13 @@ class User {
   username = '';
   mail = '';
   password = '';
+  points = '';
 
-  constructor(name, username, mail, password) {
+  constructor(name, username, mail, password, points) {
     this.name = name;
     this.username = username;
     this.mail = mail;
     this.password = password;
+    this.points = points;
   }
 }

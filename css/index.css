@@ -229,3 +229,11 @@ hr {
   color: white;
   font-weight: 500;
 }
+
+.social-media {
+  gap: 10px;
+}
+
+.social-media div {
+  gap: 5px;
+}

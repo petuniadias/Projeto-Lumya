@@ -17,7 +17,8 @@ loginBtn.addEventListener('click', (event) => {
       username.value,
       password.value
     );
-    alert('Login feito com sucesso!')
+    alert('Login feito com sucesso!');
+    window.location.href = "../index.html";
   } catch (err) {
     alert(err.message);
   }
