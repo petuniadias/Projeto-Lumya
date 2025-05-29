@@ -93,8 +93,8 @@
         <div class="destination d-flex flex-column nav">
           <div class="place-of-departure-section d-flex flex-column">
             <label for="place-of-departure">Place of departure &ast; </label>
-            <input class="departure-input" type="text" name="place-of-departure" placeholder="Porto, Portugal">
-            <ul class="sugestions-list"></ul>
+            <input class="departure-input form-control" list="datalistOptions" type="text" name="place-of-departure" placeholder="Porto, Portugal" autocomplete="off">
+            <datalist class="sugestions-list" id="datalistOptions"></datalist>
           </div>
 
           <!-- TYPES OF TOURISM -->

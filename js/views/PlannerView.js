@@ -10,21 +10,32 @@ PASSO 1 */
 const input = document.querySelector('.departure-input');
 const sugestionsList = document.querySelector('.sugestions-list');
 
-input.addEventListener('input', () => {
-  const value = input.value.toLowerCase();
-  const filtered = departures.filter(departure => departure.filter.includes(value));
+function autocompleteFirstMatch() {
+  const val = input.value.toLowerCase().trim();
+  if (!val) return;
 
+  const firstMatch = Plan.departures.find(dep => dep.toLowerCase().startsWith(val));
+  if (firstMatch) {
+    input.value = firstMatch;
+  }
+}
 
-  filtered.forEach(departure => {
-    const div = document.createElement('li');
-    div.classList.add('suggestion');
-    div.textContent = departure;
-    div.addEventListener('click', () => {
-      input.value = departure;
-      suggestionsBox.innerHTML = '';
-    });
-    suggestionsBox.appendChild(div);
-  });
+Plan.departures.forEach(departure => {
+  const option = document.createElement('option');
+  option.value = departure;
+  sugestionsList.appendChild(option);
+});
+
+input.addEventListener('keydown', event => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    autocompleteFirstMatch();
+    input.blur();
+  }
+});
+
+input.addEventListener('blur', () => {
+  autocompleteFirstMatch();
 });
 
 // TYPE OF TOURISM

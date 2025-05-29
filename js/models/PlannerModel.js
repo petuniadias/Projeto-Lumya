@@ -19,7 +19,7 @@ const flightsList = [
 ]
 
 // DEPARTURES
-const departures = [
+export const departures = [
   'Lisbon, Portugal',
   'Porto, Portugal',
   'Madrid, Spain',
