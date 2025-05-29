@@ -40,17 +40,38 @@ const departures = [
 
 
 // TYPES OF TOURISM LIST
-const tourismTypes = [
-  'music',
-  'film',
-  'food',
-  'art',
-  'culture',
-  'fashion',
-  'technology',
-  'sports',
-  'spiritual',
-  'literature'
+export const tourismTypes = [
+  {
+    name: 'music',
+    img: '/media/img/beach.png'
+  }, {
+    name: 'film',
+    img: '/media/img/beach.png'
+  }, {
+    name: 'food',
+    img: '/media/img/beach.png'
+  }, {
+    name: 'art',
+    img: '/media/img/beach.png'
+  }, {
+    name: 'culture',
+    img: '/media/img/beach.png'
+  }, {
+    name: 'fashion',
+    img: '/media/img/beach.png'
+  },   {
+    name: 'technology',
+    img: '/media/img/beach.png'
+  }, {
+    name: 'sports',
+    img: '/media/img/beach.png'
+  }, {
+    name: 'spiritual',
+    img: '/media/img/beach.png'
+  }, {
+    name: 'literature',
+    img: '/media/img/beach.png'
+  }
 ];
 
 class Stay {

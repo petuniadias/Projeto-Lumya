@@ -1,4 +1,5 @@
 import * as User from '../models/UserModel.js';
+import * as Plan from '../models/PlannerModel.js';
 
 
 /* FORMULÁRIO --------------------------------
@@ -27,12 +28,22 @@ input.addEventListener('input', () => {
 });
 
 // TYPE OF TOURISM
-const tourismCard = document.querySelectorAll('.tourism-type-card');
+const tourismCardContainer = document.querySelector('.tourism-type-selection');
 
-tourismCard.forEach(card => {
+Plan.tourismTypes.forEach(type => {
+  const card = document.createElement('div');
+  card.className = 'tourism-type-card d-flex flex-column align-items-center';
+  card.innerHTML = `
+    <img src="${type.img}" alt="${type.name}">
+    <div class="beach">${type.name}</div>
+  `;
+
   card.addEventListener('click', () => {
     card.classList.toggle('selected');
   });
+
+  tourismCardContainer.appendChild(card);
+  
 });
 
 // BUTTONS
