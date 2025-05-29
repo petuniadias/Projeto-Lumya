@@ -208,6 +208,7 @@ progress {
   border: 1px solid #02304765;
   padding: 10px 12px;
   border-radius: 30px;
+  cursor: pointer;
 }
 
 .scroll-btn-left {

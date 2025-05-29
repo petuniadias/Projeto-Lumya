@@ -183,7 +183,8 @@ label {
   font-weight: 600;
 }
 
-.place-of-departure {
+.place-of-departure,
+.departure-input {
   border-radius: 15px;
   border: 1px solid #02304765;
   padding: 10px 20px;
@@ -230,12 +231,16 @@ label {
   border-radius: 20px;
 }
 
+.tourism-type {
+  position: relative;
+  width: 100%;
+}
+
 .tourism-type-selection {
     gap: 5px;
     width: 100%;
     overflow: hidden;
     padding: 0px 30px;
-    position: relative;
 }
 
 /* SCROLL BUTTONS */

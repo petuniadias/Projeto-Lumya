@@ -40,7 +40,7 @@ function navbarView() {
           <div class="profileName">${user.name}</div>
         </div>
         <div class="dropdown-content text-center">
-          <a href="profile.html">My profile</a>
+          <a href="/html/profile.html">My profile</a>
           <a href="">Settings</a>
           <a class="logout-btn" href="/index.html">Log Out</a>
         </div>
