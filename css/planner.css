@@ -222,6 +222,10 @@ label {
 }
 
 /* TYPES OF TOURISM */
+.selected{
+  outline: 3px solid #FFB703;
+}
+
 .tourism-type-card {
   border: 1px solid #02304765;
   width: 130px;
@@ -229,6 +233,7 @@ label {
   font-weight: 600;
   gap: 10px;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .tourism-type {
@@ -237,10 +242,10 @@ label {
 }
 
 .tourism-type-selection {
-    gap: 5px;
+    gap: 10px;
     width: 100%;
     overflow: hidden;
-    padding: 0px 30px;
+    padding: 10px 30px;
 }
 
 /* SCROLL BUTTONS */
@@ -260,6 +265,7 @@ label {
   border: 1px solid #02304765;
   padding: 10px 12px;
   border-radius: 30px;
+  cursor: pointer;
 }
 
 .scroll-btn-left {

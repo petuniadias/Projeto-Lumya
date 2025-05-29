@@ -26,6 +26,15 @@ input.addEventListener('input', () => {
   });
 });
 
+// TYPE OF TOURISM
+const tourismCard = document.querySelectorAll('.tourism-type-card');
+
+tourismCard.forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('selected');
+  });
+});
+
 // BUTTONS
 const tourismTypeSelection = document.querySelector('.tourism-type-selection');
 const rightButton = document.querySelector('.scroll-btn-right');
