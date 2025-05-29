@@ -1,11 +1,14 @@
 import * as User from '../models/UserModel.js';
 
 console.log(User.isLogged());
+
 function navbarView() {
   User.init();
 
   let result = '';
 
+  //MUDAR A NAVBAR CONSOANTE A AUTENTICAÇÃO
+  
   if(User.isLogged()) {
     const user = User.getUserLogged();
     result += `
