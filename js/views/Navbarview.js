@@ -39,7 +39,7 @@ function navbarView() {
         <div class="dropdown-content text-center">
           <a href="profile.html">My profile</a>
           <a href="">Settings</a>
-          <a href="/index.html" class="logout-btn" >Log Out</a>
+          <a class="logout-btn" href="/index.html">Log Out</a>
         </div>
       </div>
 
@@ -74,11 +74,15 @@ function navbarView() {
   // LOGOUT
   const logoutBtn = document.querySelector('.logout-btn');
 
-  logoutBtn.addEventListener('click', (event) => {
-    event.preventDefault();
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      User.logout();
+      console.log(User.isLogged());
+      navbarView();
+    });
+  }
 
-    
-  });
 }
 
 navbarView();
