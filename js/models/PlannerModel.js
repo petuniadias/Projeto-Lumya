@@ -139,6 +139,42 @@ export const tourismTypes = [
   }
 ];
 
+//DESTINATIONS
+export const destinations = [
+  {
+    img: '/media/img/destination-img.png',
+    destination: 'Oporto, Portugal'
+  }, {
+    img: '/media/img/destination-img.png',
+    destination: 'Lisbon, Portugal'
+  }, {
+    img: '/media/img/destination-img.png',
+    destination: 'Madrid, Spain'
+  }, {
+    img: '/media/img/destination-img.png',
+    destination: 'Krakow, Poland'
+  }, {
+    img: '/media/img/destination-img.png',
+    destination: 'Washington, EUA'
+  }, {
+    img: '/media/img/destination-img.png',
+    destination: 'New York, EUA'
+  }, {
+    img: '/media/img/destination-img.png',
+    destination: 'Vigo, Spain'
+  }, {
+    img: '/media/img/destination-img.png',
+    destination: 'Tokyo, Japan'
+  }, {
+    img: '/media/img/destination-img.png',
+    destination: 'Osaka, Japan'
+  }, {
+    img: '/media/img/destination-img.png',
+    destination: 'Seoul, South Korea'
+  }
+
+];
+
 class Stay {
   title = '';
   rating = '';

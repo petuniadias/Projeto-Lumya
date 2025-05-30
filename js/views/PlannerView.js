@@ -96,4 +96,62 @@ closeBtn.addEventListener('click', () => {
   destinationPopUp.style.display = 'none';
 });
 
+// SELEÇÃO DOS DESTINOS
+
+const destinationCardContainer = document.querySelector('.destination-card-section');
+
+Plan.destinations.forEach(des => {
+  const card = document.createElement('div');
+  card.className = 'destination-card d-flex flex-column align-items-center justify-content-center';
+  card.innerHTML = `
+    <img class="destination-img" src="${des.img}" alt="${des.destination}">
+    <div class="destination-name">${des.destination}</div>
+  `;
+
+
+
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.destination-card').forEach(card => {
+      card.classList.remove('selected');
+    });
+
+    card.classList.add('selected');
+
+    destinationBtn.innerHTML = `
+      <img src="${des.img}" alt="${des.destination}" class="selected-destination-img">
+    `;
+    
+    destinationPopUp.style.display = 'none';
+  });
+
+  destinationCardContainer.appendChild(card);
+  
+});
+
+// BOTÕES DO CONTAINER DOS DESTINOS
+
+  // SCROLL ANIMATION
+
+function buttonsDestination() {
+    // BUTTONS
+  const destinationSection = document.querySelector('.destination-card-section');
+  const rightButton = document.querySelector('#destination-scroll-right');
+  const leftButton = document.querySelector('#destination-scroll-left');
+
+  rightButton.addEventListener('click', () => {
+    destinationSection.scrollBy ({
+      left: 320,
+      behavior: 'smooth'
+    });
+  });
+
+  leftButton.addEventListener('click', () => {
+    destinationSection.scrollBy ({
+      left: -320,
+      behavior: 'smooth'
+    });
+  });
+}
+
+buttonsDestination();
 

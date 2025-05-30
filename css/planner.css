@@ -274,6 +274,10 @@ label {
 
 /* DESTINATION */
 
+.destination-container {
+  position: relative;
+}
+
 .destination-selection-box {
   position: absolute;
   background-color: white;
@@ -321,11 +325,14 @@ label {
   background-color: #219EBC;
 }
 
-.destination-card-section {
-  gap: 5px;
-  overflow: hidden;
+.destination-selection-section {
   position: relative;
-  padding: 0px 10px;
+}
+
+.destination-card-section {
+  gap: 10px;
+  overflow: hidden;
+  padding: 10px;
 }
 
 .destination-card {
@@ -335,6 +342,8 @@ label {
   height: 180px;
   gap: 5px;
   flex: 0 0 145px;
+  padding: 7px;
+  cursor: pointer;
 }
 
 .destination-img {
@@ -497,6 +506,10 @@ label {
 
 .favorite-select {
   gap: 10px;
+}
+
+.favorite {
+  cursor: pointer;
 }
 
 .cabin-sugestion {
