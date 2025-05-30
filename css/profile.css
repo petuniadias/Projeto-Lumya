@@ -342,6 +342,27 @@ button {
   cursor: pointer;
 }
 
+/* PENDING TRIP */
+
+.pending-trips-container {
+  position: relative;
+}
+
+.pending-trip-btn {
+  text-decoration: none;
+  background-color: #FFB703;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #02304765;
+  color: black;
+}
+
+.pending-trip-btn:hover {
+  background-color: transparent;
+}
+
 /* COUPON SHOP */
 .coupons-section {
   gap: 10px;
