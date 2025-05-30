@@ -147,17 +147,19 @@ main {
 
 /* TRAVELERS QUANTITY */
 
-.travelers-count {
+.travelers-count,
+.date-count {
   font-size: 24px;
   font-weight: 700;
 }
 
-.travelers-quantity {
+.travelers-quantity,
+.date-values {
   background-color: white;
   border-radius: 20px;
   padding: 25px 30px;
   width: 355px;
-  height: 106px;
+  height: fit-content;
   border: 1px solid #02304765;
 }
 
@@ -348,6 +350,45 @@ label {
 
 .destination-img {
   width: 135px;
+}
+
+/* STEP THREE */
+
+.date-section {
+  gap: 50px;
+}
+
+.date-info {
+  gap: 5px;
+}
+
+.date-values {
+  gap: 10px;
+}
+
+.date-range {
+  margin-bottom: 5px;
+}
+
+.date-count,
+.date-range {
+  margin: 0;
+}
+
+.flatpickr-calendar {
+  width: 60% !important;
+}
+
+.flatpickr-innerContainer {
+  width: 100% !important;
+}
+
+.flatpickr-rContainer {
+  width: 100% !important;
+}
+
+.flatpickr-days {
+  width: auto !important;
 }
 
 /* STEP FOUR */

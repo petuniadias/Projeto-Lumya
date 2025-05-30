@@ -120,7 +120,7 @@ Plan.destinations.forEach(des => {
     destinationBtn.innerHTML = `
       <img src="${des.img}" alt="${des.destination}" class="selected-destination-img">
     `;
-    
+
     destinationPopUp.style.display = 'none';
   });
 
@@ -154,4 +154,18 @@ function buttonsDestination() {
 }
 
 buttonsDestination();
+
+/* 
+        STEP THREE
+*/
+
+flatpickr("#calendar", {
+  mode: "range",
+  inline: true,
+  minDate: "today",
+  showMonths: 2,
+  onChange: function(selectedDates, dateStr, instance) {
+    console.log("Selected:", selectedDates); 
+  }
+});
 
