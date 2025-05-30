@@ -1,3 +1,18 @@
+/* APPLIED TO ALL */
+input::placeholder {
+  border: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+  box-shadow: none;
+}
+
+button {
+  background-color: transparent;
+}
+
 /* PROFILE HEADER */
 
 .profile-header {
@@ -56,6 +71,7 @@
   width: 120px;
   font-weight: 700;
   font-family: inter;
+  text-align: left;
 }
 
 .achievement-title-box {
@@ -71,20 +87,13 @@
   font-weight: 600;
 }
 
-progress {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 12px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
 .progress {
   width: 100%;
-  gap: 5px;
-  display: flex;
-  align-items: center;
+  height: 10px;
+}
+
+.progress-bar {
+  background-color: #FFB703;
 }
 
 .progress-value {
@@ -92,6 +101,17 @@ progress {
   font-size: 12px;
   font-weight: 600;
 }
+
+.achievements-categories.active {
+  background-color: #FFB703;
+}
+
+.achievements-categories.active .progress-bar,
+.achievements-categories.active .countries-visited-total {
+  background-color: #219EBC;
+}
+
+.achievements-categories.active .countries-visited-total {}
 
 .img-container {
   width: 77px;
@@ -129,6 +149,7 @@ progress {
 .achievements-section {
   background-color: white;
   border: 1px solid #02304765;
+  box-shadow: inset 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
   border-radius: 20px;
   display: flex;
   justify-content: center;
@@ -140,6 +161,7 @@ progress {
 .achievements-categories {
   background-color: white;
   border: 1px solid #02304765;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
   border-radius: 15px;
   padding: 10px 20px;
   min-width: 100px;
@@ -150,6 +172,7 @@ progress {
 .achievement-cards-section {
   background-color: white;
   border: 1px solid #02304765;
+  box-shadow: inset 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
   border-radius: 20px;
   padding: 20px 35px;
   gap: 10px;
@@ -164,6 +187,7 @@ progress {
 .achievement-card {
   background-color: white;
   border: 1px solid #02304765;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
   border-radius: 15px;
   width: 188px;
   padding: 20px;
@@ -226,11 +250,14 @@ progress {
   flex-direction: column;
   padding: 10px;
   border: 1px solid #02304765;
-  border-radius: 10px;
-  width: 200px;
+  box-shadow: inset 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
+  border-radius: 15px;
+  width: 260px;
+  height: fit-content;
 }
 
 .main-menu-tab {
+  gap: 10px;
   font-size: 14px;
   font-weight: 600;
   border: 1px solid #02304765;
@@ -242,8 +269,77 @@ progress {
   background-color: transparent;
 }
 
-.main-menu-tab:hover {
+.main-menu-tab.active {
   background-color: #FFB703;
+}
+
+/* FRIEND LIST */
+.friend-list {
+  gap: 10px;
+}
+
+.friend-card {
+  border: 1px solid #02304765;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
+  border-radius: 15px;
+  width: 184px;
+  height: 184px;
+  gap: 5px;
+}
+
+.friend-pic {
+  width: 89px;
+  height: 89px;
+  border-radius: 178px;
+}
+
+.friend-name {
+  font-size: 16px;
+}
+
+.friend-username {
+  font-size: 12px;
+}
+
+/* TRIP HISTORY */
+.trip-history {
+  gap: 10px;
+}
+
+.trip-card {
+  gap: 10px;
+  font-size: 14px;
+  border: 1px solid #02304765;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
+  border-radius: 15px;
+  padding: 15px;
+  font-weight: 500;
+  height: fit-content;
+}
+
+.destination-view-img {
+  width: 210px;
+}
+
+.history-destination {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.traveler-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 60px;
+}
+
+.destination-date {
+  gap: 2px;
+}
+
+.see-details {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* COUPON SHOP */
@@ -254,6 +350,7 @@ progress {
 
 .coupon-card {
   border: 1px solid #02304765;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
   border-radius: 15px;
   gap: 10px;
   width: 188px;
@@ -266,6 +363,7 @@ progress {
 
 .points-price {
   border: 1px solid #02304765;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
   background-color: #FFB703;
   border-radius: 10px;
   padding: 10px 20px;

@@ -2,6 +2,12 @@
   h1, h2, h3 {
     font-family: Sora;
   }
+
+  .pagination .page-item {
+  --bs-pagination-color: #000000;
+  --bs-pagination-border-color: none;
+  --bs-pagination-font-size: 16px;
+}
   
 /* NAV BAR */
 

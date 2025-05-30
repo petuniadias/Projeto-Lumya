@@ -94,6 +94,8 @@ main {
   padding: 15px 20px;
   border-radius: 20px 20px 0px 0px;
   width: 730px;
+  font-family: Sora;
+  font-weight: 600;
 }
 
 .traveler-card,
@@ -109,6 +111,7 @@ main {
   padding: 20px;
   border-radius: 15px;
   border: 1px solid #02304765;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
 }
 
 .traveler-name,
@@ -161,6 +164,7 @@ main {
   width: 355px;
   height: fit-content;
   border: 1px solid #02304765;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
 }
 
 .remove-all-travelers {
@@ -174,6 +178,7 @@ main {
 .destination {
   background-color: white;
   border: 1px solid #02304765;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
   border-radius: 20px;
   padding: 25px 30px;
   width: 1132px;
@@ -189,6 +194,7 @@ label {
 .departure-input {
   border-radius: 15px;
   border: 1px solid #02304765;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
   padding: 10px 20px;
   font-size: 14px;
   width: 220px;
@@ -230,6 +236,7 @@ label {
 
 .tourism-type-card {
   border: 1px solid #02304765;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
   width: 130px;
   padding: 10px;
   font-weight: 600;
@@ -265,6 +272,7 @@ label {
 .scroll-btn-right, .scroll-btn-left {
   background-color: white;
   border: 1px solid #02304765;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
   padding: 10px 12px;
   border-radius: 30px;
   cursor: pointer;
