@@ -165,6 +165,20 @@ flatpickr("#calendar", {
   minDate: "today",
   showMonths: 2,
   onChange: function(selectedDates, dateStr, instance) {
+    if (selectedDates.length === 2) {
+      const [startDate, endDate] = selectedDates;
+
+      const oneDay = 24 * 60 * 60 * 1000;
+      const days = Math.round((endDate - startDate) / oneDay) + 1;
+
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      const startText = startDate.toLocaleDateString("en-GB", options);
+      const endText = endDate.toLocaleDateString("en-GB", options);
+
+      document.querySelector(".date-count").textContent = `${days} Days`;
+      document.querySelector(".date-range").textContent = `${startText} - ${endText}`;
+
+    }
     console.log("Selected:", selectedDates); 
   }
 });

@@ -385,6 +385,19 @@ label {
 
 .flatpickr-calendar {
   width: 60% !important;
+  border-radius: 20px;
+  font-family: Inter;
+  border: 1px solid #02304765;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
+}
+
+.flatpickr-months {
+  border-radius: 20px 20px 0px 0px;
+  background-color: #219EBC;
+  padding: 10px;
+  font-family: Sora;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .flatpickr-innerContainer {
@@ -393,10 +406,56 @@ label {
 
 .flatpickr-rContainer {
   width: 100% !important;
+  padding: 10px;
 }
 
 .flatpickr-days {
   width: auto !important;
+}
+
+.flatpickr-day.selected {
+  outline: 3px solid #219EBC;
+  z-index: 1;
+}
+
+.flatpickr-day.selected.startRange, 
+.flatpickr-day.startRange.startRange, 
+.flatpickr-day.endRange.startRange {
+    border-radius: 100%;
+    border: 3px solid #219EBC;
+    -webkit-box-shadow: -5px 0 0 #219EBC, 5px 0 0 #219EBC;
+}
+
+.flatpickr-day.selected, 
+.flatpickr-day.startRange, 
+.flatpickr-day.endRange, 
+.flatpickr-day.selected.inRange, 
+.flatpickr-day.startRange.inRange, 
+.flatpickr-day.endRange.inRange, 
+.flatpickr-day.selected:focus, 
+.flatpickr-day.startRange:focus, 
+.flatpickr-day.endRange:focus, 
+.flatpickr-day.selected:hover, 
+.flatpickr-day.startRange:hover, 
+.flatpickr-day.endRange:hover, 
+.flatpickr-day.selected.prevMonthDay, 
+.flatpickr-day.startRange.prevMonthDay, 
+.flatpickr-day.endRange.prevMonthDay, 
+.flatpickr-day.selected.nextMonthDay, 
+.flatpickr-day.startRange.nextMonthDay, 
+.flatpickr-day.endRange.nextMonthDay {
+    background: #023047;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #fff;
+    border-color: #219EBC;
+}
+
+.flatpickr-day.selected.endRange, .flatpickr-day.startRange.endRange, .flatpickr-day.endRange.endRange {
+    border-radius: 100%;
+}
+.flatpickr-day.inRange {
+    background-color: #219EBC;
 }
 
 /* STEP FOUR */
