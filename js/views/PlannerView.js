@@ -183,3 +183,128 @@ flatpickr("#calendar", {
   }
 });
 
+/* STEP FOUR */
+
+  /*CREATE CARDS */
+  const cardsContainer = document.querySelector('.sugestions-grid');
+  Plan.flights.forEach(flight => {
+    const flightCard = document.createElement('div');
+    flightCard.className = 'flight-card d-flex flex-column';
+    flightCard.innerHTML = `
+      <h3 class="flight-destination">
+        Paris, France
+      </h3>
+      <div class="flight-info d-flex">
+        <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
+        <div class="flight-take-off">
+          <div class="time">
+            6:30 - 7:39
+          </div>
+          <div class="airport">
+            Francisco Sá Carneiro Airport
+          </div>
+        </div>
+      </div>
+      <div class="flight-bottom d-flex align-items-center">
+        <div class="price-cabin">
+          <div class="price">
+            10.00 €
+          </div>
+          <div class="cabin-sugestion">
+            Basic Economy
+          </div>
+        </div>
+        <div class="favorite-select d-flex align-items-center">
+          <div class="favorite">
+            <img src="../media/icons/favorite.svg" alt="">
+          </div>
+          <div class="select-btn">Select</div>
+        </div>
+
+      </div>
+    `;
+    cardsContainer.appendChild(flightCard);
+  });
+
+  /* PAGINATION */
+
+  const paginationContainer = document.querySelector('.pagination');
+  const cards = document.querySelectorAll('.flight-card');
+  const cardsPerPage = 6;
+  let totalPages = Math.ceil(Plan.flights.length / cardsPerPage);
+
+  function element (totalPages, page) {
+
+    //criar tag li
+    let liTag = '';
+    let activeLi;
+    let beforePages = page - 1;
+    let afterPages = page + 1;
+
+    if (page > 1) {
+      liTag += `                
+        <li class="page-item">
+          <span class="page-link page-arrow-left">&lt;</span>
+        </li>
+      `;
+    }
+
+    for (let pageLength = beforePages; pageLength <= afterPages; pageLength++) {
+
+      if(pageLength == 0) {
+        pageLength = pageLength + 1;
+      }
+
+      if (page == pageLength) {
+        activeLi = 'active'; //adiciona a classe active
+      } else {
+        activeLi = '';
+      }
+      liTag += `
+        <li class="page-item ${activeLi}">
+          <span class="page-link page-number ${activeLi}" data-page="${pageLength}">${pageLength}</span>
+        </li>
+      `;
+    }
+
+    liTag += `
+    <li class="page-item disabled">
+        <span class="page-link">...</span>
+    </li>
+    <li class="page-item">
+        <span class="page-link">${totalPages}</span>
+    </li>
+    `;
+
+    if (page < totalPages) {
+      liTag += `                
+        <li class="page-item">
+          <span class="page-link page-arrow-right">&gt;</span>
+        </li>
+      `;
+    }
+
+    paginationContainer.innerHTML = liTag;
+
+    const arrowLeft = document.querySelector('.page-arrow-left');
+    const arrowRight = document.querySelector('.page-arrow-right');
+
+    if(arrowLeft) {
+      arrowLeft.addEventListener('click', () => element(totalPages, page - 1));
+    }
+
+    if (arrowRight) {
+      arrowRight.addEventListener('click', () => element(totalPages, page + 1));
+    }
+
+    const numberButtons = document.querySelectorAll('.page-number');
+    numberButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const selectedPage = Number(btn.getAttribute('data-page'));
+        element(totalPages, selectedPage);
+      });
+    });
+  }
+
+
+  element(totalPages, 1);

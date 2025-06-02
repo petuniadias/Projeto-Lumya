@@ -12,11 +12,206 @@ class Flight {
 
 //INSTÂNCIAS DE VOOS
 
-const flightsList = [
+export const flightsList = [
   new Flight('Lisbon, Portugal', 'Paris, France', ['cultural']),
   new Flight('Paris, France', 'Lisbon, Portugal', ['music', 'fashion']),
   new Flight('Paris, France', 'Lisbon, Portugal', ['music', 'fashion','food'])
-]
+];
+
+//FLIGHTS
+
+export const flights = [
+  {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }, {
+    destination: 'Paris, France',
+    flightType: 'oneway',
+    airline: '/media/img/ryanair.png',
+    takeOff: '6:00',
+    landing: '7:00',
+    airport: 'Francisco Sá Carneiro Airport',
+    price: '10.00 €',
+    cabin: 'Basic Economy'
+  }
+];
 
 // DEPARTURES
 export const departures = [

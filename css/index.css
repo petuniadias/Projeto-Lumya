@@ -3,10 +3,17 @@
     font-family: Sora;
   }
 
-  .pagination .page-item {
+/* PAGINATION */
+
+.pagination .page-item {
   --bs-pagination-color: #000000;
   --bs-pagination-border-color: none;
   --bs-pagination-font-size: 16px;
+  cursor: pointer;
+}
+
+.page-item .active {
+  background-color: #FFB703;
 }
   
 /* NAV BAR */
