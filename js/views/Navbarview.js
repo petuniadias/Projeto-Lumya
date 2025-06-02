@@ -41,7 +41,7 @@ function navbarView() {
         </div>
         <div class="dropdown-content text-center">
           <a href="/html/profile.html">My profile</a>
-          <a href="">Settings</a>
+          <a href="/html/settings.html">Settings</a>
           <a class="logout-btn" href="/index.html">Log Out</a>
         </div>
       </div>

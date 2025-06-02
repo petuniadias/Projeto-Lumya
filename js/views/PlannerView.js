@@ -192,26 +192,26 @@ flatpickr("#calendar", {
     flightCard.className = 'flight-card d-flex flex-column';
     flightCard.innerHTML = `
       <h3 class="flight-destination">
-        Paris, France
+        ${flight.destination}
       </h3>
       <div class="flight-info d-flex">
-        <img src="../media/img/ryanair.png" alt="" class="flight-airline-img">
+        <img src="${flight.airline}" alt="" class="flight-airline-img">
         <div class="flight-take-off">
           <div class="time">
-            6:30 - 7:39
+            ${flight.takeOff} - ${flight.landing}
           </div>
           <div class="airport">
-            Francisco Sá Carneiro Airport
+            ${flight.airport}
           </div>
         </div>
       </div>
       <div class="flight-bottom d-flex align-items-center">
         <div class="price-cabin">
           <div class="price">
-            10.00 €
+            ${flight.price}
           </div>
           <div class="cabin-sugestion">
-            Basic Economy
+            ${flight.cabin}
           </div>
         </div>
         <div class="favorite-select d-flex align-items-center">
@@ -230,9 +230,22 @@ flatpickr("#calendar", {
 
   const paginationContainer = document.querySelector('.pagination');
   const cards = document.querySelectorAll('.flight-card');
-  const cardsPerPage = 6;
+  const cardsPerPage = 9;
   let totalPages = Math.ceil(Plan.flights.length / cardsPerPage);
 
+
+  function renderItems(page) {
+    const start = (page - 1) * cardsPerPage;
+    const end = start + cardsPerPage;
+    cardsContainer.innerHTML = '';
+
+    const currentCards = Array.from(cards).slice(start, end);
+
+    currentCards.forEach(card => {
+      cardsContainer.appendChild(card);
+    });
+  }
+  
   function element (totalPages, page) {
 
     //criar tag li
@@ -291,10 +304,12 @@ flatpickr("#calendar", {
 
     if(arrowLeft) {
       arrowLeft.addEventListener('click', () => element(totalPages, page - 1));
+      renderItems(page);
     }
 
     if (arrowRight) {
       arrowRight.addEventListener('click', () => element(totalPages, page + 1));
+      renderItems(page);
     }
 
     const numberButtons = document.querySelectorAll('.page-number');
@@ -302,9 +317,10 @@ flatpickr("#calendar", {
       btn.addEventListener('click', () => {
         const selectedPage = Number(btn.getAttribute('data-page'));
         element(totalPages, selectedPage);
+        renderItems(page);
       });
     });
+    
   }
-
 
   element(totalPages, 1);

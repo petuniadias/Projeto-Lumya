@@ -31,7 +31,7 @@ export const flights = [
     price: '10.00 €',
     cabin: 'Basic Economy'
   }, {
-    destination: 'Paris, France',
+    destination: 'London, England',
     flightType: 'oneway',
     airline: '/media/img/ryanair.png',
     takeOff: '6:00',
@@ -40,7 +40,7 @@ export const flights = [
     price: '10.00 €',
     cabin: 'Basic Economy'
   }, {
-    destination: 'Paris, France',
+    destination: 'Oporto, Portugal',
     flightType: 'oneway',
     airline: '/media/img/ryanair.png',
     takeOff: '6:00',
@@ -49,7 +49,7 @@ export const flights = [
     price: '10.00 €',
     cabin: 'Basic Economy'
   }, {
-    destination: 'Paris, France',
+    destination: 'Lisbon, Portugal',
     flightType: 'oneway',
     airline: '/media/img/ryanair.png',
     takeOff: '6:00',
