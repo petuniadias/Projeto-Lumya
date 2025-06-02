@@ -1,3 +1,8 @@
+/* ADMIN - TYPES OF TOURISM */
+
+
+
+
 class Flight {
   departure = '';
   destination = '';

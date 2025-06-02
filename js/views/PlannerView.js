@@ -54,7 +54,6 @@ Plan.tourismTypes.forEach(type => {
   });
 
   tourismCardContainer.appendChild(card);
-  
 });
 
 // BUTTONS
@@ -324,3 +323,7 @@ flatpickr("#calendar", {
   }
 
   element(totalPages, 1);
+
+
+
+
