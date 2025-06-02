@@ -1,3 +1,7 @@
+.settings-section {
+  gap: 30px;
+}
+
 .settings-menu {
   background-color: white;
   padding: 30px;
@@ -39,4 +43,26 @@
 
 .menu-tab.active {
   background-color: #FFB703;
+}
+
+/* MY PROFILE */
+
+#my-profile {
+  background-color: white;
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid #02304765;
+}
+
+#my-profile h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.line-div {
+  border: 1px solid #02304765;
+  height: 0.5px;
+  width: 100%;
 }

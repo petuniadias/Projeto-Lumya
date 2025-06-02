@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
+
+  <!-- FONTS -->
+    <!-- INTER -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- SORA -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+  <!--BOOTSTRAP-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- STYLES -->
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <nav>
+  </nav>
+
+  <main>
+    <div id="admin-tables" class="accordion">
+
+      <!-- MANAGE USERS -->
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="heading-manage-users">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#manage-users" aria-expanded="true">
+            Users
+          </button>
+        </h3>
+        <div id="manage-users" class="accordion-collapse collapse" aria-labelledby="heading-manage-users" data-bs-parent="#admin-tables">
+          <div class="accordion-body">
+            <div class="top-accordion d-flex align-items-center justify-content-between">
+              <div class="search d-flex">
+                <img src="/media/icons/search.svg" alt="">
+                <input type="text">
+              </div>
+
+              <div class="filters-create">
+                <button class="create-btn btn btn-primary d-flex">
+                  <img src="/media/icons/plus.svg" alt="">
+                  <div>Create</div>
+                </button>
+              </div>
+            </div>
+
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">E-mail</th>
+                  <th scope="col">Profile Picture</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Enya</td>
+                  <td>@enya123</td>
+                  <td>enya@gmail.com</td>
+                  <td>Enya</td>
+                  <td>
+                    <button class="btn btn-primary" id="edit-btn">
+                      <img src="/media/icons/inspect.svg" alt="">
+                    </button>
+                    <button class="btn btn-primary" id="edit-btn">
+                      <img src="/media/icons/edit.svg" alt="">
+                    </button>
+                    <button class="btn btn-primary" id="delete-btn">
+                      <img src="/media/icons/delete.svg" alt="">
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- MANAGE FLIGHTS -->
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="heading-manage-flights">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#manage-flights" aria-expanded="true">
+            Flights
+          </button>
+        </h3>
+        <div id="manage-flights" class="accordion-collapse collapse" aria-labelledby="heading-manage-flights" data-bs-parent="#admin-tables">
+          <div class="accordion-body">
+            <div class="top-accordion d-flex align-items-center justify-content-between">
+              <div class="search d-flex">
+                <img src="/media/icons/search.svg" alt="">
+                <input type="text">
+              </div>
+
+              <div class="filters-create">
+                <button class="create-btn btn btn-primary d-flex">
+                  <img src="/media/icons/plus.svg" alt="">
+                  <div>Create</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- FLIGHTS DATA -->
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">From</th>
+                  <th scope="col">To</th>
+                  <th scope="col">Departure</th>
+                  <th scope="col">Arrival</th>
+                  <th scope="col">Departure</th>
+                  <th scope="col">Arrival</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Oporto, Portugal</td>
+                  <td>@enya123</td>
+                  <td>enya@gmail.com</td>
+                  <td>Enya</td>
+                  <td>
+                    <button class="btn btn-primary" id="edit-btn">
+                      <img src="/media/icons/inspect.svg" alt="">
+                    </button>
+                    <button class="btn btn-primary" id="edit-btn">
+                      <img src="/media/icons/edit.svg" alt="">
+                    </button>
+                    <button class="btn btn-primary" id="delete-btn">
+                      <img src="/media/icons/delete.svg" alt="">
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </main>
+
+  <!-- BOOTSTRAP -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

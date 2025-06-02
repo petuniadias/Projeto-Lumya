@@ -1,0 +1,11 @@
+.search {
+  border: 1px solid #02304765;
+  padding: 5px 10px;
+  border-radius: 10px;
+  gap: 5px;
+}
+
+.search input {
+  border: none;
+  outline: none;
+}

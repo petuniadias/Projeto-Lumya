@@ -37,44 +37,52 @@
   </nav>
 
   <main>
-    <div class="settings-menu d-flex flex-column align-items-center">
-      <div class="user-info d-flex align-items-center">
-        <img class="profile-pic" src="/media/img/profile-pic.jpg" alt="">
-        <div class="user-name-info">
-          <div class="name">
-            Enya
+    <div class="settings-section d-flex">
+
+      <div class="settings-menu d-flex flex-column align-items-center">
+        <div class="user-info d-flex align-items-center">
+          <img class="profile-pic" src="/media/img/profile-pic.jpg" alt="">
+          <div class="user-name-info">
+            <div class="name">
+              Enya
+            </div>
+            <div class="username">
+              @enya123
+            </div>
           </div>
-          <div class="username">
-            @enya123
-          </div>
+        </div>
+
+        <!-- MENU TABS -->
+
+        <div class="menu-tabs d-flex flex-column nav nav-pills" role="tablist">
+          <button class="menu-tab d-flex justify-content-center show active" data-bs-toggle="pill" data-bs-target="#my-profile" role="tab" aria-selected="true">
+            <img src="/media/icons/profile.svg" alt="">
+            <div>My Profile</div>
+          </button>
+          <button class="menu-tab d-flex justify-content-center" data-bs-toggle="pill" data-bs-target="#preferences" role="tab" aria-selected="false">
+            <img src="/media/icons/preferences.svg" alt="">
+            <div>Preferences</div>
+          </button>
+          <button class="menu-tab d-flex justify-content-center" data-bs-toggle="pill" data-bs-target="#payment-info" role="tab" aria-selected="false">
+            <img src="/media/icons/payment.svg" alt="">
+            <div>Payment Info</div>
+          </button>
         </div>
       </div>
 
-      <!-- MENU TABS -->
-
-      <div class="menu-tabs d-flex flex-column" role="tablist">
-        <button class="menu-tab d-flex justify-content-center show active" data-bs-toggle="pill" data-bs-target="#my-profile" role="tab" aria-selected="true">
-          <img src="/media/icons/profile.svg" alt="">
-          <div>My Profile</div>
-        </button>
-        <button class="menu-tab d-flex justify-content-center" data-bs-toggle="pill" data-bs-target="#preferences" role="tab" aria-selected="true">
-          <img src="/media/icons/preferences.svg" alt="">
-          <div>Preferences</div>
-        </button>
-        <button class="menu-tab d-flex justify-content-center" data-bs-toggle="pill" data-bs-target="#payment-info" role="tab" aria-selected="true">
-          <img src="/media/icons/payment.svg" alt="">
-          <div>Payment Info</div>
-        </button>
+      <!-- TAB'S CONTENT -->
+      <div class="tab-content tab-pane fade show active" id="my-profile" role="tabpanel">
+        <div class="my-profile-container">
+          <h3>My Profile</h3>
+          <div class="line-div"></div>
+        </div>
+      </div>
+      <div class="tab-content tab-pane fade" id="preferences" role="tabpanel">
+      </div>
+      <div class="tab-content tab-pane fade" id="payment-info" role="tabpanel">
       </div>
     </div>
 
-    <!-- TAB'S CONTENT -->
-    <div class="my-profile tab-pane fade show active" id="my-profile" role="tabpanel">
-    </div>
-    <div class="preferences tab-pane fade" id="preferences" role="tabpanel">
-    </div>
-    <div class="payment-info tab-pane fade" id="payment-info" role="tabpanel">
-    </div>
   <!-- SCRIPT -->
   <script type="module" src="../js/views/Navbarview.js"></script>
 </body>
