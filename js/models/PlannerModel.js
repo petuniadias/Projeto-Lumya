@@ -1,7 +1,14 @@
 /* ADMIN - TYPES OF TOURISM */
 
+class TourismType {
+  name = '';
+  img = '';
 
-
+  constructor(name, img) {
+    this.name = name;
+    this.img = img;
+  }
+}
 
 class Flight {
   departure = '';

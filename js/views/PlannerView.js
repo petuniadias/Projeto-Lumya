@@ -324,6 +324,12 @@ flatpickr("#calendar", {
 
   element(totalPages, 1);
 
+/* ADMIN */
 
+/* ADMIN - TYPES OF TOURISM */
+
+const createBtn = document.querySelector('.create-btn');
+const editBtn = document.querySelector('.edit-btn');
+const deleteBtn = document.querySelector('.delete-btn');
 
 
