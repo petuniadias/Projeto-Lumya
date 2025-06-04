@@ -6,7 +6,8 @@ import { tourismType, destination } from "../init.js";
 
 PASSO 2 */
 
-/*
+/* BUSCAR DEPARTURES DA CLASSE DOS VOOS E COLOCAR NUM OBJETO */
+
 
 // PLACE OF DEPARTURE
 const departureInput = document.querySelector('.departure-input');
@@ -22,7 +23,7 @@ function autocompleteFirstMatch() {
   }
 }
 
-Plan.departures.forEach(departure => {
+departures.forEach(departure => {
   const option = document.createElement('option');
   option.value = departure;
   sugestionsList.appendChild(option);
@@ -39,8 +40,6 @@ departureInput.addEventListener('keydown', event => {
 departureInput.addEventListener('blur', () => {
   autocompleteFirstMatch();
 });
-
-*/
 
 // TYPE OF TOURISM
 
@@ -110,8 +109,8 @@ closeBtn.addEventListener('click', () => {
 
 function renderDestinations() {
   const destinationCardContainer = document.querySelector('.destination-card-section');
-
-  destination.forEach((key) => {
+  const destinationKeys = Object.keys(destination.getAll());
+  destinationKeys.forEach((key) => {
     const des = destination.get(key);
     const card = document.createElement('div');
     card.className = 'destination-card d-flex flex-column align-items-center justify-content-center';
@@ -210,15 +209,6 @@ flatpickr("#calendar", {
       cardsContainer.innerHTML = '';
       Plan.flights = Plan.getFlights(departure, selectedTourismTypes, selectedDestinations);
     });
-
-    //RENDER BASED ON FILTERS
-    //FLIGHT TYPE FILTER
-    const OneWayFlight = document.querySelector('.one-way-filter');
-    OneWayFlight.addEventListener('click', () => {
-      Plans.flights = flights.filter((flight) => flight.flightType === 'oneway');
-    });
-
-
   }
 
   renderFlights();

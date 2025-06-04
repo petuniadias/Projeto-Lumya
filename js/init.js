@@ -31,7 +31,7 @@ console.log(tourismType.getAll());
 export const destination = new Destination({
   'paris': 
     { destination: 'Paris', 
-      img: '/media/icons/paris.svg', 
+      img: '/media/img/destination-img.png', 
       status: true 
     }
 });
