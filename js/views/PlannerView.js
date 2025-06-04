@@ -1,22 +1,24 @@
 import * as User from '../models/UserModel.js';
-import * as Plan from '../models/PlannerModel.js';
+import { tourismType, destination } from "../init.js";
 
 
 /* FORMULÁRIO --------------------------------
 
-PASSO 1 */
+PASSO 2 */
+
+/*
 
 // PLACE OF DEPARTURE
-const input = document.querySelector('.departure-input');
+const departureInput = document.querySelector('.departure-input');
 const sugestionsList = document.querySelector('.sugestions-list');
 
 function autocompleteFirstMatch() {
-  const val = input.value.toLowerCase().trim();
+  const val = departureInput.value.toLowerCase().trim();
   if (!val) return;
 
   const firstMatch = Plan.departures.find(dep => dep.toLowerCase().startsWith(val));
   if (firstMatch) {
-    input.value = firstMatch;
+    departureInput.value = firstMatch;
   }
 }
 
@@ -26,35 +28,44 @@ Plan.departures.forEach(departure => {
   sugestionsList.appendChild(option);
 });
 
-input.addEventListener('keydown', event => {
+departureInput.addEventListener('keydown', event => {
   if (event.key === 'Enter') {
     event.preventDefault();
     autocompleteFirstMatch();
-    input.blur();
+    departureInput.blur();
   }
 });
 
-input.addEventListener('blur', () => {
+departureInput.addEventListener('blur', () => {
   autocompleteFirstMatch();
 });
 
+*/
+
 // TYPE OF TOURISM
-const tourismCardContainer = document.querySelector('.tourism-type-selection');
 
-Plan.tourismTypes.forEach(type => {
-  const card = document.createElement('div');
-  card.className = 'tourism-type-card d-flex flex-column align-items-center';
-  card.innerHTML = `
-    <img src="${type.img}" alt="${type.name}">
-    <div class="beach">${type.name}</div>
-  `;
+function renderTourismTypes() {
+  const tourismCardContainer = document.querySelector('.tourism-type-selection');
 
-  card.addEventListener('click', () => {
-    card.classList.toggle('selected');
+  const tourismTypeKeys = Object.keys(tourismType.getAll());
+  tourismTypeKeys.forEach((key) => {
+    const type = tourismType.get(key);
+    const card = document.createElement('div');
+    card.className = 'tourism-type-card d-flex flex-column align-items-center';
+    card.innerHTML = `
+      <img src="${type.img}" alt="${type.name}">
+      <div>${type.name}</div>
+    `;
+
+    card.addEventListener('click', () => {
+      card.classList.toggle('selected');
+    });
+
+    tourismCardContainer.appendChild(card);
   });
+}
 
-  tourismCardContainer.appendChild(card);
-});
+renderTourismTypes();
 
 // BUTTONS
 const tourismTypeSelection = document.querySelector('.tourism-type-selection');
@@ -97,35 +108,37 @@ closeBtn.addEventListener('click', () => {
 
 // SELEÇÃO DOS DESTINOS
 
-const destinationCardContainer = document.querySelector('.destination-card-section');
+function renderDestinations() {
+  const destinationCardContainer = document.querySelector('.destination-card-section');
 
-Plan.destinations.forEach(des => {
-  const card = document.createElement('div');
-  card.className = 'destination-card d-flex flex-column align-items-center justify-content-center';
-  card.innerHTML = `
-    <img class="destination-img" src="${des.img}" alt="${des.destination}">
-    <div class="destination-name">${des.destination}</div>
-  `;
-
-
-
-  card.addEventListener('click', () => {
-    document.querySelectorAll('.destination-card').forEach(card => {
-      card.classList.remove('selected');
-    });
-
-    card.classList.add('selected');
-
-    destinationBtn.innerHTML = `
-      <img src="${des.img}" alt="${des.destination}" class="selected-destination-img">
+  destination.forEach((key) => {
+    const des = destination.get(key);
+    const card = document.createElement('div');
+    card.className = 'destination-card d-flex flex-column align-items-center justify-content-center';
+    card.innerHTML = `
+      <img class="destination-img" src="${des.img}" alt="${des.destination}">
+      <div class="destination-name">${des.destination}</div>
     `;
 
-    destinationPopUp.style.display = 'none';
-  });
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.destination-card').forEach(card => {
+        card.classList.remove('selected');
+      });
 
-  destinationCardContainer.appendChild(card);
-  
-});
+      card.classList.add('selected');
+
+      destinationBtn.innerHTML = `
+        <img src="${des.img}" alt="${des.destination}" class="selected-destination-img">
+      `;
+
+      destinationPopUp.style.display = 'none';
+     });
+
+    destinationCardContainer.appendChild(card);
+  });
+}
+
+renderDestinations();
 
 // BOTÕES DO CONTAINER DOS DESTINOS
 
@@ -184,7 +197,33 @@ flatpickr("#calendar", {
 
 /* STEP FOUR */
 
-  /*CREATE CARDS */
+  /* RENDER FLIGHTS BASED ON USER INPUT */
+  function renderFlights() {
+
+    const departure = departureInput.value;
+    const selectedTourismTypes = Array.from(tourismCardContainer.querySelectorAll('.tourism-type-card.selected'));
+    const destination = Array.from(destinationCardContainer.querySelectorAll('.destination-card.selected'));
+    const selectedDestinations = destination.map(card => card.querySelector('.destination-name').textContent);
+
+    const stepFourBtn = document.querySelector('.step-four-btn');
+    stepFourBtn.addEventListener('click', () => {
+      cardsContainer.innerHTML = '';
+      Plan.flights = Plan.getFlights(departure, selectedTourismTypes, selectedDestinations);
+    });
+
+    //RENDER BASED ON FILTERS
+    //FLIGHT TYPE FILTER
+    const OneWayFlight = document.querySelector('.one-way-filter');
+    OneWayFlight.addEventListener('click', () => {
+      Plans.flights = flights.filter((flight) => flight.flightType === 'oneway');
+    });
+
+
+  }
+
+  renderFlights();
+
+  /* create CARDS */
   const cardsContainer = document.querySelector('.sugestions-grid');
   Plan.flights.forEach(flight => {
     const flightCard = document.createElement('div');
@@ -225,7 +264,10 @@ flatpickr("#calendar", {
     cardsContainer.appendChild(flightCard);
   });
 
-  /* PAGINATION */
+
+
+
+  /* PAGINATION
 
   const paginationContainer = document.querySelector('.pagination');
   const cards = document.querySelectorAll('.flight-card');
@@ -323,13 +365,4 @@ flatpickr("#calendar", {
   }
 
   element(totalPages, 1);
-
-/* ADMIN */
-
-/* ADMIN - TYPES OF TOURISM */
-
-const createBtn = document.querySelector('.create-btn');
-const editBtn = document.querySelector('.edit-btn');
-const deleteBtn = document.querySelector('.delete-btn');
-
-
+  */

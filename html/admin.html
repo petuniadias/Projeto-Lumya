@@ -29,7 +29,6 @@
 
   <main>
     <div id="admin-tables" class="accordion">
-
       <!-- MANAGE USERS -->
       <div class="accordion-item">
         <h3 class="accordion-header" id="heading-manage-users">
@@ -46,10 +45,6 @@
               </div>
 
               <div class="filters-create">
-                <button class="create-btn btn btn-primary d-flex">
-                  <img src="/media/icons/plus.svg" alt="">
-                  <div>Create</div>
-                </button>
               </div>
             </div>
 
@@ -325,13 +320,15 @@
             </div>
 
 
-            <table class="table">
+            <table class="tourism-type-table w-100">
               <thead>
                 <tr>
                   <th scope="col">Type of Tourism</th>
+                  <th scope="col">Image</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
+
               <tbody>
                 <tr>
                   <td>Film</td>
@@ -339,7 +336,7 @@
                     <button class="btn btn-primary" id="edit-btn">
                       <img src="/media/icons/edit.svg" alt="">
                     </button>
-                    <button class="btn btn-danger" id="delete-btn">
+                    <button class="tourism-type-delete-btn btn btn-danger" id="delete-btn">
                       <img src="/media/icons/delete.svg" alt="">
                     </button>
                   </td>
@@ -349,7 +346,7 @@
             
           </div>
 
-            <!-- CREATE FLIGHT MODAL -->
+            <!-- CREATE TOURISM TYPE MODAL -->
 
             <div class="modal fade" id="create-tourism-type" tabindex="-1" aria-labelledby="create-tourism-type-label" aria-hidden="true">
               <div class="modal-dialog">
@@ -366,10 +363,16 @@
                         <label for="tourism-type">
                           Type of Tourism
                         </label>
-                        <input class="form-control" name="tourism-type">
+                        <input class="form-control tourism-type-name-input" name="tourism-type">
+                      </div>
+                      <div class="d-flex flex-column w-100 mb-3">
+                        <label for="tourism-type-img">
+                          Image
+                        </label>
+                        <input class="form-control tourism-type-img-input" name="tourism-type">
                       </div>
                       <div class="modal-footer" style="padding: 0;">
-                        <button class="btn btn-primary w-100">Create</button>
+                        <button class="create-tourism-type-btn btn btn-primary w-100" type="button">Create</button>
                       </div>
                     </form>
                   </div>
@@ -384,8 +387,9 @@
   </main>
 
   <!-- SCRIPT -->
+  <script type="module" src="../js/init.js"></script>
   <script type="module" src="../js/views/Navbarview.js"></script>
-  <script type="module" src="../js/views/PlannerView.js"></script>
+  <script type="module" src="../js/views/AdminView.js"></script>
 
   <!-- BOOTSTRAP -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

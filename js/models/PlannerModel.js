@@ -1,405 +1,317 @@
-/* ADMIN - TYPES OF TOURISM */
+/* TYPES OF TOURISM */
 
-class TourismType {
-  name = '';
-  img = '';
+export class TourismType {
+  tourismType = {};
+  localStorageTourismTypeKey = 'tourismTypeKeys'; // CHAVE PARA GUARDAR NO LOCAL STORAGE
 
-  constructor(name, img) {
-    this.name = name;
-    this.img = img;
-  }
-}
-
-class Flight {
-  departure = '';
-  destination = '';
-  tourismType = [];
-
-  constructor(departure, destination, tourismType) {
-    this.departure = departure;
-    this.destination = destination;
+  constructor(tourismType = {}) {  // INICIALIZA COM UM OBJETO VAZIO SE NAO TIVER DÁ NULL
     this.tourismType = tourismType;
+
+    //VERIFICA SE JÁ EXISTE NO LOCAL STORAGE
+    if (localStorage.getItem(this.localStorageTourismTypeKey)) {
+      this.tourismType = JSON.parse(localStorage.getItem(this.localStorageTourismTypeKey));
+    } else {
+      localStorage.setItem(this.localStorageTourismTypeKey, JSON.stringify(this.tourismType));
+    }
+  }
+
+  // SALVA NO LOCAL STORAGE
+  saveToLocalStorage() {
+    localStorage.setItem(this.localStorageTourismTypeKey, JSON.stringify(this.tourismType));
+  }
+
+  add(key, name, img, status = true) {
+    if (this.tourismType[key]) {
+      throw Error(`Tourism Type with name "${key}" already exists!`);
+    }
+    this.tourismType[key] = {
+      name,
+      img,
+      status
+    };
+
+    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS ADICIONAR
+  }
+
+  del(key) {
+    if (!this.tourismType[key]) {
+      throw Error(`Tourism Type with name "${key}" does not exist!`);
+    }
+    delete this.tourismType[key];
+    
+    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS ADICIONAR
+  }
+
+  update(key, name, img, status = true) {
+    if (!this.tourismType[key]) {
+      throw Error(`Tourism Type with name "${key}" does not exist!`);
+    }
+    this.tourismType[key] = {
+      name,
+      img,
+      status
+    };
+
+    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS ADICIONAR
+  }
+
+  get(key) { // RETORNA UM TIPO DE TURISMO
+    if (!this.tourismType[key]) {
+      throw Error(`Tourism Type with name "${key}" does not exist!`); 
+    }
+    return this.tourismType[key];
+  }
+
+  getAll(status = null) { // RETORNA TODOS OS TIPOS DE TURISMO /* status = null PARA PODER FILTRAR */
+    if (status === null) {
+      return this.tourismType;
+    }
+
+    if (status === true || status === false) { 
+      const filteredTourismType = {};
+      for (const key in this.tourismType) {
+        if (this.tourismType[key].status === status) {
+          filteredTourismType[key] = this.tourismType[key]; // TEM DE TER A MESMA CHAVE
+        }
+      }
+      return filteredTourismType;
+    }
+  }
+
+  cleanAll() { // LIMPA TODOS OS TIPOS DE TURISMO
+    this.tourismType = {};
+    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS LIMPAR
   }
 }
 
-//INSTÂNCIAS DE VOOS
+/* EXEMPLO DE USO
 
-export const flightsList = [
-  new Flight('Lisbon, Portugal', 'Paris, France', ['cultural']),
-  new Flight('Paris, France', 'Lisbon, Portugal', ['music', 'fashion']),
-  new Flight('Paris, France', 'Lisbon, Portugal', ['music', 'fashion','food'])
-];
+tt.getAll(); // RETORNA TODOS OS TIPOS DE TURISMO
+tt.getAll(true);
+tt.getAll(false);
 
-//FLIGHTS
+tt.add('cultural', 'cultural', '/media/img/cultural.png', false); 
 
-export const flights = [
-  {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'London, England',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Oporto, Portugal',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Lisbon, Portugal',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
-  }, {
-    destination: 'Paris, France',
-    flightType: 'oneway',
-    airline: '/media/img/ryanair.png',
-    takeOff: '6:00',
-    landing: '7:00',
-    airport: 'Francisco Sá Carneiro Airport',
-    price: '10.00 €',
-    cabin: 'Basic Economy'
+tt.del('cultural'); // ELIMINA O TIPO DE TURISMO CULTURAL
+
+tt.update('cultural', 'cultural', '/media/img/cultural.png', true); // ATUALIZA O TIPO DE TURISMO CULTURAL
+
+*/
+
+/*
+const tourismType = new TourismType({
+  cultural: {
+    name: 'Cultural',
+    img: '/media/img/cultural.png',
+    status: true 
+  },
+  music: {
+    name: 'Music',
+    img: '/media/img/music.png',
+    status: true 
+  }, 
+  film: {
+    name: 'Film',
+    img: '/media/img/film.png',
+    status: true
   }
-];
+});
 
-// DEPARTURES
-export const departures = [
-  'Lisbon, Portugal',
-  'Porto, Portugal',
-  'Madrid, Spain',
-  'Barcelona, Spain',
-  'Valencia, Spain',
-  'Seville, Spain',
-  'Malaga, Spain',
-  'Bilbao, Spain',
-  'Paris, France',
-  'Nice, France',
-  'Lyon, France',
-  'Marseille, France',
-  'Toulouse, France',
-  'Berlin, Germany',
-  'Munich, Germany',
-  'Frankfurt, Germany',
-  'Hamburg, Germany',
-  'Cologne, Germany',
-  'Dusseldorf, Germany',
-  'Rome, Italy',
-  'Venice, Italy',
-  'Florence, Italy',
-  'Milan, Italy',
-  'Naples, Italy',
-  'Athens, Greece',
-  'Thessaloniki, Greece',
-  'Vienna, Austria',
-  'Salzburg, Austria',
-  'Graz, Austria',
-  'Prague, Czech Republic',
-  'Brno, Czech Republic',
-  'Warsaw, Poland',
-  'Krakow, Poland',
-  'Gdansk, Poland',
-  'Budapest, Hungary',
-  'Debrecen, Hungary',
-  'Stockholm, Sweden',
-  'Gothenburg, Sweden',
-  'Malmo, Sweden',
-  'Oslo, Norway',
-  'Bergen, Norway',
-  'Helsinki, Finland',
-  'Tampere, Finland',
-  'Copenhagen, Denmark',
-  'Aarhus, Denmark',
-  'Dublin, Ireland',
-  'Belfast, United Kingdom',
-  'London, United Kingdom',
-  'Manchester, United Kingdom',
-  'Edinburgh, United Kingdom',
-  'Glasgow, United Kingdom',
-  'Amsterdam, Netherlands',
-  'Rotterdam, Netherlands',
-  'Brussels, Belgium',
-  'Antwerp, Belgium',
-  'Zurich, Switzerland',
-  'Geneva, Switzerland',
-  'Basel, Switzerland',
-  'Luxembourg, Luxembourg',
-  'Ljubljana, Slovenia',
-  'Zagreb, Croatia',
-  'Seoul, South Korea',
-  'Daegu, South Korea',
-  'Split, Croatia',
-  'Sarajevo, Bosnia and Herzegovina',
-  'Belgrade, Serbia',
-  'Skopje, North Macedonia',
-  'Tirana, Albania',
-  'Reykjavik, Iceland',
-  'Moscow, Russia',
-  'Saint Petersburg, Russia',
-  'Istanbul, Turkey',
-  'Ankara, Turkey',
-  'Kiev, Ukraine',
-  'Lviv, Ukraine',
-  'Minsk, Belarus',
-  'Chisinau, Moldova',
-  'Tallinn, Estonia',
-  'Riga, Latvia',
-  'Vilnius, Lithuania',
-  'Valletta, Malta'
-];
+*/
 
+/* DESTINATION */
 
-// TYPES OF TOURISM LIST
-export const tourismTypes = [
-  {
-    name: 'music',
-    img: '/media/img/beach.png'
-  }, {
-    name: 'film',
-    img: '/media/img/beach.png'
-  }, {
-    name: 'food',
-    img: '/media/img/beach.png'
-  }, {
-    name: 'art',
-    img: '/media/img/beach.png'
-  }, {
-    name: 'culture',
-    img: '/media/img/beach.png'
-  }, {
-    name: 'fashion',
-    img: '/media/img/beach.png'
-  },   {
-    name: 'technology',
-    img: '/media/img/beach.png'
-  }, {
-    name: 'sports',
-    img: '/media/img/beach.png'
-  }, {
-    name: 'spiritual',
-    img: '/media/img/beach.png'
-  }, {
-    name: 'literature',
-    img: '/media/img/beach.png'
-  }
-];
+export class Destination {
+  destination = {};
+  localStorageDestinationKey = 'destinationKeys'; // CHAVE PARA GUARDAR NO LOCAL STORAGE
 
-//DESTINATIONS
-export const destinations = [
-  {
-    img: '/media/img/destination-img.png',
-    destination: 'Oporto, Portugal'
-  }, {
-    img: '/media/img/destination-img.png',
-    destination: 'Lisbon, Portugal'
-  }, {
-    img: '/media/img/destination-img.png',
-    destination: 'Madrid, Spain'
-  }, {
-    img: '/media/img/destination-img.png',
-    destination: 'Krakow, Poland'
-  }, {
-    img: '/media/img/destination-img.png',
-    destination: 'Washington, EUA'
-  }, {
-    img: '/media/img/destination-img.png',
-    destination: 'New York, EUA'
-  }, {
-    img: '/media/img/destination-img.png',
-    destination: 'Vigo, Spain'
-  }, {
-    img: '/media/img/destination-img.png',
-    destination: 'Tokyo, Japan'
-  }, {
-    img: '/media/img/destination-img.png',
-    destination: 'Osaka, Japan'
-  }, {
-    img: '/media/img/destination-img.png',
-    destination: 'Seoul, South Korea'
+  constructor(destination = {}) { // INICIALIZA COM UM OBJETO VAZIO SE NAO TIVER DÁ NULL
+    this.destination = destination;
+
+    //VERIFICA SE JÁ EXISTE NO LOCAL STORAGE
+    if (localStorage.getItem(this.localStorageDestinationKey)) {
+      this.destination = JSON.parse(localStorage.getItem(this.localStorageDestinationKey));
+    } else {
+      localStorage.setItem(this.localStorageDestinationKey, JSON.stringify(this.destination));
+    }
   }
 
-];
+  saveToLocalStorage() { // SALVA NO LOCAL STORAGE
+    localStorage.setItem(this.localStorageDestinationKey, JSON.stringify(this.destination));
+  }
 
-class Stay {
-  title = '';
-  rating = '';
-  tourismTypes = [];
+  add(key, destination, img, status = true) {
+    if( this.destination[key]) {
+      throw Error(`Destination with key "${key}" already exists!`);
+    }
 
-  constructor(title, rating, tourismTypes) {
-    this.title = title;
-    this.rating = rating;
-    this.tourismTypes = tourismTypes;
+    this.destination[key] = {
+      destination,
+      img,
+      status
+    };
+
+    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS ADICIONAR
+  }
+
+  del(key) {
+    if (!this.destination[key]) {
+      throw Error(`Destination with key "${key}" does not exist!`);
+    }
+    delete this.destination[key];
+    
+    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS REMOVER
+  }
+
+  update(key, destination, img, status = true) {
+    if (!this.destination[key]) {
+      throw Error(`Destination with key "${key}" does not exist!`);
+    }
+    this.destination[key] = {
+      destination,
+      img,
+      status
+    };
+
+    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS ATUALIZAR
+  }
+
+  get(key) { // RETORNA UM DESTINO
+    if (!this.destination[key]) {
+      throw Error(`Destination with key "${key}" does not exist!`);
+    }
+    return this.destination[key];
+  }
+
+  getAll(status = null) { // RETORNA TODOS OS DESTINOS /* status = null PARA PODER FILTRAR */
+    if (status === null) {
+      return this.destination;
+    }
+
+    if (status === true || status === false) { 
+      const filteredDestination = {};
+      for (const key in this.destination) {
+        if (this.destination[key].status === status) {
+          filteredDestination[key] = this.destination[key]; // TEM DE TER A MESMA CHAVE
+        }
+      }
+      return filteredDestination;
+    }
   }
 }
 
-class Festival {
-  name = '';
-  tourismTypes = [];
+/* FLIGHTS */
 
-  constructor(name, tourismTypes) {
-    this.name = name;
-    this.tourismTypes = tourismTypes;
+export class Flight {
+  flight = {};
+  localStorageFlightKey = 'flightKeys'; // CHAVE PARA GUARDAR NO LOCAL STORAGE
+
+  constructor(flight = {}) { // INICIALIZA COM UM OBJETO VAZIO SE NAO TIVER DÁ NULL
+    this.flight = flight;
+
+    //VERIFICA SE JÁ EXISTE NO LOCAL STORAGE
+    if (localStorage.getItem(this.localStorageFlightKey)) {
+      this.flight = JSON.parse(localStorage.getItem(this.localStorageFlightKey));
+    } else {
+      localStorage.setItem(this.localStorageFlightKey, JSON.stringify(this.flight));
+    }
+  }
+
+  // SALVA NO LOCAL STORAGE
+  saveToLocalStorage() {
+    localStorage.setItem(this.localStorageFlightKey, JSON.stringify(this.flight));
+  }
+
+  add(key, departure, destination, flightType, cabin, date, time, airport, price, status = true) {
+    if (this.flight[key]) {
+      throw Error(`Flight with key "${key}" already exists!`);
+    }
+    this.flight[key] = {
+      departure,
+      destination,
+      flightType,
+      cabin,
+      date,
+      time,
+      airport,
+      price,
+      status
+    };
+
+    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS ADICIONAR
+  }
+
+  del(key) {
+    if (!this.flight[key]) {
+      throw Error(`Flight with key "${key}" does not exist!`);
+    }
+    delete this.flight[key];
+    
+    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS REMOVER
+    }
+    
+  update(key, departure, destination, flightType, cabin, date, time, airport, price, status = true) {
+    if (!this.flight[key]) {
+      throw Error(`Flight with key "${key}" does not exist!`);
+    }
+    this.flight[key] = {
+      departure,
+      destination,
+      flightType,
+      cabin,
+      date,
+      time,
+      airport,
+      price,
+      status
+    };
+
+    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS ATUALIZAR
+  }
+
+  get(key) { // RETORNA UM VOO
+    if (!this.flight[key]) {
+      throw Error(`Flight with key "${key}" does not exist!`);
+    }
+    return this.flight[key];
+  }
+
+  getAll(status = null) { // RETORNA TODOS OS VOOS /* status = null PARA PODER FILTRAR */
+    if (status === null) {
+      return this.flight;
+    }
+
+    if (status === true || status === false) { 
+      const filteredFlight = {};
+      for (const key in this.flight) {
+        if (this.flight[key].status === status) {
+          filteredFlight[key] = this.flight[key]; // TEM DE TER A MESMA CHAVE
+        }
+      }
+      return filteredFlight;
+    }
   }
 }
+
+/*
+const tourismType = new TourismType({
+  flight: {
+    departure: 'Lisbon',
+    destination: 'New York',
+    flightType: 'Direct',
+    cabin: 'Economy',
+    date: '2023-12-01',
+    time: {
+      arrival: '10:00',
+      departure: '18:00'
+    },
+    airport: {
+      arrival: 'Lisbon Airport',
+      departure: 'John F. Kennedy International Airport'
+    },
+    price: 500,
+    status: true
+  }
+});
+
+*/
