@@ -123,6 +123,7 @@ const tourismType = new TourismType({
 
 export class Destination {
   destination = {};
+
   localStorageDestinationKey = 'destinationKeys'; // CHAVE PARA GUARDAR NO LOCAL STORAGE
 
   constructor(destination = {}) { // INICIALIZA COM UM OBJETO VAZIO SE NAO TIVER DÁ NULL
@@ -140,13 +141,14 @@ export class Destination {
     localStorage.setItem(this.localStorageDestinationKey, JSON.stringify(this.destination));
   }
 
-  add(key, destination, img, status = true) {
-    if( this.destination[key]) {
+  add(key, destination, flights = [], img, status = true) {
+    if(this.destination[key]) {
       throw Error(`Destination with key "${key}" already exists!`);
     }
 
     this.destination[key] = {
       destination,
+      flights,
       img,
       status
     };
@@ -163,12 +165,13 @@ export class Destination {
     this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS REMOVER
   }
 
-  update(key, destination, img, status = true) {
+  update(key, destination, flights = [], img, status = true) {
     if (!this.destination[key]) {
       throw Error(`Destination with key "${key}" does not exist!`);
     }
     this.destination[key] = {
       destination,
+      flights,
       img,
       status
     };
@@ -204,7 +207,6 @@ export class Destination {
 
 export class Flight {
   flight = {};
-  destination = {};
   localStorageFlightKey = 'flightKeys'; // CHAVE PARA GUARDAR NO LOCAL STORAGE
 
   constructor(flight = {}) { // INICIALIZA COM UM OBJETO VAZIO SE NAO TIVER DÁ NULL
@@ -286,6 +288,17 @@ export class Flight {
       }
       return filteredFlight;
     }
+  }
+
+  getDestination(key) { // RETORNA O DESTINO DE UM VOO
+    if (!this.flight[key]) {
+      throw Error(`Flight with key "${key}" does not exist!`);
+    }
+    return this.flight[key].destination;
+  }
+
+  getAllDestinations() {
+  return Object.values(this.flight).map(f => f.destination);
   }
 }
 

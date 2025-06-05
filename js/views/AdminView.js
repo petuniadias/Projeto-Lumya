@@ -1,4 +1,5 @@
-import { tourismType, flight } from "../init.js";
+import { tourismType, flight, destination } from "../init.js";
+import { Flight } from "../models/PlannerModel.js";
 //import { TourismType } from "../models/PlannerModel.js"; 
 
 
@@ -82,7 +83,10 @@ function createDestination() {
 
   createBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    tourismType.add(nameInput.value.toLowerCase(), nameInput.value, imgInput.value);
+
+    flight.getDestination('paris');
+
+    destination.add(nameInput.value.toLowerCase(), nameInput.value, imgInput.value);
     renderDestination();
   });
 }
@@ -90,28 +94,39 @@ function createDestination() {
 createDestination();
 
 function renderDestination() {
-  const table = document.querySelector('.tourism-type-table tbody');
+  const table = document.querySelector('.destination-table tbody');
 
   table.innerHTML = '';
-  console.log(tourismType.getAll());
+
+  const destinations = flight.getAllDestinations();
+  console.log(destinations);
   
-  const tourismTypeKeys = Object.keys(tourismType.getAll());
-  if (tourismTypeKeys.length === 0) {
+  if (destinations.length === 0) {
     const row = document.createElement('tr');
-    row.innerHTML = '<td colspan="3">No tourism types available</td>';
+    row.innerHTML = '<td colspan="3">No destinations available</td>';
     table.appendChild(row);
     return;
   }
 
-  tourismTypeKeys.forEach((key) => {
-    const type = destination.get(key);
+  destinations.forEach((des) => {
     const row = document.createElement('tr');
     row.innerHTML = `
-      
+      <td>${des}</td>
+      <td>film</td>
+      <td>
+        <button class="btn btn-primary" id="edit-btn">
+          <img src="/media/icons/edit.svg" alt="Edit">
+        </button>
+        <button class="btn btn-danger" id="delete-btn">
+          <img src="/media/icons/delete.svg" alt="Delete">
+        </button>
+      </td>
     `;
     table.appendChild(row);
   });
 }
+
+renderDestination();
 
 /* ADMIN -FLIGHTS */
 
