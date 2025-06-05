@@ -108,7 +108,7 @@
             </div>
 
             <!-- FLIGHTS DATA -->
-            <table class="table" style="
+            <table class="flight-table table" style="
               overflow-x: scroll;
 
             ">
@@ -116,17 +116,14 @@
                 <tr>
                   <th scope="col" rowspan="2">From</th>
                   <th scope="col" rowspan="2">To</th>
-                  <th scope="colgroup" colspan="2">Time</th>
-                  <th scope="colgroup" colspan="2">Airport</th>
+                  <th scope="colgroup" colspan="2">Date-time</th>
+                  <th scope="colgroup" rowspan="2">Airport</th>
                   <th scope="col" rowspan="2">Cabin</th>
                   <th scope="col" rowspan="2">Airline</th>
                   <th scope="col" rowspan="2">Price</th>
-                  <th scope="col" rowspan="2">Status</th>
                   <th scope="col" rowspan="2">Action</th>
                 </tr>
                 <tr>
-                  <th>Arrival</th>
-                  <th>Departure</th>
                   <th>Arrival</th>
                   <th>Departure</th>
                 </tr>
@@ -135,14 +132,12 @@
                 <tr>
                   <td>Oporto, Portugal</td>
                   <td>Paris, France</td>
-                  <td>6:00</td>
-                  <td>7:00</td>
+                  <td>2025-05-02 6:00</td>
+                  <td>2025-05-02 7:00</td>
                   <td>Francisco Sá Carneiro Airport</td>
-                  <td>Charles De Gaulle Airport</td>
                   <td>Basic Economy</td>
                   <td>Ryanair</td>
                   <td>10.00</td>
-                  <td>On Sale</td>
                   <td class="d-flex" style="gap: 5px;">
                     <button class="btn btn-primary" id="edit-btn">
                       <img src="/media/icons/edit.svg" alt="">
@@ -173,33 +168,29 @@
                           <label for="place-of-departure">
                             Place of Departure
                           </label>
-                          <input class="form-control">
+                          <input class="departure-input form-control">
                         </div>
                         <div class="mb-3 w-100">
                           <label for="destination">
                             Destination
                           </label>
-                          <input class="form-control">
+                          <input class="destination-input form-control">
                         </div>
                       </div>
                       <div class="d-flex gap-2 mb-3">
                         <div class="d-flex flex-column w-100">
-                          <label for="time-arrival">Time of Arrival</label>
-                          <input class="form-control" type="time" name="time-arrival">
+                          <label for="date-time-departure">Schedule of Departure</label>
+                          <input class="date-time-departure-input form-control" type="datetime-local" name="date-time-departure">
                         </div>
                         <div class="d-flex flex-column w-100">
-                          <label for="time-departure">Time of Departure</label>
-                          <input class="form-control" type="time" name="time-departure">
+                          <label for="date-time-arrival">Schedule of Arrival</label>
+                          <input class="date-time-arrival-input form-control" type="datetime-local" name="date-time-arrival">
                         </div>
                       </div>
                       <div class="d-flex gap-2 mb-3">
                         <div class="d-flex flex-column w-100">
-                          <label for="airport-arrival">Airport Arrival</label>
-                          <input class="form-control" name="airport-arrival">
-                        </div>
-                        <div class="d-flex flex-column w-100">
-                          <label for="airport-departure">Airport Departure</label>
-                          <input class="form-control" name="airport-departure">
+                          <label for="airport">Airport</label>
+                          <input class="airport-input form-control" name="airport">
                         </div>
                       </div>
                       <div class="d-flex gap-2">
@@ -207,29 +198,29 @@
                           <label for="cabin">
                             Cabin
                           </label>
-                          <input class="form-control" name="cabin">
+                          <select class="cabin-input form-select" name="cabin">
+                            <option value="basic economy" selected>Basic Economy</option>
+                            <option value="economy">Economy</option>
+                            <option value="mixed">Mixed</option>
+                            <option value="business">Business</option>
+                          </select>
                         </div>
                         <div class="d-flex flex-column w-100 mb-3">
                           <label for="cabin">
                             Airline
                           </label>
-                          <input class="form-control" name="airline">
+                          <input class="airline-input form-control" name="airline">
                         </div>
                         <div class="d-flex flex-column w-100 mb-3">
                           <label for="price">
                             Price
                           </label>
-                          <input class="form-control" type="number" name="price">
+                          <input class="price-input form-control" type="number" name="price" min=0>
                         </div>
                       </div>
                       <div class="d-flex flex-column w-100 mb-3">
-                        <label for="status">
-                          Status
-                        </label>
-                        <input class="form-control" name="status">
-                      </div>
                       <div class="modal-footer" style="padding: 0;">
-                        <button class="btn btn-primary w-100">Create</button>
+                        <button class="create-flight-btn btn btn-primary w-100">Create</button>
                       </div>
                     </form>
                   </div>

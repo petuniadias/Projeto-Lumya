@@ -59,13 +59,20 @@ class User {
   username = '';
   mail = '';
   password = '';
-  points = '';
+  points = 0;
+  tripHistory = [];
+  // tripHistory = []; // Array para guardar histórico de viagens do utilizador
 
-  constructor(name, username, mail, password, points) {
+  constructor(name, username, mail, password, points, tripHistory = []) {
     this.name = name;
     this.username = username;
     this.mail = mail;
     this.password = password;
     this.points = points;
+    this.tripHistory = tripHistory;
+  }
+
+  addTrip(trip) {
+    this.tripHistory.push(trip);
   }
 }

@@ -204,6 +204,7 @@ export class Destination {
 
 export class Flight {
   flight = {};
+  destination = {};
   localStorageFlightKey = 'flightKeys'; // CHAVE PARA GUARDAR NO LOCAL STORAGE
 
   constructor(flight = {}) { // INICIALIZA COM UM OBJETO VAZIO SE NAO TIVER DÁ NULL
@@ -222,17 +223,13 @@ export class Flight {
     localStorage.setItem(this.localStorageFlightKey, JSON.stringify(this.flight));
   }
 
-  add(key, departure, destination, flightType, cabin, date, time, airport, price, status = true) {
-    if (this.flight[key]) {
-      throw Error(`Flight with key "${key}" already exists!`);
-    }
+  add(key, airline, departure, destination, cabin, schedules = [], airport, price, status = true) {
     this.flight[key] = {
+      airline,
       departure,
       destination,
-      flightType,
       cabin,
-      date,
-      time,
+      schedules,
       airport,
       price,
       status
@@ -250,17 +247,16 @@ export class Flight {
     this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS REMOVER
     }
     
-  update(key, departure, destination, flightType, cabin, date, time, airport, price, status = true) {
+  update(key, airline, departure, destination, cabin, schedules = [], airport, price, status = true) {
     if (!this.flight[key]) {
       throw Error(`Flight with key "${key}" does not exist!`);
     }
     this.flight[key] = {
+      airline,
       departure,
       destination,
-      flightType,
       cabin,
-      date,
-      time,
+      schedules,
       airport,
       price,
       status
@@ -293,25 +289,5 @@ export class Flight {
   }
 }
 
-/*
-const tourismType = new TourismType({
-  flight: {
-    departure: 'Lisbon',
-    destination: 'New York',
-    flightType: 'Direct',
-    cabin: 'Economy',
-    date: '2023-12-01',
-    time: {
-      arrival: '10:00',
-      departure: '18:00'
-    },
-    airport: {
-      arrival: 'Lisbon Airport',
-      departure: 'John F. Kennedy International Airport'
-    },
-    price: 500,
-    status: true
-  }
-});
 
-*/
+

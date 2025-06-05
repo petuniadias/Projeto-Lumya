@@ -41,6 +41,7 @@ departureInput.addEventListener('blur', () => {
   autocompleteFirstMatch();
 });
 
+
 // TYPE OF TOURISM
 
 function renderTourismTypes() {
