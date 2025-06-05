@@ -123,6 +123,8 @@ const tourismType = new TourismType({
 
 export class Destination {
   destination = {};
+  tourismType = new TourismType(); // INSTANCIA O TURISMO PARA PODER USAR OS TIPOS DE TURISMO
+  tourismTypeKeys = this.tourismType.getAll(); // PEGA TODOS OS TIPOS DE TURISMO
 
   localStorageDestinationKey = 'destinationKeys'; // CHAVE PARA GUARDAR NO LOCAL STORAGE
 
@@ -141,13 +143,14 @@ export class Destination {
     localStorage.setItem(this.localStorageDestinationKey, JSON.stringify(this.destination));
   }
 
-  add(key, destination, flights = [], img, status = true) {
+  add(key, destination, tourismType = [], flights = [], img, status = true) {
     if(this.destination[key]) {
       throw Error(`Destination with key "${key}" already exists!`);
     }
 
     this.destination[key] = {
       destination,
+      tourismType,
       flights,
       img,
       status
@@ -225,11 +228,17 @@ export class Flight {
     localStorage.setItem(this.localStorageFlightKey, JSON.stringify(this.flight));
   }
 
-  add(key, airline, departure, destination, cabin, schedules = [], airport, price, status = true) {
+  add(key, airline, departure, destinationKey, cabin, schedules = [], airport, price, status = true) {
+    const des = new Destination(); // INSTANCIA O DESTINO PARA PODER USAR OS DESTINOS
+    const desInstance = des.get(destinationKey); // PEGA O DESTINO
+
     this.flight[key] = {
       airline,
       departure,
-      destination,
+      destination: {
+        destination: desInstance.destination,
+        tourismType: desInstance.tourismType
+      },
       cabin,
       schedules,
       airport,
@@ -249,14 +258,21 @@ export class Flight {
     this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS REMOVER
     }
     
-  update(key, airline, departure, destination, cabin, schedules = [], airport, price, status = true) {
+  update(key, airline, departure, destinatioKey, cabin, schedules = [], airport, price, status = true) {
     if (!this.flight[key]) {
       throw Error(`Flight with key "${key}" does not exist!`);
     }
+
+    const des = new Destination(); // INSTANCIA O DESTINO PARA PODER USAR OS DESTINOS
+    const desInstance = des.get(destinatioKey); // PEGA O DESTINO
+
     this.flight[key] = {
       airline,
       departure,
-      destination,
+      destination: {
+        destination: desInstance.destination,
+        tourismType: desInstance.tourismType
+      },
       cabin,
       schedules,
       airport,
@@ -298,7 +314,7 @@ export class Flight {
   }
 
   getAllDestinations() {
-  return Object.values(this.flight).map(f => f.destination);
+  return Object.values(this.flight).map(f => f.destination.destination);
   }
 }
 

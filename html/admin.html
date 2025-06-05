@@ -174,7 +174,7 @@
                           <label for="destination">
                             Destination
                           </label>
-                          <input class="destination-input form-control">
+                          <input class="destination-input-flight form-control">
                         </div>
                       </div>
                       <div class="d-flex gap-2 mb-3">
@@ -249,7 +249,7 @@
               </div>
 
               <div class="filters-create">
-                <button class="create-btn btn btn-primary d-flex">
+                <button class="create-destination-btn btn btn-primary d-flex" data-bs-toggle="modal" data-bs-target="#create-destination" type="button">
                   <img src="/media/icons/plus.svg" alt="">
                   <div>Create</div>
                 </button>
@@ -282,6 +282,47 @@
             </table>
             
           </div>
+
+            <!-- CREATE DESTINATION MODAL -->
+
+            <div class="modal fade" id="create-destination" tabindex="-1" aria-labelledby="create-destination-label" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="create-destination-label">
+                      Create Destination
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="d-flex flex-column justify-content-center w-100">
+                      <div class="d-flex flex-column w-100 mb-3">
+                        <label for="destination">
+                          Destination
+                        </label>
+                        <input class="form-control destination-input" name="destination">
+                      </div>
+                      <div class="d-flex flex-column w-100 mb-3">
+                        <label for="tourism-type">
+                          Type of Tourism
+                        </label>
+                        <select class="form-control tourism-type-select" name="tourism-type" multiple>
+                        </select>
+                      </div>
+                      <div class="d-flex flex-column w-100 mb-3">
+                        <label for="destination-img">
+                          Image
+                        </label>
+                        <input class="form-control destination-img-input" name="destination-img" type="file">
+                      </div>
+                      <div class="modal-footer" style="padding: 0;">
+                        <button class="add-destination-btn btn btn-primary w-100" type="button">Create</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
 

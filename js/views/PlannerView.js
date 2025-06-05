@@ -1,5 +1,5 @@
 import * as User from '../models/UserModel.js';
-import { tourismType, destination } from "../init.js";
+import { tourismType, destination, flight } from "../init.js";
 
 
 /* FORMULÁRIO --------------------------------
@@ -9,37 +9,49 @@ PASSO 2 */
 /* BUSCAR DEPARTURES DA CLASSE DOS VOOS E COLOCAR NUM OBJETO */
 
 
-// PLACE OF DEPARTURE
-const departureInput = document.querySelector('.departure-input');
-const sugestionsList = document.querySelector('.sugestions-list');
 
-function autocompleteFirstMatch() {
+// PLACE OF DEPARTURE
+
+function autocompleteFirstMatch(departureInput, flights) {
   const val = departureInput.value.toLowerCase().trim();
   if (!val) return;
 
-  const firstMatch = Plan.departures.find(dep => dep.toLowerCase().startsWith(val));
+  const departures = flights.map(f => f.departure); // array só com os nomes de partida
+
+  const firstMatch = departures.find(dep => dep.toLowerCase().startsWith(val));
   if (firstMatch) {
     departureInput.value = firstMatch;
   }
 }
 
-departures.forEach(departure => {
-  const option = document.createElement('option');
-  option.value = departure;
-  sugestionsList.appendChild(option);
-});
+function listDepartures() {
+  const departureInput = document.querySelector('.departure-input');
+  const suggestionsList = document.querySelector('.sugestions-list');
 
-departureInput.addEventListener('keydown', event => {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    autocompleteFirstMatch();
-    departureInput.blur();
-  }
-});
+  const flights = Object.values(flight.getAll());
 
-departureInput.addEventListener('blur', () => {
-  autocompleteFirstMatch();
-});
+  console.log(flights);
+  flights.forEach((flight) => {
+    const option = document.createElement('option');
+    option.value = flight.departure;
+    suggestionsList.appendChild(option);
+  });
+
+  departureInput.addEventListener('keydown', event => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      autocompleteFirstMatch(departureInput, flights);
+      departureInput.blur();
+    }
+  });
+
+  departureInput.addEventListener('blur', () => {
+    autocompleteFirstMatch(departureInput, flights);
+  });
+
+}
+
+listDepartures();
 
 
 // TYPE OF TOURISM
@@ -168,7 +180,7 @@ function buttonsDestination() {
 buttonsDestination();
 
 /* 
-        STEP THREE
+    STEP THREE
 */
 
 flatpickr("#calendar", {
@@ -196,67 +208,83 @@ flatpickr("#calendar", {
 });
 
 /* STEP FOUR */
+  const cardsContainer = document.querySelector('.sugestions-grid');
 
   /* RENDER FLIGHTS BASED ON USER INPUT */
-  function renderFlights() {
 
-    const departure = departureInput.value;
+  function renderFlights() {
+    const departure = document.querySelector('.departure-input');
+    const tourismCardContainer = document.querySelector('.tourism-type-selection');
     const selectedTourismTypes = Array.from(tourismCardContainer.querySelectorAll('.tourism-type-card.selected'));
+    const destinationCardContainer = document.querySelector('.destination-card-section');
     const destination = Array.from(destinationCardContainer.querySelectorAll('.destination-card.selected'));
     const selectedDestinations = destination.map(card => card.querySelector('.destination-name').textContent);
 
     const stepFourBtn = document.querySelector('.step-four-btn');
     stepFourBtn.addEventListener('click', () => {
+      const filteredFlights = flight.getAll().filter(f => {
+        /* FILTRO DOS VOOS */
+      });
       cardsContainer.innerHTML = '';
-      Plan.flights = Plan.getFlights(departure, selectedTourismTypes, selectedDestinations);
+      renderCards();
     });
+
+    console.log('Departure:', departure);
+    console.log('Selected Tourism Types:', selectedTourismTypes.map(card => card.querySelector('div').textContent));
+    console.log('Selected Destinations:', selectedDestinations);
+    
   }
 
   renderFlights();
 
-  /* create CARDS */
-  const cardsContainer = document.querySelector('.sugestions-grid');
-  Plan.flights.forEach(flight => {
-    const flightCard = document.createElement('div');
-    flightCard.className = 'flight-card d-flex flex-column';
-    flightCard.innerHTML = `
-      <h3 class="flight-destination">
-        ${flight.destination}
-      </h3>
-      <div class="flight-info d-flex">
-        <img src="${flight.airline}" alt="" class="flight-airline-img">
-        <div class="flight-take-off">
-          <div class="time">
-            ${flight.takeOff} - ${flight.landing}
-          </div>
-          <div class="airport">
-            ${flight.airport}
+
+  /* CREATE CARDS */
+
+  function renderCards(filteredFlights) {
+    cardsContainer.innerHTML = ''; // Limpa o container antes de adicionar novos cards
+    const flightKey = Object.keys(flight.getAll()); // Obtém todos os voos
+
+    flightKey.forEach((key) => {
+      const flightCard = document.createElement('div');
+      flightCard.className = 'flight-card d-flex flex-column';
+      const f = flight.get(key);
+      flightCard.innerHTML = `
+        <h3 class="flight-destination">
+          ${f.destination}
+        </h3>
+        <div class="flight-info d-flex">
+          <img src="${f.airline}" alt="" class="flight-airline-img">
+          <div class="flight-take-off">
+            <div class="time">
+              ${f.schedules[0]} - ${f.schedules[1]}
+            </div>
+            <div class="airport">
+              ${f.airport}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="flight-bottom d-flex align-items-center">
-        <div class="price-cabin">
-          <div class="price">
-            ${flight.price}
+        <div class="flight-bottom d-flex align-items-center">
+          <div class="price-cabin">
+            <div class="price">
+              ${f.price}
+            </div>
+            <div class="cabin-sugestion">
+              ${f.cabin}
+            </div>
           </div>
-          <div class="cabin-sugestion">
-            ${flight.cabin}
+          <div class="favorite-select d-flex align-items-center">
+            <div class="favorite">
+              <img src="../media/icons/favorite.svg" alt="">
+            </div>
+            <div class="select-btn">Select</div>
           </div>
         </div>
-        <div class="favorite-select d-flex align-items-center">
-          <div class="favorite">
-            <img src="../media/icons/favorite.svg" alt="">
-          </div>
-          <div class="select-btn">Select</div>
-        </div>
+      `;
 
-      </div>
-    `;
-    cardsContainer.appendChild(flightCard);
-  });
+      cardsContainer.appendChild(flightCard);
+    });
 
-
-
+  }
 
   /* PAGINATION
 

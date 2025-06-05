@@ -26,7 +26,6 @@ function renderTourismTypes() {
   const table = document.querySelector('.tourism-type-table tbody');
 
   table.innerHTML = '';
-  console.log(tourismType.getAll());
   
   const tourismTypeKeys = Object.keys(tourismType.getAll());
   if (tourismTypeKeys.length === 0) {
@@ -52,7 +51,6 @@ function renderTourismTypes() {
       </td>
     `;
     table.appendChild(row);
-
     deleteTourismType();
   });
 }
@@ -72,23 +70,35 @@ function deleteTourismType() {
   });
 }
 
-console.log(tourismType.getAll());
-
 /* ADMIN - DESTINATION */
 
-function createDestination() {
-  const nameInput = document.querySelector('.tourism-type-name-input');
-  const imgInput = document.querySelector('.tourism-type-img-input');
-  const createBtn = document.querySelector('.create-tourism-type-btn');
+function renderTourismTypesSelect(tourismTypeInput) {
+  // gera as opções do select consoante os tipos de turismo guardados
+  const options = Object.keys(tourismType.getAll()).map(key => {
+    const type = tourismType.get(key);
+    return `<option value="${key}">${type.name}</option>`;
+  }).join('');
+  tourismTypeInput.innerHTML = options;
+}
 
+function createDestination() {
+  const destinationInput = document.querySelector('.destination-input');
+  const tourismTypeInput = document.querySelector('.tourism-type-select');
+  const imgInput = document.querySelector('.destination-img-input');
+  const createBtn = document.querySelector('.add-destination-btn');
+  
+  console.log(tourismType.getAll());
   createBtn.addEventListener('click', (event) => {
     event.preventDefault();
 
-    flight.getDestination('paris');
+    destination.add(destinationInput.value, destinationInput.value, tourismTypeInput.value, imgInput.value);
 
-    destination.add(nameInput.value.toLowerCase(), nameInput.value, imgInput.value);
     renderDestination();
+    destination.saveToLocalStorage();
+    console.log(destinationInput.value);
   });
+
+  renderTourismTypesSelect(tourismTypeInput);
 }
 
 createDestination();
@@ -97,9 +107,7 @@ function renderDestination() {
   const table = document.querySelector('.destination-table tbody');
 
   table.innerHTML = '';
-
-  const destinations = flight.getAllDestinations();
-  console.log(destinations);
+  const destinations = Object.values(destination.getAll());
   
   if (destinations.length === 0) {
     const row = document.createElement('tr');
@@ -111,29 +119,43 @@ function renderDestination() {
   destinations.forEach((des) => {
     const row = document.createElement('tr');
     row.innerHTML = `
-      <td>${des}</td>
-      <td>film</td>
+      <td>${des.destination}</td>
+      <td>${des.tourismType}</td>
       <td>
-        <button class="btn btn-primary" id="edit-btn">
+        <button class="btn btn-primary" id="edit-btn" data-key="${des.destination}">
           <img src="/media/icons/edit.svg" alt="Edit">
         </button>
-        <button class="btn btn-danger" id="delete-btn">
+        <button class="delete-destination btn btn-danger" id="delete-btn" data-key="${des.destination}">
           <img src="/media/icons/delete.svg" alt="Delete">
         </button>
       </td>
     `;
     table.appendChild(row);
+
+    deleteDestination();
   });
 }
 
 renderDestination();
+
+function deleteDestination() {
+  const deleteBtns = document.querySelectorAll('.delete-destination');
+  deleteBtns.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+    event.preventDefault();
+    const key = btn.getAttribute('data-key');
+    destination.del(key);
+    renderDestination();
+    destination.saveToLocalStorage();
+    });
+  });
+}
 
 /* ADMIN -FLIGHTS */
 
 function renderFlights() {
   const table = document.querySelector('.flight-table tbody');
   table.innerHTML = '';
-  console.log(flight.getAll());
   
   const flightKeys = Object.keys(flight.getAll());
   if (flightKeys.length === 0) {
@@ -146,7 +168,6 @@ function renderFlights() {
   flightKeys.forEach((key) => {
     const f = flight.get(key);
 
-    console.log('Schedules:', f);
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>${f.departure}</td>
@@ -176,7 +197,7 @@ renderFlights();
 function createFlight() {
   const airlineInput = document.querySelector('.airline-input');
   const departureInput = document.querySelector('.departure-input');
-  const destinationInput = document.querySelector('.destination-input');
+  const destinationInput = document.querySelector('.destination-input-flight');
   const dateTimeDepartureInput = document.querySelector('.date-time-departure-input');
   const dateTimeArrivalInput = document.querySelector('.date-time-arrival-input');
   const airportInput = document.querySelector('.airport-input');
@@ -200,6 +221,7 @@ function createFlight() {
     );
 
     renderFlights();
+    flight.saveToLocalStorage();
   });
 
 }

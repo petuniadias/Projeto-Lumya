@@ -29,8 +29,9 @@ export const tourismType = new TourismType({
 console.log(tourismType.getAll());
 
 export const destination = new Destination({
-  'paris': 
-    { destination: 'Paris', 
+  'Paris, France': 
+    { name: 'Paris, France',
+      tourismType: ['cultural', 'film'],
       img: '/media/img/destination-img.png', 
       status: true 
     }
