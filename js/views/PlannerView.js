@@ -1,6 +1,8 @@
 import * as User from '../models/UserModel.js';
 import { tourismType, destination, flight } from "../init.js";
 
+let selectedStartDate = null;
+let selectedEndDate = null;
 
 /* FORMULÁRIO --------------------------------
 
@@ -30,7 +32,6 @@ function listDepartures() {
 
   const flights = Object.values(flight.getAll());
 
-  console.log(flights);
   flights.forEach((flight) => {
     const option = document.createElement('option');
     option.value = flight.departure;
@@ -48,7 +49,6 @@ function listDepartures() {
   departureInput.addEventListener('blur', () => {
     autocompleteFirstMatch(departureInput, flights);
   });
-
 }
 
 listDepartures();
@@ -195,7 +195,7 @@ flatpickr("#calendar", {
       const oneDay = 24 * 60 * 60 * 1000;
       const days = Math.round((endDate - startDate) / oneDay) + 1;
 
-      const options = { year: "numeric", month: "long", day: "numeric" };
+      const options = { year: "numeric", month: "long", day: "numeric"};
       const startText = startDate.toLocaleDateString("en-GB", options);
       const endText = endDate.toLocaleDateString("en-GB", options);
 
@@ -203,7 +203,9 @@ flatpickr("#calendar", {
       document.querySelector(".date-range").textContent = `${startText} - ${endText}`;
 
     }
-    console.log("Selected:", selectedDates); 
+
+    selectedStartDate = selectedDates[0];
+    selectedEndDate = selectedDates[1];
   }
 });
 
@@ -213,26 +215,69 @@ flatpickr("#calendar", {
   /* RENDER FLIGHTS BASED ON USER INPUT */
 
   function renderFlights() {
+
+    //INPUT DO UTILIZADOR
     const departure = document.querySelector('.departure-input');
     const tourismCardContainer = document.querySelector('.tourism-type-selection');
     const selectedTourismTypes = Array.from(tourismCardContainer.querySelectorAll('.tourism-type-card.selected'));
-    const destinationCardContainer = document.querySelector('.destination-card-section');
-    const destination = Array.from(destinationCardContainer.querySelectorAll('.destination-card.selected'));
-    const selectedDestinations = destination.map(card => card.querySelector('.destination-name').textContent);
-
     const stepFourBtn = document.querySelector('.step-four-btn');
+
     stepFourBtn.addEventListener('click', () => {
-      const filteredFlights = flight.getAll().filter(f => {
-        /* FILTRO DOS VOOS */
+
+      // INPUT DO UTILIZADOR
+      const selectedDestination = document.querySelector('.destination-card.selected .destination-name').textContent; 
+      /**/
+
+      const selectedFlights = flight.getFlightByInput(selectedStartDate, selectedDestination, departure.value);
+      if(selectedFlights.length === 0) {
+        alert('o voo nao existe');
+        return;
+      }
+      renderCards(selectedFlights);
+
+      /*
+      console.log(flightStartDate);
+      console.log(flightStartDate === selectedDate);
+      
+      console.log(`INPUT DO UTILIZADOR: ${departure.value}, ${selectedDestinations}, ${selectedDate}`);
       });
+      */
+      
+      /*
       cardsContainer.innerHTML = '';
-      renderCards();
+      console.log(selectedDestinations, filteredFlights);
+      renderCards(filteredFlights);
+
+      */
+
+      // comparar os valores e só renderizar os voos que correspondem aos critérios
+
+      /*
+      const allFlights = flight.getAll();
+      const matchingFlights = [];
+
+      for(const key in allFlights) {
+        
+        const f = allFlights[key];
+        
+        const flightDeparture = f.departure;
+        const flightDestination = f.destination.destination;
+        console.log(f);
+        const hasMatchingDate = f.schedules.some(schedule => {
+          const flightStartDate = new Date(schedule).toLocaleDateString('en-GB', date);
+          return flightStartDate === selectedDate;
+        });
+
+        if (flightDeparture.includes(departure.value) && flightDestination.includes(selectedDestination) && hasMatchingDate) {
+          matchingFlights.push(f);
+        }
+      }
+      
+
+      console.log(matchingFlights);
+      */
     });
 
-    console.log('Departure:', departure);
-    console.log('Selected Tourism Types:', selectedTourismTypes.map(card => card.querySelector('div').textContent));
-    console.log('Selected Destinations:', selectedDestinations);
-    
   }
 
   renderFlights();
@@ -240,17 +285,15 @@ flatpickr("#calendar", {
 
   /* CREATE CARDS */
 
-  function renderCards(filteredFlights) {
+  function renderCards(selectedFlight) {
     cardsContainer.innerHTML = ''; // Limpa o container antes de adicionar novos cards
-    const flightKey = Object.keys(flight.getAll()); // Obtém todos os voos
 
-    flightKey.forEach((key) => {
+    selectedFlight.forEach((f) => {
       const flightCard = document.createElement('div');
       flightCard.className = 'flight-card d-flex flex-column';
-      const f = flight.get(key);
       flightCard.innerHTML = `
         <h3 class="flight-destination">
-          ${f.destination}
+          ${f.destination.destination}
         </h3>
         <div class="flight-info d-flex">
           <img src="${f.airline}" alt="" class="flight-airline-img">

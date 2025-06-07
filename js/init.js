@@ -44,9 +44,12 @@ export const flight = new Flight({
     tap: {
       airline: 'TAP Air Portugal',
       departure: 'Lisbon, Portugal',
-      destination: 'New York, USA',
+      destination: {
+        destination: 'New York, USA',
+        tourismType: ['cultural', 'art']
+      },
       cabin: 'Economy',
-      schedules: ['2025-05-09 08:00:00', '2025-05-09 11:00:00'],
+      schedules: ['2025-06-20 08:00:00', '2025-06-20 11:00:00'],
       airport: 'Lisbon Airport',
       price: 500,
       status: true
@@ -54,9 +57,12 @@ export const flight = new Flight({
     iberia: {
       airline: 'Iberia',
       departure: 'Madrid, Spain',
-      destination: 'New York, USA',
+      destination: {
+        destination: 'New York, USA',
+        tourismType: ['cultural', 'art']
+      },
       cabin: 'Economy',
-      schedules: ['2025-05-09 09:00:00', '2025-05-09 12:00:00'],
+      schedules: ['2025-06-20 09:00:00', '2025-05-20 12:00:00'],
       airport:'Madrid-Barajas Airport',
       price: 550,
       status: true

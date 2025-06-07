@@ -143,7 +143,7 @@ export class Destination {
     localStorage.setItem(this.localStorageDestinationKey, JSON.stringify(this.destination));
   }
 
-  add(key, destination, tourismType = [], flights = [], img, status = true) {
+  add(key, destination, tourismType = [], img, status = true) {
     if(this.destination[key]) {
       throw Error(`Destination with key "${key}" already exists!`);
     }
@@ -151,7 +151,6 @@ export class Destination {
     this.destination[key] = {
       destination,
       tourismType,
-      flights,
       img,
       status
     };
@@ -203,6 +202,16 @@ export class Destination {
       }
       return filteredDestination;
     }
+  }
+
+  checkDestination(destination) { //RETORNA TRUE SE O DESTINO EXISTE RETORNA FALSE SE NAO EXISTE
+
+    for(const key in this.destination) {
+      if (destination === this.destination[key].destination) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
@@ -306,16 +315,35 @@ export class Flight {
     }
   }
 
-  getDestination(key) { // RETORNA O DESTINO DE UM VOO
-    if (!this.flight[key]) {
-      throw Error(`Flight with key "${key}" does not exist!`);
+  getFlightByInput(selectedStartDate, selectedDestination, selectedDeparture) {
+    console.log(selectedStartDate, selectedDestination, selectedDeparture);
+    const date = { 
+      year: 'numeric', 
+      month: '2-digit', 
+      day: '2-digit' 
+    };
+
+    const matchingFlights = [];
+
+    for(const key in this.flight) {
+
+      const flightStartDate = new Date(this.flight[key].schedules[0]).toLocaleDateString('en-GB', date);
+      const selectedDate = new Date(selectedStartDate).toLocaleDateString('en-GB', date); 
+      console.log(selectedStartDate);
+      console.log(flightStartDate, selectedDate);
+      if (this.flight[key].status) {
+        if (this.flight[key].departure === selectedDeparture && this.flight[key].destination.destination === selectedDestination && flightStartDate === selectedDate) {
+          matchingFlights.push(this.flight[key]);
+          
+        }
+      }
+      
     }
-    return this.flight[key].destination;
+    return matchingFlights;
   }
 
-  getAllDestinations() {
-  return Object.values(this.flight).map(f => f.destination.destination);
-  }
+  
+
 }
 
 

@@ -91,6 +91,11 @@ function createDestination() {
   createBtn.addEventListener('click', (event) => {
     event.preventDefault();
 
+    if(destination.checkDestination(destinationInput.value)) {
+      alert('Destination already exists');
+      return;
+    }
+    
     destination.add(destinationInput.value, destinationInput.value, tourismTypeInput.value, imgInput.value);
 
     renderDestination();
