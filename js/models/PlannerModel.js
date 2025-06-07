@@ -308,15 +308,27 @@ export class Flight {
       const filteredFlight = {};
       for (const key in this.flight) {
         if (this.flight[key].status === status) {
-          filteredFlight[key] = this.flight[key]; // TEM DE TER A MESMA CHAVE
+          filteredFlight[key] = this.flight[key];
         }
       }
       return filteredFlight;
     }
   }
 
-  getFlightByInput(selectedStartDate, selectedDestination, selectedDeparture) {
-    console.log(selectedStartDate, selectedDestination, selectedDeparture);
+
+  checkTourismType(type = []) {
+    for (const key in this.flight) {
+      for (const tourismType of type) {
+        if (!this.flight[key].destination.tourismType.includes(tourismType)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  getFlightByInput(selectedStartDate, selectedDestination, selectedDeparture, selectedTourismTypeKeys) {
+    console.log(selectedStartDate, selectedDestination, selectedDeparture, selectedTourismTypeKeys);
     const date = { 
       year: 'numeric', 
       month: '2-digit', 
@@ -329,14 +341,20 @@ export class Flight {
 
       const flightStartDate = new Date(this.flight[key].schedules[0]).toLocaleDateString('en-GB', date);
       const selectedDate = new Date(selectedStartDate).toLocaleDateString('en-GB', date); 
-      console.log(selectedStartDate);
-      console.log(flightStartDate, selectedDate);
+      
       if (this.flight[key].status) {
-        if (this.flight[key].departure === selectedDeparture && this.flight[key].destination.destination === selectedDestination && flightStartDate === selectedDate) {
+        if (
+          this.flight[key].departure === selectedDeparture &&
+          this.flight[key].destination.destination === selectedDestination &&
+          flightStartDate === selectedDate &&
+          this.checkTourismType(selectedTourismTypeKeys)
+        ) {
           matchingFlights.push(this.flight[key]);
-          
         }
       }
+      console.log('MATCHING FLIGHTS:', matchingFlights);
+
+
       
     }
     return matchingFlights;

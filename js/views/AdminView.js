@@ -95,7 +95,7 @@ function createDestination() {
       alert('Destination already exists');
       return;
     }
-    
+
     destination.add(destinationInput.value, destinationInput.value, tourismTypeInput.value, imgInput.value);
 
     renderDestination();
@@ -199,6 +199,16 @@ function renderFlights() {
 
 renderFlights();
 
+
+function renderDestinationSelect(destinationInput) {
+  // gera as opções do select consoante os tipos de turismo guardados
+  const options = Object.keys(destination.getAll()).map(key => {
+    const des = destination.get(key);
+    return `<option value="${key}">${des.destination}</option>`;
+  }).join('');
+  destinationInput.innerHTML = options;
+}
+
 function createFlight() {
   const airlineInput = document.querySelector('.airline-input');
   const departureInput = document.querySelector('.departure-input');
@@ -210,7 +220,8 @@ function createFlight() {
   const priceInput = document.querySelector('.price-input');
 
   const createFlightBtn = document.querySelector('.create-flight-btn');
-
+  renderDestinationSelect(destinationInput);
+  
   createFlightBtn.addEventListener('click', (event) => {
     event.preventDefault();
 

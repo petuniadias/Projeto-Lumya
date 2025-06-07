@@ -66,7 +66,7 @@ function renderTourismTypes() {
     card.className = 'tourism-type-card d-flex flex-column align-items-center';
     card.innerHTML = `
       <img src="${type.img}" alt="${type.name}">
-      <div>${type.name}</div>
+      <div class="tourism-type-name">${type.name}</div>
     `;
 
     card.addEventListener('click', () => {
@@ -218,64 +218,25 @@ flatpickr("#calendar", {
 
     //INPUT DO UTILIZADOR
     const departure = document.querySelector('.departure-input');
-    const tourismCardContainer = document.querySelector('.tourism-type-selection');
-    const selectedTourismTypes = Array.from(tourismCardContainer.querySelectorAll('.tourism-type-card.selected'));
     const stepFourBtn = document.querySelector('.step-four-btn');
+
+
 
     stepFourBtn.addEventListener('click', () => {
 
       // INPUT DO UTILIZADOR
       const selectedDestination = document.querySelector('.destination-card.selected .destination-name').textContent; 
-      /**/
+      const selectedTourismTypes = document.querySelectorAll('.tourism-type-card.selected .tourism-type-name');
+      const selectedTourismTypeNames  = Array.from(selectedTourismTypes).map(tt => tt.textContent);
 
-      const selectedFlights = flight.getFlightByInput(selectedStartDate, selectedDestination, departure.value);
+      console.log('SELECTED TOURISM TYPES SELECTED:', selectedTourismTypeNames);
+
+      const selectedFlights = flight.getFlightByInput(selectedStartDate, selectedDestination, departure.value, selectedTourismTypeNames);
       if(selectedFlights.length === 0) {
         alert('o voo nao existe');
         return;
       }
       renderCards(selectedFlights);
-
-      /*
-      console.log(flightStartDate);
-      console.log(flightStartDate === selectedDate);
-      
-      console.log(`INPUT DO UTILIZADOR: ${departure.value}, ${selectedDestinations}, ${selectedDate}`);
-      });
-      */
-      
-      /*
-      cardsContainer.innerHTML = '';
-      console.log(selectedDestinations, filteredFlights);
-      renderCards(filteredFlights);
-
-      */
-
-      // comparar os valores e só renderizar os voos que correspondem aos critérios
-
-      /*
-      const allFlights = flight.getAll();
-      const matchingFlights = [];
-
-      for(const key in allFlights) {
-        
-        const f = allFlights[key];
-        
-        const flightDeparture = f.departure;
-        const flightDestination = f.destination.destination;
-        console.log(f);
-        const hasMatchingDate = f.schedules.some(schedule => {
-          const flightStartDate = new Date(schedule).toLocaleDateString('en-GB', date);
-          return flightStartDate === selectedDate;
-        });
-
-        if (flightDeparture.includes(departure.value) && flightDestination.includes(selectedDestination) && hasMatchingDate) {
-          matchingFlights.push(f);
-        }
-      }
-      
-
-      console.log(matchingFlights);
-      */
     });
 
   }
