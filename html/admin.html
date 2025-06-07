@@ -416,6 +416,191 @@
 
       </div>
 
+      <!-- MANAGE COUNTRIES VISITED -->
+      <div class="accordion-item">
+
+        <h3 class="accordion-header" id="heading-manage-countries-visited">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#manage-countries-visited" aria-expanded="true">
+            Countries Visited
+          </button>
+        </h3>
+        
+        <div id="manage-countries-visited" class="accordion-collapse collapse" aria-labelledby="heading-manage-countries-visited" data-bs-parent="#admin-tables">
+          <div class="accordion-body">
+            <div class="top-accordion d-flex align-items-center justify-content-between">
+              <div class="search d-flex">
+                <img src="/media/icons/search.svg" alt="">
+                <input type="text">
+              </div>
+
+              <div class="filters-create">
+                <button class="create-btn btn btn-primary d-flex" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create-countries-visited">
+                  <img src="/media/icons/plus.svg" alt="">
+                  <div>Create</div>
+                </button>
+              </div>
+            </div>
+
+
+            <table class="countries-visited-table w-100">
+              <thead>
+                <tr>
+                  <th scope="col">Country</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Points</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Japan</td>
+                  <td>Img</td>
+                  <td>100</td>
+                  <td>
+                    <button class="btn btn-primary" id="edit-btn">
+                      <img src="/media/icons/edit.svg" alt="">
+                    </button>
+                    <button class="tourism-type-delete-btn btn btn-danger" id="delete-btn">
+                      <img src="/media/icons/delete.svg" alt="">
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+          </div>
+
+            <!-- CREATE TOURISM TYPE MODAL -->
+
+            <div class="modal fade" id="create-tourism-type" tabindex="-1" aria-labelledby="create-tourism-type-label" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="create-tourism-type-label">
+                      Create Country Visited
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="d-flex flex-column justify-content-center w-100">
+                      <div class="d-flex flex-column w-100 mb-3">
+                        <label for="tourism-type">
+                          Type of Tourism
+                        </label>
+                        <input class="form-control tourism-type-name-input" name="tourism-type">
+                      </div>
+                      <div class="d-flex flex-column w-100 mb-3">
+                        <label for="tourism-type-img">
+                          Image
+                        </label>
+                        <input class="form-control tourism-type-img-input" name="tourism-type" type="file">
+                      </div>
+                      <div class="modal-footer" style="padding: 0;">
+                        <button class="create-tourism-type-btn btn btn-primary w-100" type="button">Create</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+      </div>
+
+      <!-- MANAGE ACHIEVEMENTS -->
+      <div class="accordion-item">
+
+        <h3 class="accordion-header" id="heading-manage-achievements">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#manage-achievements" aria-expanded="true">
+            Achievements
+          </button>
+        </h3>
+        
+        <div id="manage-achievements" class="accordion-collapse collapse" aria-labelledby="heading-manage-achievements" data-bs-parent="#admin-tables">
+          <div class="accordion-body">
+            <div class="top-accordion d-flex align-items-center justify-content-between">
+              <div class="search d-flex">
+                <img src="/media/icons/search.svg" alt="">
+                <input type="text">
+              </div>
+
+              <div class="filters-create">
+                <button class="create-btn btn btn-primary d-flex" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create-achievements">
+                  <img src="/media/icons/plus.svg" alt="">
+                  <div>Create</div>
+                </button>
+              </div>
+            </div>
+
+
+            <table class="achievements-table w-100">
+              <thead>
+                <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Points</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Japan</td>
+                  <td>Img</td>
+                  <td>Img</td>
+                  <td>100</td>
+                  <td>
+                    <button class="btn btn-primary" id="edit-btn">
+                      <img src="/media/icons/edit.svg" alt="">
+                    </button>
+                    <button class="tourism-type-delete-btn btn btn-danger" id="delete-btn">
+                      <img src="/media/icons/delete.svg" alt="">
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+          </div>
+
+            <!-- CREATE TOURISM TYPE MODAL -->
+
+            <div class="modal fade" id="create-tourism-type" tabindex="-1" aria-labelledby="create-tourism-type-label" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="create-tourism-type-label">
+                      Create Country Visited
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="d-flex flex-column justify-content-center w-100">
+                      <div class="d-flex flex-column w-100 mb-3">
+                        <label for="tourism-type">
+                          Type of Tourism
+                        </label>
+                        <input class="form-control tourism-type-name-input" name="tourism-type">
+                      </div>
+                      <div class="d-flex flex-column w-100 mb-3">
+                        <label for="tourism-type-img">
+                          Image
+                        </label>
+                        <input class="form-control tourism-type-img-input" name="tourism-type" type="file">
+                      </div>
+                      <div class="modal-footer" style="padding: 0;">
+                        <button class="create-tourism-type-btn btn btn-primary w-100" type="button">Create</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+      </div>
     </div>
   </main>
 

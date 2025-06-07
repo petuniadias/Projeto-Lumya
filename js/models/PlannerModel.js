@@ -362,3 +362,26 @@ export class Flight {
 
 }
 
+/* COUNTRIES VISITED */
+
+class CountryVisited {
+  destination = new Destination(); // INSTANCIA O DESTINO PARA PODER USAR OS DESTINOS
+  destinationKey = this.destination.getAll(); // PEGA TODOS OS DESTINOS
+  countryVisited = {};
+
+  constructor(countryVisited = {}) {
+    this.countryVisited = countryVisited;
+  }
+
+  add(key, destinationKey, img, status = true) {
+    if (this.countryVisited[key]) {
+      throw Error(`Country with key "${key}" already exists!`);
+    }
+
+    this.countryVisited[key] = {
+      destinationKey,
+      img,
+      status
+    };
+  }
+}
