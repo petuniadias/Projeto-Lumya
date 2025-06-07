@@ -360,9 +360,5 @@ export class Flight {
     return matchingFlights;
   }
 
-  
-
 }
-
-
 

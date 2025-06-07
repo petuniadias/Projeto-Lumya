@@ -246,6 +246,11 @@ flatpickr("#calendar", {
 
   /* CREATE CARDS */
 
+function formatCurrency(priceCents) {
+  return (Math.round(priceCents) / 100).toFixed(2);
+}
+
+
   function renderCards(selectedFlight) {
     cardsContainer.innerHTML = ''; // Limpa o container antes de adicionar novos cards
 
@@ -270,7 +275,7 @@ flatpickr("#calendar", {
         <div class="flight-bottom d-flex align-items-center">
           <div class="price-cabin">
             <div class="price">
-              ${f.price}
+              ${formatCurrency(f.price)} €
             </div>
             <div class="cabin-sugestion">
               ${f.cabin}
