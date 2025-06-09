@@ -147,6 +147,7 @@ button {
 }
 
 .achievements-section {
+  flex-wrap: nowrap;
   background-color: white;
   border: 1px solid #02304765;
   box-shadow: inset 0px 2px 4px 0px rgba(2, 48, 71, 0.2);

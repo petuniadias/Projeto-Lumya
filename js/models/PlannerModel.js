@@ -378,7 +378,7 @@ export class Cart {
   }
 
   addToCart(key, title, productType, schedules = [], destination, price, status = true ) {
-    cartItems[key] = {
+    this.cartItems[key] = {
       title,
       productType,
       schedules,

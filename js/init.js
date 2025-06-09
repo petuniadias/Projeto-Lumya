@@ -1,5 +1,4 @@
-import { TourismType, Destination, Flight } from './models/PlannerModel.js';
-
+import { TourismType, Destination, Flight, Cart } from './models/PlannerModel.js';
 
 initdata();
 
@@ -70,6 +69,9 @@ export const flight = new Flight({
     }
   });
 
+/* CART */
+
+export const cart = new Cart();
 
 /* COUNTRIES VISITED */
 

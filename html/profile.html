@@ -47,6 +47,7 @@
       </div>
 
       <div class="collectables nav nav-pills" role="tablist">
+        <!-- ACHIEVEMENT MAIN TAB -->
         <button class="achievements show active" data-bs-toggle="pill" data-bs-target="#achievements" role="tab" aria-selected="true">
           <div class="img-container">
             <img src="../media/icons/trophy.svg" alt="">
@@ -66,6 +67,8 @@
           </div>
 
         </button>
+
+        <!-- COUNTRIES VISITED MAIN TAB -->
         <button class="countries-visited" data-bs-toggle="pill" data-bs-target="#countries-visited" role="tab" aria-selected="false">
           <div class="img-container">
             <img src="../media/icons/countries-visited.svg" alt="">
@@ -163,6 +166,8 @@
               </div>
             </button>
           </div>
+
+          <!-- ACHIEVEMENTS TAB CONTENT -->
 
           <div class="tab-content achievements-cards-category-content" role="tablist">
             <div class="scroll-btns">
@@ -298,7 +303,7 @@
         <div class="countries-visited-content tab-pane fade" id="countries-visited" role="tabpanel">
 
           <div class="achievements-section nav nav-pills" role="tablist">
-            <button class="achievements-categories" data-bs-toggle="pill" data-bs-target="#asia-category" role="tab">
+            <button class="achievements-categories show active" data-bs-toggle="pill" data-bs-target="#asia-category" role="tab">
               <div class="achievement-title-box">
                 <div class="countries-visited-title">Asia</div>
                 <div class="countries-visited-total">10</div>
@@ -372,18 +377,43 @@
             </button>
           </div>
 
+          <!-- COUNTRIES VISITED TAB CONTENT -->
+
           <div class="tab-content achievements-cards-category-content" role="tablist">
-            <div class="achievement-cards-section tab-pane show active d-flex" id="asia-category" role="tabpanel">
+            <!-- SCROLL BUTTONS -->
+
+            <div class="scroll-btns" style="z-index: 1;">
+              <div class="scroll-btn-left">
+                <img src="../media/icons/arrow.svg" alt="" class="arrow-right">
+              </div>
+              <div class="scroll-btn-right">
+                <img src="../media/icons/arrow.svg" alt="" class="arrow-right">
+              </div>
             </div>
-            <div class="achievement-cards-section tab-pane d-flex" id="europe-category" role="tabpanel">
+
+            <div class="tab-pane show active" id="asia-category" role="tabpanel">
+              <div class="achievement-cards-section asia-category d-flex" role="tabpanel">
+              </div>
             </div>
-            <div class="achievement-cards-section tab-pane d-flex" id="africa-category" role="tabpanel">
+            <div class="tab-pane show active" id="europe-category" role="tabpanel">
+              <div class="achievement-cards-section europe-category d-flex" role="tabpanel">
+              </div>
             </div>
-            <div class="achievement-cards-section tab-pane d-flex" id="south-america-category" role="tabpanel">
+            <div class="tab-pane show active" id="africa-category" role="tabpanel">
+              <div class="achievement-cards-section africa-category d-flex" role="tabpanel">
+              </div>
             </div>
-            <div class="achievement-cards-section tab-pane d-flex" id="north-america-category" role="tabpanel">
+            <div class="tab-pane show active" id="south-america-category" role="tabpanel">
+              <div class="achievement-cards-section south-america-category d-flex" role="tabpanel">
+              </div>
             </div>
-            <div class="achievement-cards-section tab-pane d-flex" id="oceania-category" role="tabpanel">
+            <div class="tab-pane show active" id="north-america-category" role="tabpanel">
+              <div class="achievement-cards-section north-america-category d-flex" role="tabpanel">
+              </div>
+            </div>
+            <div class="tab-pane show active" id="oceania-category" role="tabpanel">
+              <div class="achievement-cards-section oceania-category d-flex" role="tabpanel">
+              </div>
             </div>
           </div>
         </div>

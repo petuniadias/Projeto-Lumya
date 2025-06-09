@@ -18,7 +18,12 @@ loginBtn.addEventListener('click', (event) => {
       password.value
     );
     alert('Login feito com sucesso!');
-    window.location.href = "../index.html";
+    window.location.href = "../index.html"
+    if (username.value === 'admin') {
+      window.location.href = "../html/admin.html";
+    } else {
+      window.location.href = "../index.html";
+    }
   } catch (err) {
     alert(err.message);
   }

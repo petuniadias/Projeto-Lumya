@@ -8,7 +8,7 @@ function renderCountryVisitedCards() {
   countriesVisited.forEach((country) => {
     // Transforma o nome do continente num ID válido (ex: "South America" -> "south-america")
     const continentId = country.continent.toLowerCase().replace(/\s+/g, '-');
-    const containerSelector = `#${continentId}-category`;
+    const containerSelector = `.${continentId}-category`;
     const countryVisitedCardContainer = document.querySelector(containerSelector);
 
     if (countryVisitedCardContainer) {

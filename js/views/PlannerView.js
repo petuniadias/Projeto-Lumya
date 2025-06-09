@@ -1,5 +1,5 @@
 import * as User from '../models/UserModel.js';
-import { tourismType, destination, flight } from "../init.js";
+import { tourismType, destination, flight, cart } from "../init.js";
 
 let selectedStartDate = null;
 let selectedEndDate = null;
@@ -313,12 +313,23 @@ function formatCurrency(priceCents) {
           newCheckMark.classList.add('checked');
           selectBtn.prepend(newCheckMark);
           selectTextForCard.textContent = 'Selected';
-          addToCart();
+          handleAddToCart(f);
+          console.log(cart);
         }
       });
     }
-
   });
+}
+
+function handleAddToCart(flightData) {
+  cart.addToCart(
+    flightData.departure,
+    flightData.schedules,
+    flightData.destination.destination,
+    flightData.price
+  );
+
+  console.log(`Voo adicionado ao carrinho:`, flightData);
 }
 
 

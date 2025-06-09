@@ -187,12 +187,13 @@ function renderFlights() {
         <button class="btn btn-primary" id="edit-btn" data-key="${key}">
           <img src="/media/icons/edit.svg" alt="">
         </button>
-        <button class="btn btn-danger" id="delete-btn" data-key="${key}">
+        <button class="delete-flight-btn btn btn-danger" id="delete-btn" data-key="${key}">
           <img src="/media/icons/delete.svg" alt="">
         </button>
       </td>
     `;
     table.appendChild(row);
+    deleteFlight(); 
   });
 
 }
@@ -243,4 +244,17 @@ function createFlight() {
 }
 
 createFlight();
+
+function deleteFlight() {
+  const deleteBtns = document.querySelectorAll('.delete-flight-btn');
+  deleteBtns.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+      event.preventDefault();
+      const key = btn.getAttribute('data-key');
+      flight.del(key);
+      renderFlights();
+      flight.saveToLocalStorage();
+    });
+  });
+}
 
