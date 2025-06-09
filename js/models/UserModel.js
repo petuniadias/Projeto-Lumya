@@ -1,3 +1,5 @@
+import { destination } from "../init.js";
+
 let users;
 
 /* esta função vai existir sempre no MODEL
@@ -61,18 +63,67 @@ class User {
   password = '';
   points = 0;
   tripHistory = [];
+  pendingTrips = [];
   // tripHistory = []; // Array para guardar histórico de viagens do utilizador
 
-  constructor(name, username, mail, password, points, tripHistory = []) {
+  constructor(name, username, mail, password, points, tripHistory, pendingTrips) {
     this.name = name;
     this.username = username;
     this.mail = mail;
     this.password = password;
     this.points = points;
     this.tripHistory = tripHistory;
+    this.pendingTrips = pendingTrips;
   }
 
-  addTrip(trip) {
-    this.tripHistory.push(trip);
+
+  /* POINTS */
+	
+  getPoints() {
+    return this.points;
   }
+
+  addPoints(value) {
+    this.points += value;
+  }
+
+
+  /* TRIPS */
+
+  getDestinationFromTripHistory() {
+    const destinations = [];
+    this.tripHistory.forEach((trip) => {
+      destinations.push(trip.destination);
+    });
+    return destinations;
+  }
+
+  getPendingTrips() {
+    return this.pendingTrips;
+  }
+
+  addPendingTrip(trip) {
+    this.pendingTrips.push(trip);
+  }
+
+  addTripToHistory(trip) {
+
+    this.tripHistory.push({
+      schedules: trip.schedules,
+      destination: {
+        country: trip.destination.country,
+        img: trip.destination.img
+      }
+    });
+  }
+
+  countriesVisited() {
+    const countries = [];
+    this.tripHistory.forEach((trip) => {
+      countries.push(trip.destination.country);
+  });
+    return countries;
+  }
+
 }
+

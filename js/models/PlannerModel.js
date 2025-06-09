@@ -362,26 +362,43 @@ export class Flight {
 
 }
 
-/* COUNTRIES VISITED */
+/* STEP FIVE */
 
-class CountryVisited {
-  destination = new Destination(); // INSTANCIA O DESTINO PARA PODER USAR OS DESTINOS
-  destinationKey = this.destination.getAll(); // PEGA TODOS OS DESTINOS
-  countryVisited = {};
+export class Cart {
 
-  constructor(countryVisited = {}) {
-    this.countryVisited = countryVisited;
+  cartItems = {};
+  localStorageCartKey = 'cartKeys';
+
+  constructor(cartItems = {}) {
+    this.cartItems = cartItems;
   }
 
-  add(key, destinationKey, img, status = true) {
-    if (this.countryVisited[key]) {
-      throw Error(`Country with key "${key}" already exists!`);
+  saveToLocalStorage() {
+    localStorage.setItem(this.localStorageCartKey, JSON.stringify(this.cartItems));
+  }
+
+  addToCart(key, title, productType, schedules = [], destination, price, status = true ) {
+    cartItems[key] = {
+      title,
+      productType,
+      schedules,
+      destination,
+      price,
+      status
     }
 
-    this.countryVisited[key] = {
-      destinationKey,
-      img,
-      status
-    };
+    this.saveToLocalStorage();
+
   }
+
+  del(key) {
+    if (!this.cartItems[key]) {
+    throw Error(`Cart with key "${key}" does not exist!`);
+    }
+    delete this.cartItems[key];
+    this.saveToLocalStorage();
+  }
+
 }
+
+

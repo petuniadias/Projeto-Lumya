@@ -285,15 +285,43 @@ function formatCurrency(priceCents) {
             <div class="favorite">
               <img src="../media/icons/favorite.svg" alt="">
             </div>
-            <div class="select-btn">Select</div>
+            <div class="select-btn">
+              <div>Select</div>
+            </div>
           </div>
         </div>
       `;
 
       cardsContainer.appendChild(flightCard);
-    });
 
-  }
+      
+    /* SELECT FLIGHT */
+
+    const selectBtn = flightCard.querySelector('.select-btn');
+    const selectTextForCard = flightCard.querySelector('.select-btn div'); // O div que contém o texto
+    
+    if (selectBtn && selectTextForCard) {
+      selectBtn.addEventListener('click', () => {
+        const checked = selectBtn.querySelector('img.checked');
+        
+        if (checked) {
+          checked.remove();
+          selectTextForCard.textContent = 'Select';
+        } else {
+          const newCheckMark = document.createElement('img');
+          newCheckMark.src = '../media/icons/selected.svg';
+          newCheckMark.classList.add('checked');
+          selectBtn.prepend(newCheckMark);
+          selectTextForCard.textContent = 'Selected';
+          addToCart();
+        }
+      });
+    }
+
+  });
+}
+
+
 
   /* PAGINATION
 
@@ -394,3 +422,6 @@ function formatCurrency(priceCents) {
 
   element(totalPages, 1);
   */
+
+/* STEP FIVE */
+

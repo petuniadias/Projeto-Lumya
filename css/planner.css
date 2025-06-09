@@ -625,12 +625,22 @@ label {
 }
 
 .select-btn {
-  padding: 7px 20px;
+  display: flex;
+  gap: 5px;
+  padding: 7px 15px;
   border-radius: 10px;
   border: 1px solid #02304765;
   background-color: #FFB703;
   font-weight: 500;
   cursor: pointer;
+}
+
+.flight-card .select-btn img.checked {
+  display: flex;
+}
+
+.flight-card .select-btn img:not(.checked) {
+  display: none;
 }
 
 /* STEP FIVE */

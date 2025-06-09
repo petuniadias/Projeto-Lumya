@@ -200,6 +200,37 @@ button {
   flex: 0 0 188px;
 }
 
+.achievement-card.country.disabled {
+  opacity: 0.65; /* Torna o card mais transparente */
+  pointer-events: none; /* Impede interações do rato (cliques, hover, etc.) */
+  cursor: default; /* Mostra o cursor padrão em vez de, por exemplo, uma mãozinha */
+}
+
+.achievement-card.country .img-container {
+  width: 100px; /* Define a largura desejada para o contentor da imagem */
+  height: 75px; /* Define a altura desejada para o contentor da imagem */
+  overflow: hidden; /* Garante que a imagem não transborde do contentor */
+  margin-bottom: 10px; /* Espaço entre a imagem e o título do país */
+  display: flex; /* Para centralizar a imagem se ela for menor que o container */
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px; /* Opcional: para arredondar as bordas do container da imagem */
+}
+
+.achievement-card.country .img-container img {
+  width: 100%; /* Faz a imagem ocupar toda a largura do seu contentor (.img-container) */
+  height: 100%; /* Faz a imagem ocupar toda a altura do seu contentor (.img-container) */
+  object-fit: cover; /* Esta propriedade é muito útil:
+                        - 'cover': Redimensiona a imagem para manter a sua proporção enquanto preenche
+                                   todo o contentor. Alguma parte da imagem pode ser cortada.
+                        - 'contain': Redimensiona a imagem para manter a sua proporção enquanto
+                                     tenta caber toda dentro do contentor. Pode deixar espaços vazios.
+                        - 'fill': Estica a imagem para preencher o contentor, ignorando a proporção.
+                        - 'scale-down': Compara 'contain' e o tamanho original, e escolhe o menor.
+                     */
+  display: block; /* Remove qualquer espaço extra abaixo da imagem */
+}
+
 .country {
   display: flex;
   gap: 30px;
