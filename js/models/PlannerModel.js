@@ -334,8 +334,8 @@ export class FlightManager {
     }
 
 
-    getFlightByInput(dateStart, departure, destination, tourismType = []) {
-      const dateStart = new Date(dateStart);
+    getFlightByInput(startDate, departure, destination, tourismType = []) {
+      const dateStart = new Date(startDate);
 
       function checkTypes(types) {
         let count = 0;

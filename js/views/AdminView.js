@@ -41,10 +41,10 @@ function renderTourismTypes() {
       <td>${type.name}</td>
       <td><img src="${type.img}" alt="${type.name}" style="width: 50px; height: 50px;"></td>
       <td>
-        <button class="tourism-type-edit-btn btn btn-primary" id="edit-btn" data-key="${key}">
+        <button class="tourism-type-edit-btn btn btn-primary" data-key="${key}">
           <img src="/media/icons/edit.svg" alt="">
         </button>
-        <button class="tourism-type-delete-btn btn btn-danger" id="delete-btn" data-key="${key}">
+        <button class="tourism-type-delete-btn btn btn-danger" data-key="${key}">
           <img src="/media/icons/delete.svg" alt="">
         </button>
       </td>
@@ -209,6 +209,7 @@ function renderFlights() {
   for (const f of fs) {
    renderFlight(f);
   }
+  deleteFlight();
 }
 
 renderFlights();
@@ -227,16 +228,17 @@ function renderFlight(f) {
     <td>${f.airline}</td>
     <td>${f.price}</td>
     <td class="d-flex" style="gap: 5px;">
-      <button class="btn btn-primary" id="edit-btn" data-id="${f.id}">
+      <button class="btn btn-primary" data-id="${f.id}">
         <img src="/media/icons/edit.svg" alt="">
       </button>
-      <button class="delete-flight-btn btn btn-danger" id="delete-btn" data-id="${f.id}">
+      <button class="delete-flight-btn btn btn-danger" data-id="${f.id}">
         <img src="/media/icons/delete.svg" alt="">
       </button>
     </td>
   `;
 
   table.appendChild(row);
+
 }
 
 
@@ -277,14 +279,30 @@ function createFlight() {
     );
     console.log(flight);
     flights.saveFlights();
-    renderFlight(flight);
-
+    renderFlights();
   });
 
 }
 
 createFlight();
 
+function deleteFlight() {
+  const deleteButtons = document.querySelectorAll('.delete-flight-btn');
+  deleteButtons.forEach((btn) => {
+    btn.addEventListener('click', event => {
+      event.preventDefault();
+      const idString = btn.getAttribute('data-id');
+      const id = parseInt(idString, 10); // Converter para número
+
+      flights.deleteFlight(id);
+      flights.saveFlights();  
+      renderFlights();
+
+      console.log(id);
+      console.log('VOOS:', flights.listAllFlights());
+    });
+  });
+}
 
 /*
 

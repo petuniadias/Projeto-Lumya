@@ -18,7 +18,7 @@ function autocompleteFirstMatch(departureInput, flights) {
   const val = departureInput.value.toLowerCase().trim();
   if (!val) return;
 
-  const departures = flights.map(f => f.departure); // array só com os nomes de partida
+  const departures = flights.listAllFlights().map(f => f.departure); // array só com os nomes de partida
 
   const firstMatch = departures.find(dep => dep.toLowerCase().startsWith(val));
   if (firstMatch) {
@@ -232,7 +232,7 @@ flatpickr("#calendar", {
 
       console.log('SELECTED TOURISM TYPES SELECTED:', selectedTourismTypeNames);
 
-      const selectedFlights = flight.getFlightByInput(selectedStartDate, selectedDestination, departure.value, selectedTourismTypeNames);
+      const selectedFlights = flights.getFlightByInput(selectedStartDate, selectedDestination, departure.value, selectedTourismTypeNames);
       if(selectedFlights.length === 0) {
         alert('o voo nao existe');
         return;
