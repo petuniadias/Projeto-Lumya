@@ -1,5 +1,5 @@
 import * as User from '../models/UserModel.js';
-import { tourismType, destination, flight, cart } from "../init.js";
+import { tourismType, destination, flights, cart } from "../init.js";
 
 let selectedStartDate = null;
 let selectedEndDate = null;
@@ -30,11 +30,12 @@ function listDepartures() {
   const departureInput = document.querySelector('.departure-input');
   const suggestionsList = document.querySelector('.sugestions-list');
 
-  const flights = Object.values(flight.getAll());
+  const fs = flights.listAllFlights();
 
-  flights.forEach((flight) => {
+  fs.forEach((f) => {
+
     const option = document.createElement('option');
-    option.value = flight.departure;
+    option.value = f.departure;
     suggestionsList.appendChild(option);
   });
 

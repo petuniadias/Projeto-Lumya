@@ -1,5 +1,4 @@
-import { tourismType, flight, destination } from "../init.js";
-import { Flight } from "../models/PlannerModel.js";
+import { tourismType, flights, destination } from "../init.js";
 //import { TourismType } from "../models/PlannerModel.js"; 
 
 
@@ -158,11 +157,13 @@ function deleteDestination() {
 
 /* ADMIN -FLIGHTS */
 
-function renderFlights() {
+/*
+
+function renderFlights(flight) {
+
   const table = document.querySelector('.flight-table tbody');
   table.innerHTML = '';
   
-  const flightKeys = Object.keys(flight.getAll());
   if (flightKeys.length === 0) {
     const row = document.createElement('tr');
     row.innerHTML = '<td colspan="3">No tourism types available</td>';
@@ -170,8 +171,8 @@ function renderFlights() {
     return;
   }
 
-  flightKeys.forEach((key) => {
-    const f = flight.get(key);
+  //flightKeys.forEach((key) => {
+    const f = flight;
 
     const row = document.createElement('tr');
     row.innerHTML = `
@@ -198,7 +199,45 @@ function renderFlights() {
 
 }
 
+*/
+
+function renderFlights() {
+  const table = document.querySelector('.flight-table tbody');
+  table.id = 'flight-table';
+  table.innerHTML = '';
+  const fs = flights.listAllFlights();
+  for (const f of fs) {
+   renderFlight(f);
+  }
+}
+
 renderFlights();
+
+function renderFlight(f) {
+  const table = document.getElementById('flight-table');
+
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${f.departure}</td>
+    <td>${f.destination}</td>
+    <td>${f.schedules[0]}</td>
+    <td>${f.schedules[1]}</td>
+    <td>${f.airport}</td>
+    <td>${f.cabin}</td>
+    <td>${f.airline}</td>
+    <td>${f.price}</td>
+    <td class="d-flex" style="gap: 5px;">
+      <button class="btn btn-primary" id="edit-btn" data-id="${f.id}">
+        <img src="/media/icons/edit.svg" alt="">
+      </button>
+      <button class="delete-flight-btn btn btn-danger" id="delete-btn" data-id="${f.id}">
+        <img src="/media/icons/delete.svg" alt="">
+      </button>
+    </td>
+  `;
+
+  table.appendChild(row);
+}
 
 
 function renderDestinationSelect(destinationInput) {
@@ -226,24 +265,28 @@ function createFlight() {
   createFlightBtn.addEventListener('click', (event) => {
     event.preventDefault();
 
-    flight.add(
-      airlineInput.value, 
-      airlineInput.value, 
-      departureInput.value, 
+    const flight = flights.addFlight(
+      airlineInput.value,
+      departureInput.value,
       destinationInput.value, 
+      ['cultural', 'film'],
       cabinInput.value, 
       [dateTimeDepartureInput.value, dateTimeArrivalInput.value], 
       airportInput.value, 
       priceInput.value
     );
+    console.log(flight);
+    flights.saveFlights();
+    renderFlight(flight);
 
-    renderFlights();
-    flight.saveToLocalStorage();
   });
 
 }
 
 createFlight();
+
+
+/*
 
 function deleteFlight() {
   const deleteBtns = document.querySelectorAll('.delete-flight-btn');
@@ -258,3 +301,4 @@ function deleteFlight() {
   });
 }
 
+*/

@@ -143,13 +143,13 @@ export class Destination {
     localStorage.setItem(this.localStorageDestinationKey, JSON.stringify(this.destination));
   }
 
-  add(key, destination, tourismType = [], img, status = true) {
+  add(key, destination, tourismType, img, status = true) {
     if(this.destination[key]) {
       throw Error(`Destination with key "${key}" already exists!`);
     }
 
     this.destination[key] = {
-      destination,
+      destination: destination,
       tourismType,
       img,
       status
@@ -167,13 +167,13 @@ export class Destination {
     this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS REMOVER
   }
 
-  update(key, destination, flights = [], img, status = true) {
+  update(key, destination, tourismType, img, status = true) {
     if (!this.destination[key]) {
       throw Error(`Destination with key "${key}" does not exist!`);
     }
     this.destination[key] = {
-      destination,
-      flights,
+      destination: destinationName,
+      tourismType,
       img,
       status
     };
@@ -217,150 +217,187 @@ export class Destination {
 
 /* FLIGHTS */
 
-export class Flight {
-  flight = {};
-  localStorageFlightKey = 'flightKeys'; // CHAVE PARA GUARDAR NO LOCAL STORAGE
-
-  constructor(flight = {}) { // INICIALIZA COM UM OBJETO VAZIO SE NAO TIVER DÁ NULL
-    this.flight = flight;
-
-    //VERIFICA SE JÁ EXISTE NO LOCAL STORAGE
-    if (localStorage.getItem(this.localStorageFlightKey)) {
-      this.flight = JSON.parse(localStorage.getItem(this.localStorageFlightKey));
-    } else {
-      localStorage.setItem(this.localStorageFlightKey, JSON.stringify(this.flight));
-    }
-  }
-
-  // SALVA NO LOCAL STORAGE
-  saveToLocalStorage() {
-    localStorage.setItem(this.localStorageFlightKey, JSON.stringify(this.flight));
-  }
-
-  add(key, airline, departure, destinationKey, cabin, schedules = [], airport, price, status = true) {
-    const des = new Destination(); // INSTANCIA O DESTINO PARA PODER USAR OS DESTINOS
-    const desInstance = des.get(destinationKey); // PEGA O DESTINO
-
-    this.flight[key] = {
-      airline,
-      departure,
-      destination: {
-        destination: desInstance.destination,
-        tourismType: desInstance.tourismType
-      },
-      cabin,
-      schedules,
-      airport,
-      price,
-      status
-    };
-
-    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS ADICIONAR
-  }
-
-  del(key) {
-    if (!this.flight[key]) {
-      throw Error(`Flight with key "${key}" does not exist!`);
-    }
-    delete this.flight[key];
-    
-    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS REMOVER
-    }
-    
-  update(key, airline, departure, destinatioKey, cabin, schedules = [], airport, price, status = true) {
-    if (!this.flight[key]) {
-      throw Error(`Flight with key "${key}" does not exist!`);
+export class FlightManager {
+  
+    constructor() {
+        this.storageKey = 'flights';
+        this.flightIdCounterKey = 'flightIdCounter';
+        // Initialize flights from localStorage or empty array
+        this.flights = this.loadFlights();
+        // Initialize ID counter from localStorage or start at 1
+        this.flightIdCounter = this.loadFlightIdCounter();
     }
 
-    const des = new Destination(); // INSTANCIA O DESTINO PARA PODER USAR OS DESTINOS
-    const desInstance = des.get(destinatioKey); // PEGA O DESTINO
 
-    this.flight[key] = {
-      airline,
-      departure,
-      destination: {
-        destination: desInstance.destination,
-        tourismType: desInstance.tourismType
-      },
-      cabin,
-      schedules,
-      airport,
-      price,
-      status
-    };
-
-    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS ATUALIZAR
-  }
-
-  get(key) { // RETORNA UM VOO
-    if (!this.flight[key]) {
-      throw Error(`Flight with key "${key}" does not exist!`);
-    }
-    return this.flight[key];
-  }
-
-  getAll(status = null) { // RETORNA TODOS OS VOOS /* status = null PARA PODER FILTRAR */
-    if (status === null) {
-      return this.flight;
-    }
-
-    if (status === true || status === false) { 
-      const filteredFlight = {};
-      for (const key in this.flight) {
-        if (this.flight[key].status === status) {
-          filteredFlight[key] = this.flight[key];
+    // Load flights from localStorage
+    loadFlights() {
+        const storedFlights = localStorage.getItem(this.storageKey);
+        if (storedFlights) {
+            const flights = JSON.parse(storedFlights);
+            // Convert schedules strings back to Date objects
+            return flights.map(flight => ({
+                ...flight, // create a shallow copy of the flight object's properties
+                schedules: flight.schedules.map(schedule => new Date(schedule))
+            }));
         }
-      }
-      return filteredFlight;
+        return [];
     }
-  }
 
+    // Load flight ID counter from localStorage
+    loadFlightIdCounter() {
+        const storedCounter = localStorage.getItem(this.flightIdCounterKey);
+        return storedCounter ? parseInt(storedCounter) : 1;
+    }
 
-  checkTourismType(type = []) {
-    for (const key in this.flight) {
-      for (const tourismType of type) {
-        if (!this.flight[key].destination.tourismType.includes(tourismType)) {
-          return false;
+    // Save flights to localStorage
+    saveFlights() {
+        localStorage.setItem(this.storageKey, JSON.stringify(this.flights));
+        localStorage.setItem(this.flightIdCounterKey, this.flightIdCounter.toString());
+    }
+
+    // Add a new flight
+    addFlight(airline, departure, destination, tourismType = [], cabin = 'Economy', schedules, airport, price, status = true) {
+        const flight = {
+            id: this.flightIdCounter++,
+            airline: airline,
+            departure,
+            destination: destination,
+            tourismType: tourismType,
+            cabin: cabin,
+            schedules: schedules.map(schedule => new Date(schedule)),
+            airport: airport,
+            price: parseFloat(price),
+            status: status,
+        };
+        this.flights.push(flight);
+        return flight;
+    }
+
+    // List all flights
+    listAllFlights() {
+        return this.flights;
+    }
+
+    // List flights by airline
+    listFlightsByAirline(airline) {
+        return this.flights.filter(flight => flight.airline.toLowerCase() === airline.toLowerCase());
+    }
+
+    // Search for a flight by ID
+    searchFlightById(id) {
+        return this.flights.find(flight => flight.id === id) || null;
+    }
+
+    // Delete a flight by ID
+    deleteFlight(id) {
+        const index = this.flights.findIndex(flight => flight.id === id);
+        if (index !== -1) {
+            return this.flights.splice(index, 1)[0];
         }
-      }
+        return null;
     }
-    return true;
-  }
 
-  getFlightByInput(selectedStartDate, selectedDestination, selectedDeparture, selectedTourismTypeKeys) {
-    console.log(selectedStartDate, selectedDestination, selectedDeparture, selectedTourismTypeKeys);
-    const date = { 
-      year: 'numeric', 
-      month: '2-digit', 
-      day: '2-digit' 
-    };
+    // Update a flight by ID
+    updateFlight(id, updates) {
+        const flight = this.searchFlightById(id);
+        if (!flight) return null;
 
-    const matchingFlights = [];
+        if (updates.airline) flight.airline = updates.airline;
+        if (updates.departure) flight.departure = updates.departure;
+        if (updates.destination) flight.destination = updates.destination;
+        if (updates.tourismType) flight.tourismType = updates.tourismType;
+        if (updates.cabin) flight.cabin = updates.cabin;
+        if (updates.schedules) flight.schedules = updates.schedules.map(schedule => new Date(schedule));
+        if (updates.airport) flight.airport = updates.airport;
+        if (updates.price) flight.price = parseFloat(updates.price);
+        if (updates.status !== undefined) flight.status = updates.status;
 
-    for(const key in this.flight) {
+        return flight;
+    }
 
-      const flightStartDate = new Date(this.flight[key].schedules[0]).toLocaleDateString('en-GB', date);
-      const selectedDate = new Date(selectedStartDate).toLocaleDateString('en-GB', date); 
-      
-      if (this.flight[key].status) {
+    // Delete all flights
+    deleteAllFlights() {
+        const deletedFlights = [...this.flights];
+        this.flights = [];
+        this.flightIdCounter = 1;
+        return deletedFlights;
+    }
+
+    // Count all flights
+    countAllFlights() {
+        return this.flights.length;
+    }
+
+    // Count flights by airline
+    countFlightsByAirline(airline) {
+        return this.listFlightsByAirline(airline).length;
+    }
+
+
+    getFlightByInput(dateStart, departure, destination, tourismType = []) {
+      const dateStart = new Date(dateStart);
+
+      function checkTypes(types) {
+        let count = 0;
+        for (const ft in types) {
+          for (const f in tourismType) {
+            if (types[ft] === tourismType[f]) {
+              count++;
+            }
+          }
+        }
+        return count === tourismType.length;
+      }
+
+      const matchingFlights = [];
+
+      for (const f in this.flights) {
         if (
-          this.flight[key].departure === selectedDeparture &&
-          this.flight[key].destination.destination === selectedDestination &&
-          flightStartDate === selectedDate &&
-          this.checkTourismType(selectedTourismTypeKeys)
-        ) {
-          matchingFlights.push(this.flight[key]);
+          this.flights[f].schedules[0] === dateStart &&
+          this.flights[f].departure === departure &&
+          this.flights[f].destination === destination &&
+          checkTypes(this.flights[f].tourismType)) {
+          matchingFlights.push(this.flights[f]);
         }
       }
-      console.log('MATCHING FLIGHTS:', matchingFlights);
-
-
-      
+      return matchingFlights;
     }
-    return matchingFlights;
-  }
-
 }
+
+// Example usage:
+/*
+const flightManager = new FlightManager();
+
+// Add flights
+flightManager.addFlight("TAP", "Paris", "Economic", ['2025-06-20T08:00:00', '2025-06-20T11:00:00'], "Lisbon Airport", 500);
+flightManager.addFlight("Lufthansa", "Tokyo", "Economic", ['2025-06-20T08:00:00', '2025-06-20T11:00:00'],, "Lisbon Airport", 800);
+flightManager.addFlight("Iberia", "London", "Economic", ['2025-06-20T08:00:00', '2025-06-20T11:00:00'],, "Lisbon Airport", 450);
+
+// List all flights
+console.log(flightManager.listAllFlights());
+
+// List TAP flights
+console.log(flightManager.listFlightsByAirline("TAP"));
+
+// Search for a flight
+console.log(flightManager.searchFlightById(1));
+
+// Update a flight
+console.log(flightManager.updateFlight(1, { price: 550, destination: "Rome", status: false }));
+
+// Delete a flight
+console.log(flightManager.deleteFlight(2));
+
+// Count flights
+console.log(flightManager.countAllFlights());
+console.log(flightManager.countFlightsByAirline("TAP"));
+
+// Delete all flights
+console.log(flightManager.deleteAllFlights());
+*/
+
+
+
 
 /* STEP FIVE */
 
