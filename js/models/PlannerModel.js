@@ -143,13 +143,13 @@ export class Destination {
     localStorage.setItem(this.localStorageDestinationKey, JSON.stringify(this.destination));
   }
 
-  add(key, destination, tourismType, img, status = true) {
+  add(key, destination, tourismType = [], img, status = true) {
     if(this.destination[key]) {
       throw Error(`Destination with key "${key}" already exists!`);
     }
 
     this.destination[key] = {
-      destination: destination,
+      destination,
       tourismType,
       img,
       status
@@ -213,6 +213,15 @@ export class Destination {
     }
     return false;
   }
+
+  getTourismTypes(des) {
+    // check if des exists in destinations
+    if (des in this.destination) {
+      return this.destination[des].tourismType;
+    }
+    return [];
+  }
+
 }
 
 /* FLIGHTS */
@@ -347,7 +356,7 @@ export class FlightManager {
         let count = 0;
         for (const ft in types) {
           for (const f in tourismType) {
-            if (types[ft] === tourismType[f]) {
+            if (types[ft] === tourismType[f].toLowerCase()) {
               count++;
             }
           }

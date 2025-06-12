@@ -271,7 +271,7 @@ function createFlight() {
       airlineInput.value,
       departureInput.value,
       destinationInput.value,
-      flightTourismTypes,
+      destinations.getTourismTypes(destination.value),
       cabinInput.value, 
       [dateTimeDepartureInput.value, dateTimeArrivalInput.value], 
       airportInput.value, 
