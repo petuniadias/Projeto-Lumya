@@ -335,8 +335,14 @@ export class FlightManager {
 
 
     getFlightByInput(startDate, departure, destination, tourismType = []) {
-      const dateStart = new Date(startDate);
+      const date = { 
+        year: 'numeric', 
+        month: '2-digit', 
+        day: '2-digit' 
+      };
 
+      const dateStart = new Date(startDate).toLocaleDateString('en-GB', date);;
+      
       function checkTypes(types) {
         let count = 0;
         for (const ft in types) {
@@ -352,8 +358,23 @@ export class FlightManager {
       const matchingFlights = [];
 
       for (const f in this.flights) {
+
+        const flightStartDate = this.flights[f].schedules[0].toLocaleDateString('en-GB', date);
+        
+        console.log(
+            'SCHEDULES flight:', flightStartDate,
+            'DATE INPUT:', dateStart,
+            'DEPARTURE FLIGHT:', this.flights[f].departure,
+            'DEPARTURE INPUT:', departure,
+            'DESTINATION INPUT:', destination,
+            'DESTINATION FLIGHT:', this.flights[f].destination,
+            'TOURISM TYPE:', checkTypes(this.flights[f].tourismType),
+            'TOURISM TYPE INPUT:', tourismType,
+            'TOURISM TYPE FLIGHT:', this.flights[f].tourismType
+        );
+
         if (
-          this.flights[f].schedules[0] === dateStart &&
+          flightStartDate === dateStart &&
           this.flights[f].departure === departure &&
           this.flights[f].destination === destination &&
           checkTypes(this.flights[f].tourismType)) {

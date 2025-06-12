@@ -216,12 +216,10 @@ flatpickr("#calendar", {
   /* RENDER FLIGHTS BASED ON USER INPUT */
 
   function renderFlights() {
-
+    
     //INPUT DO UTILIZADOR
     const departure = document.querySelector('.departure-input');
     const stepFourBtn = document.querySelector('.step-four-btn');
-
-
 
     stepFourBtn.addEventListener('click', () => {
 
@@ -231,8 +229,8 @@ flatpickr("#calendar", {
       const selectedTourismTypeNames  = Array.from(selectedTourismTypes).map(tt => tt.textContent);
 
       console.log('SELECTED TOURISM TYPES SELECTED:', selectedTourismTypeNames);
-
-      const selectedFlights = flights.getFlightByInput(selectedStartDate, selectedDestination, departure.value, selectedTourismTypeNames);
+      console.log('SELECTED DESTINATION:', selectedDestination); 
+      const selectedFlights = flights.getFlightByInput(selectedStartDate, departure.value, selectedDestination, selectedTourismTypeNames);
       if(selectedFlights.length === 0) {
         alert('o voo nao existe');
         return;
@@ -260,7 +258,7 @@ function formatCurrency(priceCents) {
       flightCard.className = 'flight-card d-flex flex-column';
       flightCard.innerHTML = `
         <h3 class="flight-destination">
-          ${f.destination.destination}
+          ${f.destination}
         </h3>
         <div class="flight-info d-flex">
           <img src="${f.airline}" alt="" class="flight-airline-img">

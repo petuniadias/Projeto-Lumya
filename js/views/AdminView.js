@@ -270,8 +270,8 @@ function createFlight() {
     const flight = flights.addFlight(
       airlineInput.value,
       departureInput.value,
-      destinationInput.value, 
-      ['cultural', 'film'],
+      destinationInput.value,
+      flightTourismTypes,
       cabinInput.value, 
       [dateTimeDepartureInput.value, dateTimeArrivalInput.value], 
       airportInput.value, 
