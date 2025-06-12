@@ -40,7 +40,7 @@ console.log(destination.getAll());
 
 // FLIGHTS
 
-export const flights = new FlightManager();
+export const flights = new FlightManager(destination);
 
 /* CART */
 

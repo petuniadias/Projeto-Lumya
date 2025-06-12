@@ -95,7 +95,21 @@ function createDestination() {
       return;
     }
 
-    destination.add(destinationInput.value, destinationInput.value, tourismTypeInput.value, imgInput.value);
+    const tourismTypes = [];
+    for (const e of tourismTypeInput) {
+      if (e.selected) {
+        tourismTypes.push(e.value);
+      }
+    }
+
+    console.log('TT INPUT:', tourismTypes);
+
+    destination.add(
+      destinationInput.value, 
+      destinationInput.value, 
+      tourismTypes, 
+      imgInput.value
+    );
 
     renderDestination();
     destination.saveToLocalStorage();
@@ -266,13 +280,14 @@ function createFlight() {
   
   createFlightBtn.addEventListener('click', (event) => {
     event.preventDefault();
-
+    console.log('DESTINATION VALUE:', destination.destination);
+    console.log('DESTINATIONS TOURISM TYPE:', destination.getTourismTypes(destination.destination));
     const flight = flights.addFlight(
       airlineInput.value,
       departureInput.value,
       destinationInput.value,
-      destinations.getTourismTypes(destination.value),
-      cabinInput.value, 
+      destination.getTourismTypes(destination),
+      cabinInput.value,
       [dateTimeDepartureInput.value, dateTimeArrivalInput.value], 
       airportInput.value, 
       priceInput.value
