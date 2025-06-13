@@ -1,0 +1,244 @@
+/* Base Settings Page Styles */
+
+body {
+  background-color: #facc15;
+  font-family: 'Sora', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding: 60px 100px;
+}
+
+/* Container principal */
+.settings-section {
+  padding: 2rem;
+}
+
+/* Sidebar */
+.settings-menu {
+  width: 280px;
+  background-color: white;
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  margin-right: 2rem;
+  height: fit-content;
+}
+
+.user-info {
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.profile-pic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name-info .name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.user-name-info .username {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Menu Tabs */
+.menu-tab {
+  background-color: #facc15;
+  color: black;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  gap: 0.5rem;
+}
+
+.menu-tab img {
+  width: 20px;
+  height: 20px;
+}
+
+.menu-tab.active {
+  background-color: #fbbf24;
+  border: 2px solid #facc15;
+}
+
+/* Tabs Content */
+.tab-content {
+  flex-grow: 1;
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  border: 1px solid #02304765;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Common Titles */
+h3 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Delete button */
+.settings-menu .btn.text-danger {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 2rem;
+}
+
+/* Divider */
+.line-div {
+  height: 2px;
+  background-color: #023047;
+  border-radius: 1px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* My Profile Section */
+.my-profile-container {
+  background-color: white;
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.my-profile-container h3 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.line-div {
+  height: 2px;
+  background-color: #facc15;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+input.form-control,
+select.form-select {
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+}
+
+.input-group > input.form-control {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group > button.btn-outline-warning {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  color: black;
+  font-weight: 600;
+  border-color: #facc15;
+}
+
+.input-group > button:hover {
+  background-color: #fbbf24;
+  border-color: #fbbf24;
+}
+
+/* Profile picture section */
+img.rounded-3 {
+  object-fit: cover;
+}
+
+small.text-muted {
+  font-size: 0.8rem;
+}
+
+/* Confirm button */
+button.btn.btn-warning {
+  background-color: #facc15;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 0.75rem;
+  border: none;
+}
+
+button.btn.btn-warning:hover {
+  background-color: #fbbf24;
+}
+
+/* Preferences Section */
+.preferences-container h5 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.form-check-input:checked {
+  background-color: #FFB703;
+  border-color: #FFB703;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  border-color: #444;
+}
+
+/* File Upload Section */
+input[type="file"] {
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* Button Styles */
+button[type="submit"] {
+  font-weight: 600;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 12px;
+  background-color: #FFB703;
+  border: none;
+  width: 100%;
+}
+
+.btn-outline-warning {
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .settings-section {
+    flex-direction: column;
+  }
+
+  .settings-menu {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+
+  .tab-content {
+    padding: 20px;
+  }
+
+  .my-profile-container,
+  .preferences-container,
+  .payment-container {
+    grid-template-columns: 1fr;
+  }
