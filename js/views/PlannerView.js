@@ -321,11 +321,10 @@ function formatCurrency(priceCents) {
 }
 
 function handleAddToCart(flightData) {
-  cart.addToCart(
-    flightData.departure,
-    flightData.schedules,
-    flightData.destination.destination,
-    flightData.price
+  cart.addItem(
+    'Flight',
+    flightData.price,
+    1
   );
 
   console.log(`Voo adicionado ao carrinho:`, flightData);
