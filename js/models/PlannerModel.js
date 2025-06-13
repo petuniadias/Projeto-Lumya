@@ -228,6 +228,10 @@ export class Destination {
 /* FLIGHTS */
 
 export class FlightManager {
+  /**
+   * CRIA UM VOO.
+   *
+   */
   
   constructor(destinations) {
     this.destinations = destinations;
@@ -435,35 +439,66 @@ console.log(flightManager.deleteAllFlights());
 /* STEP FIVE */
 
 export class Cart {
-
-  cartItems;
-  localStorageCartKey = 'cartKeys';
-
   constructor() {
+    this.storageKey = 'cartItems';
+    this.cartId = 0;
+    this.items = this.loadItems();
   }
 
-  saveToLocalStorage() {
-    localStorage.setItem(this.localStorageCartKey, JSON.stringify(this.cartItems));
+  // CARREGAR OS ITENS DA LOCALSTORAGE
+  loadItems() {
+    const storedItems = localStorage.getItem(this.storageKey);
+    return storedItems ? JSON.parse(storedItems) : [];
   }
 
-  addToCart(airline, departure, destination, tourismType = [], cabin = 'Economy', schedules, airport, price, status = true) {
-    const cartItems = {
+  // SALVAR OS ITENS NA LOCALSTORAGE
+  saveItems() {
+    localStorage.setItem(this.storageKey, JSON.stringify(this.items));
+  }
 
+  // ADD AN ITEM TO THE CART
+  addItem(name, price, quantity) {
+    const item = {
+      id: this.cartId++,
+      name,
+      price,
+      quantity
     }
-    
-
-    this.saveToLocalStorage();
-
+    this.items.push(item);
+    this.saveItems();
+    return item;
   }
 
-  del(key) {
-    if (!this.cartItems[key]) {
-    throw Error(`Cart with key "${key}" does not exist!`);
+  // REMOVE AN ITEM FROM THE CART
+  removeItem(id) {
+    if (this.items.length > 0) { //VERIFICA SE TEM ITENS NO CARRINHO
+      const index = this.items.findIndex(item => item.id === id);
+      if (index !== -1) { // DEVOLVE -1 SE NAO ENCONTRAR, OU SEJA, NÃO PODE SER IGUAL A -1
+        const removedItem =this.items.splice(index, 1)[0];
+        this.saveItems();
+        return removedItem;
+      }
     }
-    delete this.cartItems[key];
-    this.saveToLocalStorage();
+    return null;
   }
 
+  // RETORNA TODOS OS ITEMS
+  listAllItems() {
+    return this.items;
+  }
+
+  // RETIRA TODOS OS ITENS DO CARRINHO
+  clearCart() {
+    const clearedItems = [...this.items];
+    this.items = [];
+    this.saveItems();
+    return clearedItems;
+  }
+
+  // RETORNA O RESULTADO DO CUSTO DE TODOS OS ITENS
+  getTotalCost() {
+    return this.items.reduce((total, item) => total + item.price * item.quantity, 0);
+  }
 }
 
 
