@@ -444,8 +444,188 @@ console.log(flightManager.countFlightsByAirline("TAP"));
 console.log(flightManager.deleteAllFlights());
 */
 
+export class Stays {
+  /**
+   * CRIA UM VOO.
+   *
+   */
+  
+  constructor(destinations) {
+    this.destinations = destinations;
+    this.storageKey = 'stays';
+    this.staysIdCounterKey = 'staysIdCounter';
+    // Initialize flights from localStorage or empty array
+    this.stays = this.loadStays();
+    // Initialize ID counter from localStorage or start at 1
+    this.StaysIdCounter = this.loadStaysIdCounter();
+  }
 
 
+  // Load stays from localStorage
+  loadStays() {
+      const storedStays = localStorage.getItem(this.storageKey);
+      if (storedStays) {
+          const stays = JSON.parse(storedStays);
+          // Convert schedules strings back to Date objects
+          return stays.map(stay => ({
+              ...stay, // create a shallow copy of the flight object's properties
+              schedules: stay.schedules.map(schedule => new Date(schedule))
+          }));
+      }
+      return [];
+  }
+
+  // Load stay ID counter from localStorage
+  loadStayIdCounter() {
+      const storedCounter = localStorage.getItem(this.stayIdCounterKey);
+      return storedCounter ? parseInt(storedCounter) : 1;
+  }
+
+  // Save flights to localStorage
+  saveStays() {
+      localStorage.setItem(this.storageKey, JSON.stringify(this.stays));
+      localStorage.setItem(this.staysIdCounterKey, this.staysIdCounter.toString());
+  }
+
+  // Add a new flight
+  addStay(airline, departure, destination, tourismType = [], cabin = 'Economy', schedules, airport, price, status = true) {
+      const stay = {
+          id: this.stayIdCounter++,
+          airline,
+          departure,
+          destination,
+          tourismType: this.destinations.getTourismTypes(destination),
+          cabin: cabin,
+          schedules: schedules.map(schedule => new Date(schedule)),
+          airport: airport,
+          price: parseFloat(price),
+          status: status,
+      };
+      this.stays.push(stay);
+      return stay;
+  }
+
+  // List all stays
+  listAllStays() {
+      return this.stays;
+  }
+
+  // List flights by airline
+  listFlightsByAirline(airline) {
+      return this.stays.filter(stay => stay.airline.toLowerCase() === airline.toLowerCase());
+  }
+
+  // Search for a flight by ID
+  searchStaysById(id) {
+    /*
+      for (const flight of this.flights) {
+        const flightId = id;
+        if (flight.id === id) {
+          return flight;
+        }
+      }
+      return null;
+    */
+
+    return this.stays.find(stay => stay.id === id) || null;
+  }
+
+  // Delete a stay by ID
+  deleteStay(id) {
+      const index = this.stays.findIndex(stay => stay.id === id);
+      if (index !== -1) {
+          return this.stays.splice(index, 1)[0];
+      }
+      return null;
+  }
+
+  // Update a stay by ID
+  updateStay(id, updates) {
+      const stay = this.searchStayById(id);
+      if (!stay) return null;
+
+      if (updates.airline) flight.airline = updates.airline;
+      if (updates.departure) flight.departure = updates.departure;
+      if (updates.destination) flight.destination = updates.destination;
+      if (updates.tourismType) flight.tourismType = updates.tourismType;
+      if (updates.cabin) flight.cabin = updates.cabin;
+      if (updates.schedules) flight.schedules = updates.schedules.map(schedule => new Date(schedule));
+      if (updates.airport) flight.airport = updates.airport;
+      if (updates.price) flight.price = parseFloat(updates.price);
+      if (updates.status !== undefined) flight.status = updates.status;
+
+      return flight;
+  }
+
+  // Delete all stays
+  deleteAllStays() {
+    const deletedStays = [...this.stays];
+    this.stays = [];
+    this.stayIdCounter = 1;
+    return deletedStays;
+  }
+
+  // Count all stays
+  countAllStays() {
+    return this.stays.length;
+  }
+
+  // Count stays by airline
+  countStaysByAirline(airline) {
+    return this.listFlightsByAirline(airline).length;
+  }
+
+
+  getFlightByInput(startDate, departure, destination, tourismType = []) {
+    const date = { 
+      year: 'numeric', 
+      month: '2-digit', 
+      day: '2-digit' 
+    };
+
+    const dateStart = new Date(startDate).toLocaleDateString('en-GB', date);;
+    
+    function checkTypes(types) {
+      let count = 0;
+      for (const ft in types) {
+        for (const f in tourismType) {
+          if (types[ft] === tourismType[f].toLowerCase()) {
+            count++;
+          }
+        }
+      }
+      return count === tourismType.length;
+    }
+
+    const matchingFlights = [];
+
+    for (const f in this.flights) {
+
+      const flightStartDate = this.flights[f].schedules[0].toLocaleDateString('en-GB', date);
+      
+      console.log(
+          'SCHEDULES flight:', flightStartDate,
+          'DATE INPUT:', dateStart,
+          'DEPARTURE FLIGHT:', this.flights[f].departure,
+          'DEPARTURE INPUT:', departure,
+          'DESTINATION INPUT:', destination,
+          'DESTINATION FLIGHT:', this.flights[f].destination,
+          'TOURISM TYPE:', checkTypes(this.flights[f].tourismType),
+          'TOURISM TYPE INPUT:', tourismType,
+          'TOURISM TYPE FLIGHT:', this.flights[f].tourismType
+      );
+
+      if (
+        flightStartDate === dateStart &&
+        this.flights[f].departure === departure &&
+        this.flights[f].destination === destination &&
+        checkTypes(this.flights[f].tourismType)) {
+        matchingFlights.push(this.flights[f]);
+      }
+    }
+    return matchingFlights;
+  }
+}
 
 /* STEP FIVE */
 
@@ -511,5 +691,3 @@ export class Cart {
     return this.items.reduce((total, item) => total + item.price * item.quantity, 0);
   }
 }
-
-

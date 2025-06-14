@@ -207,7 +207,7 @@
           <!-- SUGESTIONS CATEGORY TABS -->
 
             <div class="sugestion-category d-flex nav nav-pills justify-content-center" role="tablist">
-              <button class="category-tab flight-category d-flex align-items-center justify-content-center" data-bs-toggle="pill" data-bs-target="#flights-category" role="tab" aria-selected="true">
+              <button class="category-tab flight-category d-flex align-items-center justify-content-center active" data-bs-toggle="pill" data-bs-target="#flights-category" role="tab" aria-selected="true">
                 <img src="../media/icons/take-off.svg" alt="">
                 <div class="tab-label">Flights</div>
               </button>
@@ -353,49 +353,90 @@
 
     <!-- STEP FIVE -->
       <div class="tab-pane" id="step-five" role="tabpanel">
-        <div class="checkout d-flex flex-column">
-          <h3 class="checkout-title">
-            Checkout
-          </h3>
-          <div class="order-summary">
-            Order Summary
-          </div>
-          <div class="summary">
-            <div class="summary-sub-total d-flex justify-content-between">
-              <div class="sub-total">Sub Total</div>
-              <div class="sub-total-quantity">
-                20.00 €
+        <div class="payment-section d-flex">
+          <div class="checkout d-flex flex-column">
+            <h3 class="checkout-title">
+              Checkout
+            </h3>
+            <div class="order-summary">
+              Order Summary
+            </div>
+            <div class="summary">
+              <div class="summary-sub-total d-flex justify-content-between">
+                <div class="sub-total">Sub Total</div>
+                <div class="sub-total-quantity">
+                  20.00 €
+                </div>
+              </div>
+              <div class="summary-discount d-flex justify-content-between">
+                <div class="discount">Discount</div>
+                <div class="discount-quantity">
+                  -1.00 €
+                </div>
               </div>
             </div>
-            <div class="summary-discount d-flex justify-content-between">
-              <div class="discount">Discount</div>
-              <div class="discount-quantity">
-                -1.00 €
+            <div class=" d-flex justify-content-between">
+              <div class="total-title">
+                Total
+              </div>
+              <div class="total-quantity">
+                0 €
               </div>
             </div>
-          </div>
-          <div class=" d-flex justify-content-between">
-            <div class="total-title">
-              Total
+            <div class="checkout-btn-group d-flex">
+              <button type="button" class="checkout-btn d-flex align-items-center">
+                <img src="../media/icons/checkout-cart.svg" alt="">
+                <div>
+                  Checkout
+                </div>
+              </button>
+              <button type="button" class="coupon-btn d-flex align-items-center">
+                <img src="../media/icons/coupons.svg" alt="">
+                <div>Add Coupons</div>
+              </button>
             </div>
-            <div class="total-quantity">
-              19.00 €
-            </div>
-          </div>
-          <div class="checkout-btn-group d-flex">
-            <button type="button" class="checkout-btn btn btn-primary d-flex align-items-center">
-              <img src="../media/icons/checkout-cart.svg" alt="">
-              <div>
-                Checkout
-              </div>
-            </button>
-            <button type="button" class="coupon-btn btn btn-outline-primary d-flex align-items-center">
-              <img src="../media/icons/coupons.svg" alt="">
-              <div>Add Coupons</div>
-            </button>
-          </div>
 
+          </div>
+          <div class="cart-section d-flex flex-column">
+            <h3 class="cart-title">Cart</h3>
+            <span class="cart-remove-all" style="position: absolute;right: 0;top: -13px;background: #f00;border-radius: 50%;width: 20px;height: 20px;text-align: center;line-height: 16px;">x</span>
+            <div class="cart-items d-flex flex-column">
+              <div class="cart-item-container">
+                <div class="remove-item">
+                  <img src="../media/icons/close-btn.svg" alt="">
+                </div>
+                <div class="cart-item d-flex align-items-center justify-content-center">
+                  <div class="item-title">Setagaya, Japan to Oporto, Portugal</div>
+                  <div class="item-category">Flight</div>
+                  <div class="item-date">3 May - 5 May 2025</div>
+                  <div class="item-location">Setagaya, Japan</div>
+                  <div class="item-price">20.00 €</div>
+                  <button class="see-details-btn d-flex">
+                    <img src="../media/icons/inspect.svg" alt="">
+                    <div>See details</div>
+                  </button>
+                </div>
+              </div>
+              <div class="cart-item-container">
+                <div class="remove-item">
+                  <img src="../media/icons/close-btn.svg" alt="">
+                </div>
+                <div class="cart-item d-flex align-items-center justify-content-center">
+                  <div class="item-title">Setagaya, Japan to Oporto, Portugal</div>
+                  <div class="item-category">Flight</div>
+                  <div class="item-date">3 May - 5 May 2025</div>
+                  <div class="item-location">Setagaya, Japan</div>
+                  <div class="item-price">20.00 €</div>
+                  <button class="see-details-btn d-flex">
+                    <img src="../media/icons/inspect.svg" alt="">
+                    <div>See details</div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        
       </div>
     </div>
 

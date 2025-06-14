@@ -343,6 +343,7 @@ function handleAddToCart(flightData) {
   );
 
   console.log(`Voo adicionado ao carrinho:`, flightData);
+  renderItemsFromCart();
 }
 
 const cabinFiltersContainer = document.querySelector('.cabin-filters-container');
@@ -383,7 +384,6 @@ function getSelectedCabinFilters() {
     }
   }
 }
-
 
   /* PAGINATION
 
@@ -487,3 +487,57 @@ function getSelectedCabinFilters() {
 
 /* STEP FIVE */
 
+const total = document.querySelector('.total-quantity');
+total.innerHTML = `${formatCurrency(cart.getTotalCost())} €`;
+
+  /* CART */
+const cartContainer = document.querySelector('.cart-items');
+
+function renderItemsFromCart() {
+  cartContainer.innerHTML = '';
+
+  const items = cart.listAllItems();
+
+  if (items.length === 0) {
+    cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+    //atualizar total
+    return;
+  }
+
+  items.forEach(item => {
+    const itemContainer = document.createElement('div');
+    itemContainer.getAttribute('data-id');
+    itemContainer.className = 'cart-item-container';
+    itemContainer.innerHTML = `
+      <div class="remove-item" data-item-id="${item.id}">
+        <img src="../media/icons/close-btn.svg" alt="">
+      </div>
+      <div class="cart-item d-flex align-items-center justify-content-center">
+        <div class="item-title">Setagaya, Japan to Oporto, Portugal</div>
+        <div class="item-category">${item.name}</div>
+        <div class="item-date">3 May - 5 May 2025</div>
+        <div class="item-location">Setagaya, Japan</div>
+        <div class="item-price">${formatCurrency(item.price)}</div>
+        <button class="see-details-btn d-flex">
+          <img src="../media/icons/inspect.svg" alt="">
+          <div>See details</div>
+        </button>
+      </div>
+      `;
+    cartContainer.appendChild(itemContainer);
+
+    const removeBtn = itemContainer.querySelectorAll('.remove-item');
+    if (removeBtn) {
+      removeBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const itemIdString = btn.getAttribute('data-item-id');
+          const itemId = parseInt(itemIdString, 10);
+          cart.removeItem(itemId);
+          renderItemsFromCart();
+        });
+      });
+    }
+  });
+}
+
+renderItemsFromCart();

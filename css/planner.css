@@ -645,6 +645,11 @@ label {
 
 /* STEP FIVE */
 
+.payment-section {
+  width: 100%;
+  gap: 30px;
+}
+
 .checkout {
   background-color: white;
   padding: 20px;
@@ -652,6 +657,7 @@ label {
   border: 1px solid #02304765;
   border-radius: 20px;
   gap: 10px;
+  height: fit-content;
 }
 
 .checkout-title {
@@ -695,6 +701,7 @@ label {
 .coupon-btn {
   border-radius: 10px;
   gap: 5px;
+  padding: 7px 10px;
 }
 
 .checkout-btn {
@@ -710,4 +717,71 @@ label {
   color: #FFB703;
   font-weight: 500;
   border: 2px solid #FFB703;
+  background-color: transparent;
+}
+
+.cart-section {
+  background-color: white;
+  padding: 25px;
+  border: 1px solid #02304765;
+  border-radius: 20px;
+  height: fit-content;
+  width: 773px;
+}
+
+.cart-items {
+  gap: 15px;
+}
+
+.cart-item {
+  border: 1px solid #02304765;
+  padding: 5px 15px;
+  gap: 20px;
+  border-radius: 15px;
+}
+
+.item-title,
+.item-category,
+.item-date,
+.item-location,
+.item-price {
+  display: flex;
+  justify-content: center;
+  width: 130px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.cart-item-container {
+  position: relative;
+}
+
+.remove-item {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: rgba(190, 190, 190, 0.903);
+  border-radius: 100%;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.remove-item img {
+  width: 17px;
+}
+
+.see-details-btn {
+  border: 1px solid #02304765;
+  border-radius: 10px;
+  background-color: #FFB703;
+  padding: 7px 10px;
+  font-weight: 600;
+  font-size: 14px;
+  width: 100%;
+  max-width: max-content;
+  gap: 5px;
 }
