@@ -31,11 +31,18 @@ function listDepartures() {
   const suggestionsList = document.querySelector('.sugestions-list');
 
   const fs = flights.listAllFlights();
+  const uniqueDepartures = new Set();
 
   fs.forEach((f) => {
-
+    if (f.departure) {
+      uniqueDepartures.add(f.departure);
+    }
+  });
+  
+  suggestionsList.innerHTML = '';
+  uniqueDepartures.forEach((dep) => {
     const option = document.createElement('option');
-    option.value = f.departure;
+    option.value = dep;
     suggestionsList.appendChild(option);
   });
 
@@ -235,9 +242,10 @@ flatpickr("#calendar", {
         alert('o voo nao existe');
         return;
       }
+      getSelectedCabinFilters();
       renderCards(selectedFlights);
     });
-
+    
   }
 
   renderFlights();
@@ -250,48 +258,54 @@ function formatCurrency(priceCents) {
 }
 
 
-  function renderCards(selectedFlight) {
-    cardsContainer.innerHTML = ''; // Limpa o container antes de adicionar novos cards
+function renderCards(selectedFlights) {
+  cardsContainer.innerHTML = ''; // Limpa o container antes de adicionar novos cards
+  const time = { 
+    hour: '2-digit', 
+    minute: '2-digit',
+    hour12: false
+  };
 
-    selectedFlight.forEach((f) => {
-      const flightCard = document.createElement('div');
-      flightCard.className = 'flight-card d-flex flex-column';
-      flightCard.innerHTML = `
-        <h3 class="flight-destination">
-          ${f.destination}
-        </h3>
-        <div class="flight-info d-flex">
-          <img src="${f.airline}" alt="" class="flight-airline-img">
-          <div class="flight-take-off">
-            <div class="time">
-              ${f.schedules[0]} - ${f.schedules[1]}
-            </div>
-            <div class="airport">
-              ${f.airport}
-            </div>
+  selectedFlights.forEach((f) => {
+    const flightCard = document.createElement('div');
+    flightCard.className = 'flight-card d-flex flex-column';
+    flightCard.setAttribute('data-id', f.id);
+    flightCard.innerHTML = `
+      <h3 class="flight-destination">
+        ${f.destination}
+      </h3>
+      <div class="flight-info d-flex">
+        <img src="${f.airline}" alt="" class="flight-airline-img">
+        <div class="flight-take-off">
+          <div class="time">
+            ${f.schedules[0].toLocaleTimeString('en-GB', time)} - ${f.schedules[1].toLocaleTimeString('en-GB', time)}
+          </div>
+          <div class="airport">
+            ${f.airport}
           </div>
         </div>
-        <div class="flight-bottom d-flex align-items-center">
-          <div class="price-cabin">
-            <div class="price">
-              ${formatCurrency(f.price)} €
-            </div>
-            <div class="cabin-sugestion">
-              ${f.cabin}
-            </div>
+      </div>
+      <div class="flight-bottom d-flex align-items-center">
+        <div class="price-cabin">
+          <div class="price">
+            ${formatCurrency(f.price)} €
           </div>
-          <div class="favorite-select d-flex align-items-center">
-            <div class="favorite">
-              <img src="../media/icons/favorite.svg" alt="">
-            </div>
-            <div class="select-btn">
-              <div>Select</div>
-            </div>
+          <div class="cabin-sugestion">
+            ${f.cabin}
           </div>
         </div>
-      `;
+        <div class="favorite-select d-flex align-items-center">
+          <div class="favorite">
+            <img src="../media/icons/favorite.svg" alt="">
+          </div>
+          <div class="select-btn">
+            <div>Select</div>
+          </div>
+        </div>
+      </div>
+    `;
 
-      cardsContainer.appendChild(flightCard);
+    cardsContainer.appendChild(flightCard);
 
       
     /* SELECT FLIGHT */
@@ -318,6 +332,7 @@ function formatCurrency(priceCents) {
       });
     }
   });
+
 }
 
 function handleAddToCart(flightData) {
@@ -330,6 +345,44 @@ function handleAddToCart(flightData) {
   console.log(`Voo adicionado ao carrinho:`, flightData);
 }
 
+const cabinFiltersContainer = document.querySelector('.cabin-filters-container');
+
+function updateSuggestionsList() {
+  const checkboxes = cabinFiltersContainer.querySelectorAll('input[type="checkbox"]:checked');
+  const selectedCabinTypes = Array.from(checkboxes).map(checkbox => checkbox.value);
+  console.log('SelectedCabinTypes:', selectedCabinTypes);
+
+  const flightCards = document.querySelectorAll('.sugestions-grid .flight-card');
+  console.log('FlightCards:', flightCards);
+
+  if (flightCards.length > 0) {
+    flightCards.forEach(card => {
+      // get the value of data-id
+      const flightId = parseInt(card.getAttribute('data-id'));
+      const flight = flights.searchFlightById(flightId);
+      // console.log('Flight:', flightId, flight);
+      // check if flight has the checked cabin type
+      if (flight && flight.cabin && selectedCabinTypes.includes(flight.cabin)) {
+        card.style.display = 'flex';
+      } else {
+        card.classList.remove('d-flex');
+        card.style.display = 'none';
+      }
+    });
+  }
+}
+
+function getSelectedCabinFilters() {
+  if (cabinFiltersContainer) {
+    const checkboxes = cabinFiltersContainer.querySelectorAll('input[type="checkbox"]');
+    console.log(checkboxes);
+    for (const checkbox of checkboxes) {
+      checkbox.addEventListener('change', () => {
+        updateSuggestionsList();
+      });
+    }
+  }
+}
 
 
   /* PAGINATION

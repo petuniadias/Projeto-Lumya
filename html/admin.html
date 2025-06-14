@@ -314,7 +314,11 @@
                         <label for="destination-img">
                           Image
                         </label>
-                        <input class="form-control destination-img-input" name="destination-img" type="file" accept="image/*"> <!-- APENAS ARQUIVOS DE IMAGEM DEVEM SER SELECIONÁVEIS-->
+                        <select class="destination-img-input form-select" name="destination-img">
+                          <option value="../../media/img/destinations/oporto.jpg" selected>
+                            <img src="../../media/img/destinations/oporto.jpg" alt="Oporto, Portugal">
+                          </option>
+                        </select>
                       </div>
                       <div class="modal-footer" style="padding: 0;">
                         <button class="add-destination-btn btn btn-primary w-100" type="button">Create</button>

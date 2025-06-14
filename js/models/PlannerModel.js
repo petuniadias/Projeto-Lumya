@@ -301,7 +301,17 @@ export class FlightManager {
 
   // Search for a flight by ID
   searchFlightById(id) {
-      return this.flights.find(flight => flight.id === id) || null;
+    /*
+      for (const flight of this.flights) {
+        const flightId = id;
+        if (flight.id === id) {
+          return flight;
+        }
+      }
+      return null;
+    */
+
+    return this.flights.find(flight => flight.id === id) || null;
   }
 
   // Delete a flight by ID
@@ -333,20 +343,20 @@ export class FlightManager {
 
   // Delete all flights
   deleteAllFlights() {
-      const deletedFlights = [...this.flights];
-      this.flights = [];
-      this.flightIdCounter = 1;
-      return deletedFlights;
+    const deletedFlights = [...this.flights];
+    this.flights = [];
+    this.flightIdCounter = 1;
+    return deletedFlights;
   }
 
   // Count all flights
   countAllFlights() {
-      return this.flights.length;
+    return this.flights.length;
   }
 
   // Count flights by airline
   countFlightsByAirline(airline) {
-      return this.listFlightsByAirline(airline).length;
+    return this.listFlightsByAirline(airline).length;
   }
 
 
@@ -399,6 +409,7 @@ export class FlightManager {
     }
     return matchingFlights;
   }
+  
 }
 
 // Example usage:

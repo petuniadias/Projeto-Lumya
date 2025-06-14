@@ -1,5 +1,5 @@
 import * as User from '../models/UserModel.js';
-import { tourismType, destination, flight, countriesVisited } from "../init.js";
+import { tourismType, destination, flights, countriesVisited } from "../init.js";
 
 // COUNTRIES VISITED
 
