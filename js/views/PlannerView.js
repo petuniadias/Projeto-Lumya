@@ -362,7 +362,7 @@ function updateSuggestionsList() {
       const flight = flights.searchFlightById(flightId);
       // console.log('Flight:', flightId, flight);
       // check if flight has the checked cabin type
-      if (flight && flight.cabin && selectedCabinTypes.includes(flight.cabin)) {
+      if (flight && flight.cabin && selectedCabinTypes.includes(flight.cabin) || selectedCabinTypes.length === 0) {
         card.style.display = 'flex';
       } else {
         card.classList.remove('d-flex');
