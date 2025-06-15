@@ -473,7 +473,9 @@ label {
   margin-bottom: 5px;
 }
 
-.sugestions-grid {
+.suggestions-flights-grid,
+.suggestions-stays-grid,
+.suggestions-festivals-grid {
   gap: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -579,18 +581,24 @@ label {
 
 /* FLIGHT CARD */
 
-.flight-card {
+.flight-card,
+.stay-card,
+.festival-card {
   width: 262px;
   border: 1px solid #02304765;
   padding: 15px;
-  gap: 10px;
-  border-radius: 15px;
+  gap: 7px;
+  border-radius: 20px;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 2px 4px 0px rgba(2, 48, 71, 0.2);
 }
 
-.flight-destination {
+.flight-destination,
+.stay-title {
   font-size: 16px;
+  font-weight: 600;
+  margin: 0;
   width: 100%;
 }
 
@@ -620,7 +628,8 @@ label {
   cursor: pointer;
 }
 
-.cabin-sugestion {
+.cabin-sugestion,
+.price-meter {
   font-size: 12px;
 }
 
@@ -642,6 +651,45 @@ label {
 .flight-card .select-btn img:not(.checked) {
   display: none;
 }
+
+/* STAY CARD */
+.stay-img {
+  width: 223.5px;
+  height: 149px;
+  border-radius: 15px;
+}
+
+.see-details {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.rating {
+  gap: 10px;
+  text-align: start;
+  width: 100%;
+}
+
+.rating-num {
+  padding: 5px 10px;
+  background-color: #FFB703;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.rating-grade {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.price {
+  font-weight: 600;
+}
+
 
 /* STEP FIVE */
 
@@ -784,4 +832,8 @@ label {
   width: 100%;
   max-width: max-content;
   gap: 5px;
+}
+
+.cart-items p {
+  margin: 0;
 }

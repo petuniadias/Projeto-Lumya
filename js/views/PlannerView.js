@@ -218,7 +218,7 @@ flatpickr("#calendar", {
 });
 
 /* STEP FOUR */
-  const cardsContainer = document.querySelector('.sugestions-grid');
+  const cardsContainer = document.querySelector('.suggestions-flights-grid');
 
   /* RENDER FLIGHTS BASED ON USER INPUT */
 
@@ -353,7 +353,7 @@ function updateSuggestionsList() {
   const selectedCabinTypes = Array.from(checkboxes).map(checkbox => checkbox.value);
   console.log('SelectedCabinTypes:', selectedCabinTypes);
 
-  const flightCards = document.querySelectorAll('.sugestions-grid .flight-card');
+  const flightCards = document.querySelectorAll('.suggestions-flights-grid .flight-card');
   console.log('FlightCards:', flightCards);
 
   if (flightCards.length > 0) {
@@ -541,3 +541,9 @@ function renderItemsFromCart() {
 }
 
 renderItemsFromCart();
+
+const checkoutBtn = document.querySelector('.checkout-btn');
+
+checkoutBtn.addEventListener('click', () => { 
+
+});

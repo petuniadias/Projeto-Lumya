@@ -54,7 +54,7 @@ export function getUserLogged() {
 
 /**
  * CLASSE QUE MODELA UM UTILIZADOR NA APLICAÇÃO
- */
+*/
 
 class User {
   name = '';
@@ -75,7 +75,6 @@ class User {
     this.tripHistory = tripHistory;
     this.pendingTrips = pendingTrips;
   }
-
 
   /* POINTS */
 	
@@ -107,7 +106,6 @@ class User {
   }
 
   addTripToHistory(trip) {
-
     this.tripHistory.push({
       schedules: trip.schedules,
       destination: {
