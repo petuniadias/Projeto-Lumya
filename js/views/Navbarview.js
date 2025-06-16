@@ -28,7 +28,7 @@ function navbarView() {
     <div class="right-side">
       <div class="points">
         <img src="/media/icons/points.svg">
-        <div class="numPoints">2000 Points</div>
+        <div class="numPoints">${user.points} Points </div>
       </div>
       <div class="notifications">
         <img src="/media/icons/notifications.svg">

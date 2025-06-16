@@ -6,9 +6,14 @@ function initdata() {
   // USERS
   if (!localStorage.users) {
     const users = [
-      {
+      { 
+        name: 'admin',
         username: 'admin',
         password: '1234',
+        points: 0,
+        tripHistory: [],
+        pendingTrips: [],
+        favoriteFlights: []
       },
     ];
     localStorage.setItem('users', JSON.stringify(users));
@@ -45,6 +50,42 @@ export const flights = new FlightManager(destination);
 /* CART */
 
 export const cart = new Cart();
+
+/* ACHIEVEMENTS */
+
+export const achievements = [
+  //USER INTERACTION
+  {
+    title: 'Travel Buddy',
+    category: 'user interaction',
+    description: 'Invited another user to your trip.',
+    img: '/media/img/achievements/travel-buddy.svg',
+    points: 100
+  },
+  //FLIGHTS
+  {
+    title: 'First Flight',
+    category: 'flight',
+    description: 'For booking your first flight.',
+    img: '/media/img/achievements/first-flight.svg',
+    points: 100
+  },
+  {
+    title: 'World Tour',
+    category: 'flight',
+    description: 'Booked five flights.',
+    img: '/media/img/achievements/first-flight.svg',
+    points: 300
+  },
+  // SPEACIAL
+  {
+    title: 'Welcome Gift',
+    category: 'special',
+    description: 'Using Lumya for the first time.',
+    img: '/media/img/achievements/welcome-gift.svg',
+    points: 100
+  }
+];
 
 /* COUNTRIES VISITED */
 

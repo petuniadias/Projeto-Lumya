@@ -218,6 +218,9 @@ flatpickr("#calendar", {
 });
 
 /* STEP FOUR */
+
+
+
   const cardsContainer = document.querySelector('.suggestions-flights-grid');
 
   /* RENDER FLIGHTS BASED ON USER INPUT */
@@ -305,17 +308,54 @@ function renderCards(selectedFlights) {
       </div>
     `;
 
-    cardsContainer.appendChild(flightCard);
+    /* FAVORITE FLIGHT */
 
+    const favoriteBtn = flightCard.querySelector('.favorite');
+    const user = User.getUserLogged();
+
+    function updateFavoriteIconDisplay(button, isFavorite) {
+      button.innerHTML = isFavorite ?
+        `<img src="../media/icons/favorited.svg" alt="Favorited">` :
+        `<img src="../media/icons/favorite.svg" alt="Add to favorites">`;
+    }
+
+    if (user && favoriteBtn) {
+      updateFavoriteIconDisplay(favoriteBtn, user.isFlightFavorite(f.id));
+    } else if (favoriteBtn) {
+      updateFavoriteIconDisplay(favoriteBtn, false)
+    }
+
+    if (favoriteBtn) {
+      favoriteBtn.addEventListener('click', () => {
+        const flightId = f.id;
+        if (user.isFlightFavorite(flightId)) {
+          user.removeFavoriteFlight(flightId);
+          updateFavoriteIconDisplay(favoriteBtn, false);
+        } else {
+          user.addFavoriteFlight(flightId);
+          updateFavoriteIconDisplay(favoriteBtn, true);
+        }
+      });
+    }
+
+    cardsContainer.appendChild(flightCard);
       
     /* SELECT FLIGHT */
 
     const selectBtn = flightCard.querySelector('.select-btn');
     const selectTextForCard = flightCard.querySelector('.select-btn div'); // O div que contém o texto
+
+    // console.log('FlightCard:', flightCard);
+
     
     if (selectBtn && selectTextForCard) {
+
       selectBtn.addEventListener('click', () => {
         const checked = selectBtn.querySelector('img.checked');
+
+        const id = parseInt(flightCard.getAttribute('data-id'));
+        const f = flights.searchFlightById(id);
+        console.log('Flight:', f);
         
         if (checked) {
           checked.remove();
@@ -337,6 +377,7 @@ function renderCards(selectedFlights) {
 
 function handleAddToCart(flightData) {
   cart.addItem(
+    flightData.id,
     'Flight',
     flightData.price,
     1
@@ -506,7 +547,7 @@ function renderItemsFromCart() {
 
   items.forEach(item => {
     const itemContainer = document.createElement('div');
-    itemContainer.getAttribute('data-id');
+    itemContainer.setAttribute('data-id', item.flightId);
     itemContainer.className = 'cart-item-container';
     itemContainer.innerHTML = `
       <div class="remove-item" data-item-id="${item.id}">

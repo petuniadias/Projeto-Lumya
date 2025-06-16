@@ -358,7 +358,17 @@ label {
 
 .destination-img {
   width: 135px;
+  height: 135px;
+  border-radius: 10px;
 }
+
+.selected-destination-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
 
 /* STEP THREE */
 
@@ -384,7 +394,7 @@ label {
 }
 
 .flatpickr-calendar {
-  width: 60% !important;
+  width: 55% !important;
   border-radius: 20px;
   font-family: Inter;
   border: 1px solid #02304765;

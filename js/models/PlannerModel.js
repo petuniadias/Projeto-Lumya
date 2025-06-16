@@ -648,9 +648,10 @@ export class Cart {
   }
 
   // ADD AN ITEM TO THE CART
-  addItem(name, price, quantity) {
+  addItem(flightId, name, price, quantity) {
     const item = {
       id: this.cartId++,
+      flightId,
       name,
       price,
       quantity

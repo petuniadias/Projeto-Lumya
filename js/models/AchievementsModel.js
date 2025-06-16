@@ -1,9 +1,9 @@
 /* ACHIEVEMENTS */
 class Achievement {
-  achievements = {};
+  achievements = [];
   localStorageAchievementKey = 'achievementKeys';
 
-  constructor(achievements = {}) {
+  constructor(achievements) {
     this.achievements = achievements;
   }
 
