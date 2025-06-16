@@ -221,7 +221,8 @@ flatpickr("#calendar", {
 
 
 
-  const cardsContainer = document.querySelector('.suggestions-flights-grid');
+  //const cardsContainer = document.querySelector('.suggestions-flights-grid');
+  let currentSuggestedFlights = [];
 
   /* RENDER FLIGHTS BASED ON USER INPUT */
 
@@ -238,15 +239,16 @@ flatpickr("#calendar", {
       const selectedTourismTypes = document.querySelectorAll('.tourism-type-card.selected .tourism-type-name');
       const selectedTourismTypeNames  = Array.from(selectedTourismTypes).map(tt => tt.textContent);
 
-      console.log('SELECTED TOURISM TYPES SELECTED:', selectedTourismTypeNames);
-      console.log('SELECTED DESTINATION:', selectedDestination); 
-      const selectedFlights = flights.getFlightByInput(selectedStartDate, departure.value, selectedDestination, selectedTourismTypeNames);
-      if(selectedFlights.length === 0) {
+      const currentSuggestedFlights = flights.getFlightByInput(selectedStartDate, departure.value, selectedDestination, selectedTourismTypeNames);
+      if(currentSuggestedFlights.length === 0) {
         alert('o voo nao existe');
+        const favoritesContainer = document.querySelector('.favorite-flights');
+        if (suggestionsContainer) suggestionsContainer.innerHTML = '';
+        if (favoritesContainer) favoritesContainer.innerHTML = '';
         return;
       }
       getSelectedCabinFilters();
-      renderCards(selectedFlights);
+      renderFlightCardsView(currentSuggestedFlights);
     });
     
   }
@@ -261,115 +263,160 @@ function formatCurrency(priceCents) {
 }
 
 
-function renderCards(selectedFlights) {
-  cardsContainer.innerHTML = ''; // Limpa o container antes de adicionar novos cards
+function renderFlightCardsView(flightsToRender) {
+  const suggestionsContainer = document.querySelector('.suggestions-flights-grid');
+  const favoritesContainer = document.querySelector('.favorite-flights');
+  const user = User.getUserLogged();
+
+  suggestionsContainer.innerHTML = ''; // Limpa o container de sugestões
+  favoritesContainer.innerHTML = '';   // Limpa o container de favoritos
+
   const time = { 
     hour: '2-digit', 
     minute: '2-digit',
     hour12: false
   };
 
-  selectedFlights.forEach((f) => {
-    const flightCard = document.createElement('div');
-    flightCard.className = 'flight-card d-flex flex-column';
-    flightCard.setAttribute('data-id', f.id);
-    flightCard.innerHTML = `
-      <h3 class="flight-destination">
-        ${f.destination}
-      </h3>
-      <div class="flight-info d-flex">
-        <img src="${f.airline}" alt="" class="flight-airline-img">
-        <div class="flight-take-off">
-          <div class="time">
-            ${f.schedules[0].toLocaleTimeString('en-GB', time)} - ${f.schedules[1].toLocaleTimeString('en-GB', time)}
-          </div>
-          <div class="airport">
-            ${f.airport}
-          </div>
-        </div>
-      </div>
-      <div class="flight-bottom d-flex align-items-center">
-        <div class="price-cabin">
-          <div class="price">
-            ${formatCurrency(f.price)} €
-          </div>
-          <div class="cabin-sugestion">
-            ${f.cabin}
+  flightsToRender.forEach((f) => {
+     const createFlightCardElement = (flightData, currentUser) => {
+      const cardElement = document.createElement('div');
+      cardElement.className = 'flight-card d-flex flex-column';
+      cardElement.setAttribute('data-id', flightData.id);
+      cardElement.innerHTML = `
+        <h3 class="flight-destination">
+          ${flightData.destination}
+        </h3>
+        <div class="flight-info d-flex">
+          <img src="${flightData.airline}" alt="" class="flight-airline-img">
+          <div class="flight-take-off">
+            <div class="time">
+              ${flightData.schedules[0].toLocaleTimeString('en-GB', time)} - ${flightData.schedules[1].toLocaleTimeString('en-GB', time)}
+            </div>
+            <div class="airport">
+              ${flightData.airport}
+            </div>
           </div>
         </div>
-        <div class="favorite-select d-flex align-items-center">
-          <div class="favorite">
-            <img src="../media/icons/favorite.svg" alt="">
+        <div class="flight-bottom d-flex align-items-center">
+          <div class="price-cabin">
+            <div class="price">
+              ${formatCurrency(flightData.price)} €
+            </div>
+            <div class="cabin-sugestion">
+              ${flightData.cabin}
+            </div>
           </div>
-          <div class="select-btn">
-            <div>Select</div>
+          <div class="favorite-select d-flex align-items-center">
+            <div class="favorite">
+              <img src="../media/icons/favorite.svg" alt="Add to favorites">
+            </div>
+            <div class="select-btn">
+              <div>Select</div>
+            </div>
           </div>
         </div>
-      </div>
-    `;
+      `;
 
-    /* FAVORITE FLIGHT */
+      /* FAVORITE FLIGHT LISTENER */
+      const favoriteBtn = cardElement.querySelector('.favorite');
 
-    const favoriteBtn = flightCard.querySelector('.favorite');
-    const user = User.getUserLogged();
+      function updateFavoriteIconDisplay(button, isFavorite) {
+        button.innerHTML = isFavorite ?
+          `<img src="../media/icons/favorited.svg" alt="Favorited">` :
+          `<img src="../media/icons/favorite.svg" alt="Add to favorites">`;
+      }
 
-    function updateFavoriteIconDisplay(button, isFavorite) {
-      button.innerHTML = isFavorite ?
-        `<img src="../media/icons/favorited.svg" alt="Favorited">` :
-        `<img src="../media/icons/favorite.svg" alt="Add to favorites">`;
-    }
+      if (currentUser && currentUser.favoriteFlights && favoriteBtn) {
+        updateFavoriteIconDisplay(favoriteBtn, currentUser.isFlightFavorite(flightData.id));
+      } else if (favoriteBtn) {
+        updateFavoriteIconDisplay(favoriteBtn, false);
+      }
 
-    if (user && favoriteBtn) {
-      updateFavoriteIconDisplay(favoriteBtn, user.isFlightFavorite(f.id));
-    } else if (favoriteBtn) {
-      updateFavoriteIconDisplay(favoriteBtn, false)
-    }
+      if (favoriteBtn && currentUser) {
+        favoriteBtn.addEventListener('click', () => {
+          const flightId = flightData.id;
+          if (currentUser.isFlightFavorite(flightId)) {
+            currentUser.removeFavoriteFlight(flightId);
+          } else {
+            currentUser.addFavoriteFlight(flightId);
+          }
+          renderFlightCardsView(flightsToRender); // Re-renderizar com a lista original
+        });
+      }
 
-    if (favoriteBtn) {
-      favoriteBtn.addEventListener('click', () => {
-        const flightId = f.id;
-        if (user.isFlightFavorite(flightId)) {
-          user.removeFavoriteFlight(flightId);
-          updateFavoriteIconDisplay(favoriteBtn, false);
-        } else {
-          user.addFavoriteFlight(flightId);
-          updateFavoriteIconDisplay(favoriteBtn, true);
-        }
-      });
-    }
+      /* SELECT FLIGHT LISTENER */
+      const selectBtn = cardElement.querySelector('.select-btn');
+      const selectTextForCard = cardElement.querySelector('.select-btn div');
 
-    cardsContainer.appendChild(flightCard);
-      
-    /* SELECT FLIGHT */
+      // Função para verificar se o voo está no carrinho
+      const isFlightInCart = (flightId) => {
+        return cart.listAllItems().some(item => item.flightId === flightId && item.name === 'Flight');
+      };
 
-    const selectBtn = flightCard.querySelector('.select-btn');
-    const selectTextForCard = flightCard.querySelector('.select-btn div'); // O div que contém o texto
+      // Definir estado inicial do botão "Select" com base no carrinho
+      if (isFlightInCart(flightData.id)) {
+        const newCheckMark = document.createElement('img');
+        newCheckMark.src = '../media/icons/selected.svg';
+        newCheckMark.classList.add('checked');
+        selectBtn.prepend(newCheckMark);
+        selectTextForCard.textContent = 'Selected';
+      } else {
+        selectTextForCard.textContent = 'Select';
+      }
 
-    // console.log('FlightCard:', flightCard);
-
-    
-    if (selectBtn && selectTextForCard) {
-
-      selectBtn.addEventListener('click', () => {
-        const checked = selectBtn.querySelector('img.checked');
-
-        const id = parseInt(flightCard.getAttribute('data-id'));
-        const f = flights.searchFlightById(id);
-        console.log('Flight:', f);
+      if (selectBtn && selectTextForCard) {
+        selectBtn.addEventListener('click', () => {
+          const isCurrentlySelected = selectBtn.querySelector('img.checked') !== null;
+          const currentFlightId = flightData.id; 
+          const flightForCart = flights.searchFlightById(currentFlightId);
         
-        if (checked) {
-          checked.remove();
-          selectTextForCard.textContent = 'Select';
-        } else {
-          const newCheckMark = document.createElement('img');
-          newCheckMark.src = '../media/icons/selected.svg';
-          newCheckMark.classList.add('checked');
-          selectBtn.prepend(newCheckMark);
-          selectTextForCard.textContent = 'Selected';
-          handleAddToCart(f);
-          console.log(cart);
-        }
-      });
+        if (isCurrentlySelected) {
+            selectBtn.querySelector('img.checked').remove();
+            selectTextForCard.textContent = 'Select';
+            const removedItem = cart.removeItemByFlightId(currentFlightId);
+            console.log("[SelectBtn] Item removed from cart by flightId:", removedItem);
+          } else {
+            const allSuggestionCards = suggestionsContainer.querySelectorAll('.flight-card');
+            allSuggestionCards.forEach(otherCardElement => {
+              const otherFlightId = parseInt(otherCardElement.getAttribute('data-id'));
+              if (otherFlightId !== currentFlightId) {
+                const otherSelectBtn = otherCardElement.querySelector('.select-btn');
+                const otherSelectText = otherSelectBtn.querySelector('div');
+                const otherCheckedImg = otherSelectBtn.querySelector('img.checked');
+
+                if (otherCheckedImg) { // Se este outro card estiver selecionado
+                  console.log(`[SelectBtn] Deselecting previously selected suggestion flight ID: ${otherFlightId}`);
+                  otherCheckedImg.remove();
+                  otherSelectText.textContent = 'Select';
+                  cart.removeItemByFlightId(otherFlightId);
+                }
+              }
+            });
+
+            const newCheckMark = document.createElement('img');
+            newCheckMark.src = '../media/icons/selected.svg';
+            newCheckMark.classList.add('checked');
+            selectBtn.prepend(newCheckMark);
+            selectTextForCard.textContent = 'Selected';
+            if (flightData) { 
+              handleAddToCart(flightData); 
+            }
+          }
+        renderItemsFromCart(); 
+          total.innerHTML = `${formatCurrency(cart.getTotalCost())} €`;
+        });
+      }
+      return cardElement;
+    };
+
+    // Criar e adicionar card à secção de sugestões
+    const suggestionCard = createFlightCardElement(f, user);
+    suggestionsContainer.appendChild(suggestionCard);
+
+    // Se for favorito e o container de favoritos existir, criar e adicionar um NOVO card à secção de favoritos
+    if (favoritesContainer && user && user.isFlightFavorite(f.id)) {
+      const favoriteCard = createFlightCardElement(f, user); // Criar um novo elemento de card
+      favoritesContainer.appendChild(favoriteCard);
     }
   });
 
@@ -586,5 +633,51 @@ renderItemsFromCart();
 const checkoutBtn = document.querySelector('.checkout-btn');
 
 checkoutBtn.addEventListener('click', () => { 
+  const cartItems = cart.listAllItems();
+  if (cartItems.length === 0) {
+    alert('Your cart is empty.');
+    return;
+  }
 
-});
+  const processedCartItemsForHistory = cartItems.map(item => {
+   console.log("Processing cart item:", item); // 3. Verificar cada item do carrinho
+    let itemDetails = null;
+    if (item.name === 'Flight') {
+      const flightDetails = flights.searchFlightById(item.flightId);
+      console.log(`Flight details for flightId ${item.flightId}:`, flightDetails); // 4. Verificar os detalhes do voo encontrados
+
+      if (flightDetails) {
+        itemDetails = {
+          id: flightDetails.id,
+          airline: flightDetails.airline,
+          departure: flightDetails.departure,
+          destinationString: flightDetails.destination,
+          cabin: flightDetails.cabin,
+          schedules: flightDetails.schedules.map(s => s.toISOString()),
+          airport: flightDetails.airport,
+          price: flightDetails.price
+          };
+        console.log("Created itemDetails for history:", itemDetails); // 5. Verificar o objeto de detalhes criado
+      } else {
+        console.error(`Flight details not found for cart item with flightId: ${item.flightId}`);
+      }
+    }
+    // Futuramente, adicione logs semelhantes para 'Stay' e 'Festival' aqui
+    return { ...item, details: itemDetails };
+  }).filter(item => item.details !== null); // Filter out items for which details couldn't be found
+
+  console.log("Processed cart items for history (after map and filter):", processedCartItemsForHistory); // 6. Verificar a lista final de itens processados
+
+  const loggedUser = User.getUserLogged();
+  console.log("Logged user:", loggedUser); // 7. Verificar o utilizador logado
+
+if (processedCartItemsForHistory.length > 0) {
+    loggedUser.addTripPackageToHistory(processedCartItemsForHistory, []);
+    loggedUser.addPoints(300);
+  cart.clearCart();
+    renderItemsFromCart(); // Re-renderiza a lista de itens do carrinho (que agora estará vazia)
+    total.innerHTML = `${formatCurrency(cart.getTotalCost())} €`; // Atualiza o total para 0.00 €
+    alert('Checkout successful! Your items have been added to your trip history.');
+   }
+  });
+

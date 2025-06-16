@@ -2,9 +2,13 @@ import * as User from '../models/UserModel.js';
 import { tourismType, destination, flights, countriesVisited } from "../init.js";
 
 // COUNTRIES VISITED
+User.init();
 
 function renderCountryVisitedCards() {
-  
+  const loggedUser = User.getUserLogged(); // Obter o utilizador logado
+  const userVisitedCountries = loggedUser ? loggedUser.countriesVisited() : []; // Obter a lista de países visitados pelo utilizador logado
+  console.log("User visited countries:", userVisitedCountries); // Log para depuração
+
   countriesVisited.forEach((country) => {
     // Transforma o nome do continente num ID válido (ex: "South America" -> "south-america")
     const continentId = country.continent.toLowerCase().replace(/\s+/g, '-');
@@ -12,18 +16,25 @@ function renderCountryVisitedCards() {
     const countryVisitedCardContainer = document.querySelector(containerSelector);
 
     if (countryVisitedCardContainer) {
-    const card = document.createElement('div');
-    card.className = 'achievement-card country disabled';
-    card.innerHTML = `
-      <div class="img-container">
-        <img src="${country.img}" alt="">
-      </div>
-      <h3>${country.country}</h3>
-    `;
-    countryVisitedCardContainer.appendChild(card);
+      const card = document.createElement('div');
+      card.className = 'achievement-card country'; 
+
+      const isVisited = loggedUser ? loggedUser.countriesVisited().includes(country.country) : false;
+      if (!isVisited) {
+          card.classList.add('disabled');
+      }
+
+      card.innerHTML = `
+        <div class="img-container">
+          <img src="${country.img}" alt="${country.country}">
+        </div>
+        <h3>${country.country}</h3>
+      `;
+
+      countryVisitedCardContainer.appendChild(card);
     } else {
       // Opcional: Adicionar um aviso se o container não for encontrado, pode ajudar na depuração.
-      // console.warn(`Container com o seletor "${containerSelector}" não encontrado para o continente "${country.continent}". O card para "${country.country}" não será renderizado.`);
+      console.warn(`Container com o seletor "${containerSelector}" não encontrado para o continente "${country.continent}". O card para "${country.country}" não será renderizado.`);
     }
   });
 }
@@ -31,28 +42,48 @@ function renderCountryVisitedCards() {
 renderCountryVisitedCards();
 
 
-// BUTTONS
-const achievementsSection = document.querySelector('.achievement-cards-section');
-const rightButton = document.querySelector('.scroll-btn-right');
-const leftButton = document.querySelector('.scroll-btn-left');
+// Função genérica para configurar botões de scroll
+function setupScrollFunctionality(containerSelector) {
+  const mainContainer = document.querySelector(containerSelector);
+  if (!mainContainer) {
+    // console.warn(`Main container for scroll not found: ${containerSelector}`);
+    return;
+  }
 
+  const scrollableContentParent = mainContainer.querySelector('.achievements-cards-category-content'); // Este é o tab-content
+  const rightButton = mainContainer.querySelector('.scroll-btns .scroll-btn-right');
+  const leftButton = mainContainer.querySelector('.scroll-btns .scroll-btn-left');
 
-  // SCROLL ANIMATION
+  if (!scrollableContentParent || !rightButton || !leftButton) {
+    // console.warn(`Missing elements for scroll in ${containerSelector}`);
+    return;
+  }
+  
+  const scrollAmount = 320; // Pode ajustar este valor
 
-function buttons() {
   rightButton.addEventListener('click', () => {
-    achievementsSection.scrollBy ({
-      left: 320,
-      behavior: 'smooth'
-    });
+    const activeTabPane = scrollableContentParent.querySelector('.tab-pane.show.active');
+    if (activeTabPane) {
+        const scrollTarget = activeTabPane.querySelector('.achievement-cards-section');
+        if (scrollTarget) {
+            scrollTarget.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    }
   });
 
   leftButton.addEventListener('click', () => {
-    achievementsSection.scrollBy ({
-      left: -320,
-      behavior: 'smooth'
-    });
+    const activeTabPane = scrollableContentParent.querySelector('.tab-pane.show.active');
+    if (activeTabPane) {
+        const scrollTarget = activeTabPane.querySelector('.achievement-cards-section');
+        if (scrollTarget) {
+            scrollTarget.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
+      }
   });
 }
 
-buttons();
+// Configurar botões de scroll para a secção principal de achievements
+setupScrollFunctionality('.achievement-content');
+
+// Configurar botões de scroll para a secção de países visitados
+setupScrollFunctionality('.countries-visited-content');

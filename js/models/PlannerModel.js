@@ -674,6 +674,17 @@ export class Cart {
     return null;
   }
 
+  removeItemByFlightId(flightId) {
+    const index = this.items.findIndex(item => item.flightId === flightId && item.name === 'Flight');
+    if (index !== -1) {
+      const removedItem = this.items.splice(index, 1)[0];
+      this.saveItems();
+      return removedItem;
+    }
+    console.warn(`Cart: Item with flightId ${flightId} not found for removal.`);
+    return null;
+  }
+
   // RETORNA TODOS OS ITEMS
   listAllItems() {
     return this.items;
