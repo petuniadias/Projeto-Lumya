@@ -20,13 +20,14 @@ export class TourismType {
     localStorage.setItem(this.localStorageTourismTypeKey, JSON.stringify(this.tourismType));
   }
 
-  add(key, name, img, status = true) {
+  add(key, name, status = true) {
     if (this.tourismType[key]) {
       throw Error(`Tourism Type with name "${key}" already exists!`);
     }
+    const imgPath = `/media/img/tourism type/${key}.png`;
     this.tourismType[key] = {
       name,
-      img,
+      img: imgPath,
       status
     };
 
@@ -42,13 +43,14 @@ export class TourismType {
     this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS ADICIONAR
   }
 
-  update(key, name, img, status = true) {
+  update(key, name, status = true) {
     if (!this.tourismType[key]) {
       throw Error(`Tourism Type with name "${key}" does not exist!`);
     }
+    const imgPath = `/media/img/tourism type/${key}.png`;
     this.tourismType[key] = {
       name,
-      img,
+      img: imgPath,
       status
     };
 

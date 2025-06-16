@@ -20,8 +20,6 @@ function initdata() {
   }
 }
 
-
-
 // TOURISM TYPES
 
 export const tourismType = new TourismType({
