@@ -288,6 +288,7 @@ export class FlightManager {
           status: status,
       };
       this.flights.push(flight);
+      saveFlights();
       return flight;
   }
 

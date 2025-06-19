@@ -1,7 +1,5 @@
 import { TourismType, Destination, FlightManager, Cart } from './models/PlannerModel.js';
 
-initdata();
-
 function initdata() {
   // USERS
   if (!localStorage.users) {
@@ -18,6 +16,28 @@ function initdata() {
     ];
     localStorage.setItem('users', JSON.stringify(users));
   }
+
+  // FLIGHTS
+  // Verifica se a chave 'flights' existe ou se está vazia no localStorage
+  const storedFlights = localStorage.getItem(flights.storageKey);
+  if (!storedFlights || JSON.parse(storedFlights).length === 0) {
+    flights.addFlight("Lumya Air", "Lisbon, Portugal", "Paris, France", ['cultural', 'film'], 'Economy', [new Date('2024-09-15T08:00:00'), new Date('2024-09-15T11:00:00')], "LIS", 150.00);
+    flights.addFlight("Lumya Air", "Madrid, Spain", "Paris, France", ['cultural'], 'Business', [new Date('2024-09-16T10:00:00'), new Date('2024-09-16T12:30:00')], "MAD", 220.00);
+    flights.addFlight("Beach Hopper", "Lisbon, Portugal", "Bali, Indonesia", ['beach'], 'Economy', [new Date('2024-10-01T22:00:00'), new Date('2024-10-02T18:00:00')], "LIS", 750.00);
+    flights.addFlight("City Explorer", "London, UK", "Paris, France", ['cultural'], 'Economy', [new Date('2024-09-20T09:00:00'), new Date('2024-09-20T10:30:00')], "LHR", 120.00);
+    flights.addFlight("Adventure Wings", "Berlin, Germany", "Bali, Indonesia", ['beach'], 'Business', [new Date('2024-10-05T14:00:00'), new Date('2024-10-06T10:00:00')], "BER", 980.00);
+    flights.saveFlights(); // Importante: FlightManager precisa de um método saveFlights() que guarde this.flights no localStorage.
+  }
+
+  // ACHIEVEMENTS
+  if (!localStorage.getItem('achievementsList')) { // Usar uma chave específica
+    localStorage.setItem('achievementsList', JSON.stringify(achievements));
+  }
+
+  // COUNTRIES VISITED (usando o array 'countriesVisited' definido neste ficheiro)
+  if (!localStorage.getItem('countriesVisitedList')) { // Usar uma chave específica
+    localStorage.setItem('countriesVisitedList', JSON.stringify(countriesVisited));
+  }
 }
 
 // TOURISM TYPES
@@ -27,6 +47,16 @@ export const tourismType = new TourismType({
     { name: 'Beach', 
       img: '/media/icons/beach.svg', 
       status: true 
+    },
+    'cultural':
+    { name: 'Cultural',
+      img: '/media/icons/culture.svg',
+      status: true
+    },
+  'film':
+    { name: 'Film',
+      img: '/media/icons/film.svg',
+      status: true
     }
 });
 
@@ -34,14 +64,18 @@ console.log(tourismType.getAll());
 
 export const destination = new Destination({
   'Paris, France': 
-    { destination: 'Paris, France',
+    { 
       tourismType: ['cultural', 'film'],
       img: '/media/img/destination-img.png', 
       status: true 
+    },
+  'Bali, Indonesia':
+    {
+      tourismType: ['beach'],
+      img: '/media/img/bali-destination.png', // Exemplo de imagem
+      status: true
     }
-});
-
-console.log(destination.getAll());
+  });
 
 // FLIGHTS
 
@@ -222,3 +256,4 @@ export const countriesVisited = [
   }
 ];
 
+initdata();

@@ -72,6 +72,7 @@ function renderTourismTypes() {
     const type = tourismType.get(key);
     const card = document.createElement('div');
     card.className = 'tourism-type-card d-flex flex-column align-items-center';
+    card.setAttribute('data-tourism-type-key', key); // Adicionar a chave do tipo de turismo como atributo
     card.innerHTML = `
       <img src="${type.img}" alt="${type.name}">
       <div class="tourism-type-name">${type.name}</div>
@@ -130,9 +131,27 @@ closeBtn.addEventListener('click', () => {
 
 function renderDestinations() {
   const destinationCardContainer = document.querySelector('.destination-card-section');
-  const destinationKeys = Object.keys(destination.getAll());
-  destinationKeys.forEach((key) => {
-    const des = destination.get(key);
+  destinationCardContainer.innerHTML = ''; // Limpar destinos anteriores
+
+  const selectedTourismTypeElements = document.querySelectorAll('.tourism-type-card.selected');
+  const selectedTourismTypeKeys = Array.from(selectedTourismTypeElements).map(el => el.getAttribute('data-tourism-type-key'));
+
+  const allDestinations = destination.getAll(true); // Obter todos os destinos ativos
+  let destinationsToRender = Object.values(allDestinations);
+
+  if (selectedTourismTypeKeys.length > 0) {
+    destinationsToRender = destinationsToRender.filter(dest => {
+      // Verificar se o destino tem pelo menos um dos tipos de turismo selecionado
+      return selectedTourismTypeKeys.some(selectedKey => dest.tourismType.includes(selectedKey));
+    });
+  }
+
+  if (destinationsToRender.length === 0) {
+    destinationCardContainer.innerHTML = '<p style="color: white; text-align: center; width: 100%;">Nenhum destino encontrado para os tipos de turismo selecionados.</p>';
+    return;
+  }
+
+  destinationsToRender.forEach((des) => {
     const card = document.createElement('div');
     card.className = 'destination-card d-flex flex-column align-items-center justify-content-center';
     card.innerHTML = `
