@@ -83,7 +83,6 @@ function renderTourismTypesSelect(tourismTypeInput) {
 function createDestination() {
   const destinationInput = document.querySelector('.destination-input');
   const tourismTypeInput = document.querySelector('.tourism-type-select');
-  const imgInput = document.querySelector('.destination-img-input');
   const createBtn = document.querySelector('.add-destination-btn');
   
   console.log(tourismType.getAll());
@@ -107,8 +106,7 @@ function createDestination() {
     destination.add(
       destinationInput.value, 
       destinationInput.value, 
-      tourismTypes, 
-      imgInput.value
+      tourismTypes
     );
 
     renderDestination();

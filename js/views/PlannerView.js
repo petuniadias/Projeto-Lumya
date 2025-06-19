@@ -80,6 +80,7 @@ function renderTourismTypes() {
 
     card.addEventListener('click', () => {
       card.classList.toggle('selected');
+      renderDestinations();
     });
 
     tourismCardContainer.appendChild(card);
@@ -118,9 +119,12 @@ buttons();
 const destinationBtn = document.querySelector('.destination-selection');
 const destinationPopUp = document.querySelector('.destination-selection-box');
 const closeBtn = document.querySelector('.close-btn');
+const randomTourismBtn = document.getElementById('randomize-tourism-btn');
+const randomDestinationBtn = document.getElementById('randomize-destination-btn');
 
 destinationBtn.addEventListener('click', () => {
   destinationPopUp.style.display = 'flex';
+  renderDestinations();
 });
 
 closeBtn.addEventListener('click', () => {
@@ -259,15 +263,13 @@ flatpickr("#calendar", {
       const selectedTourismTypeNames  = Array.from(selectedTourismTypes).map(tt => tt.textContent);
 
       const currentSuggestedFlights = flights.getFlightByInput(selectedStartDate, departure.value, selectedDestination, selectedTourismTypeNames);
+      renderFlightCardsView(currentSuggestedFlights);
+
       if(currentSuggestedFlights.length === 0) {
         alert('o voo nao existe');
         const favoritesContainer = document.querySelector('.favorite-flights');
-        if (suggestionsContainer) suggestionsContainer.innerHTML = '';
-        if (favoritesContainer) favoritesContainer.innerHTML = '';
-        return;
       }
       getSelectedCabinFilters();
-      renderFlightCardsView(currentSuggestedFlights);
     });
     
   }

@@ -2,16 +2,16 @@
 
 export class TourismType {
   tourismType = {};
-  localStorageTourismTypeKey = 'tourismTypeKeys'; // CHAVE PARA GUARDAR NO LOCAL STORAGE
+  localStorageTourismTypeKey = 'tourismTypeKeys'; // Chave para guardar no localStorage
 
-  constructor(tourismType = {}) {  // INICIALIZA COM UM OBJETO VAZIO SE NAO TIVER DÁ NULL
-    this.tourismType = tourismType;
+  constructor() {  // Incializa com um objeto vazio
 
     //VERIFICA SE JÁ EXISTE NO LOCAL STORAGE
-    if (localStorage.getItem(this.localStorageTourismTypeKey)) {
-      this.tourismType = JSON.parse(localStorage.getItem(this.localStorageTourismTypeKey));
+    const storedData = localStorage.getItem(this.localStorageTourismTypeKey);
+    if (storedData) {
+      this.tourismType = JSON.parse(storedData);
     } else {
-      localStorage.setItem(this.localStorageTourismTypeKey, JSON.stringify(this.tourismType));
+      this.tourismType = {}; // É um bjeto vazio se não houver nada no localStorage
     }
   }
 
@@ -20,6 +20,7 @@ export class TourismType {
     localStorage.setItem(this.localStorageTourismTypeKey, JSON.stringify(this.tourismType));
   }
 
+  // ADICIONA UM TIPO DE TURISMO
   add(key, name, status = true) {
     if (this.tourismType[key]) {
       throw Error(`Tourism Type with name "${key}" already exists!`);
@@ -31,7 +32,7 @@ export class TourismType {
       status
     };
 
-    this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS ADICIONAR
+    this.saveToLocalStorage();
   }
 
   del(key) {
@@ -86,41 +87,6 @@ export class TourismType {
   }
 }
 
-/* EXEMPLO DE USO
-
-tt.getAll(); // RETORNA TODOS OS TIPOS DE TURISMO
-tt.getAll(true);
-tt.getAll(false);
-
-tt.add('cultural', 'cultural', '/media/img/cultural.png', false); 
-
-tt.del('cultural'); // ELIMINA O TIPO DE TURISMO CULTURAL
-
-tt.update('cultural', 'cultural', '/media/img/cultural.png', true); // ATUALIZA O TIPO DE TURISMO CULTURAL
-
-*/
-
-/*
-const tourismType = new TourismType({
-  cultural: {
-    name: 'Cultural',
-    img: '/media/img/cultural.png',
-    status: true 
-  },
-  music: {
-    name: 'Music',
-    img: '/media/img/music.png',
-    status: true 
-  }, 
-  film: {
-    name: 'Film',
-    img: '/media/img/film.png',
-    status: true
-  }
-});
-
-*/
-
 /* DESTINATION */
 
 export class Destination {
@@ -145,15 +111,18 @@ export class Destination {
     localStorage.setItem(this.localStorageDestinationKey, JSON.stringify(this.destination));
   }
 
-  add(key, destination, tourismType = [], img, status = true) {
+  add(key, destinationName, tourismType = [], status = true) {
     if(this.destination[key]) {
       throw Error(`Destination with key "${key}" already exists!`);
     }
 
+    const imgFileName = destinationName.toLowerCase().replace(/, /g, '-').replace(/\s+/g, '-');
+    const imgPath = `/media/img/destinations/${imgFileName}.jpg`;;
+
     this.destination[key] = {
-      destination,
+      destination: destinationName,
       tourismType,
-      img,
+      img: imgPath,
       status
     };
 
@@ -169,14 +138,18 @@ export class Destination {
     this.saveToLocalStorage(); // SALVA NO LOCAL STORAGE APÓS REMOVER
   }
 
-  update(key, destination, tourismType, img, status = true) {
+  update(key, destinationName, tourismType, status = true) {
     if (!this.destination[key]) {
       throw Error(`Destination with key "${key}" does not exist!`);
     }
+
+    const imgFileName = destinationName.toLowerCase().replace(/, /g, '-').replace(/\s+/g, '-');
+    const imgPath = `/media/img/destinations/${imgFileName}.jpg`;
+
     this.destination[key] = {
       destination: destinationName,
       tourismType,
-      img,
+      img: imgPath,
       status
     };
 
@@ -281,14 +254,14 @@ export class FlightManager {
           departure,
           destination,
           tourismType: this.destinations.getTourismTypes(destination),
-          cabin: cabin,
+          cabin,
           schedules: schedules.map(schedule => new Date(schedule)),
-          airport: airport,
+          airport,
           price: parseFloat(price),
-          status: status,
+          status,
       };
       this.flights.push(flight);
-      saveFlights();
+      this.saveFlights();
       return flight;
   }
 
