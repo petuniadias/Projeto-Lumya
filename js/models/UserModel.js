@@ -25,20 +25,24 @@ export function init() {
   );
 }
 
-/* Funções para gerir utilizador */
-/* quando tratar de erros usar throw */
-
 //ADICIONAR UTILIZADOR
 export function add(
   name,
   username,
   mail,
   password,
+  confirmPassword,
   points,
   tripHistory,
   pendingTrips,
   favoriteFlights
 ) {
+
+  // Verifica se a password e a confirmação de password são iguais
+  if (password !== confirmPassword) {
+    throw Error("The passwords don't match!");
+  }
+
   if (users.some((user) => user.username === username)) {
     throw Error(`User with username "${username}" already exists!`);
   } else {
