@@ -253,7 +253,7 @@ flatpickr("#calendar", {
     const stepFourBtn = document.querySelector('.step-four-btn');
 
     stepFourBtn.addEventListener('click', () => {
-
+      flights.loadFlights();
       // INPUT DO UTILIZADOR
       const selectedDestination = document.querySelector('.destination-card.selected .destination-name').textContent; 
       const selectedTourismTypes = document.querySelectorAll('.tourism-type-card.selected .tourism-type-name');

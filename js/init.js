@@ -59,8 +59,8 @@ function initdata() {
     flights.addFlight(
       "Iberia",
       "Berlin, Germany",
-      "Bali, Indonesia",
-      destination.getTourismTypes("Bali, Indonesia"),
+      "Oporto, Portugal",
+      destination.getTourismTypes("Oporto, Portugal"),
       "Business",
       [new Date("2025-06-22T10:00:00"), new Date("2025-06-22T12:30:00")],
       "Berlin Brandenburg Airport",
@@ -69,8 +69,8 @@ function initdata() {
     flights.addFlight(
       "Iberia",
       "Berlin, Germany",
-      "Bali, Indonesia",
-      destination.getTourismTypes("Bali, Indonesia"),
+      "Oporto, Portugal",
+      destination.getTourismTypes("Oporto, Portugal"),
       "Business",
       [new Date("2025-06-22T10:00:00"), new Date("2025-06-22T12:30:00")],
       "Berlin Brandenburg Airport",
@@ -171,13 +171,11 @@ function initdata() {
 
   // ACHIEVEMENTS
   if (!localStorage.getItem("achievementsList")) {
-    // Usar uma chave específica
     localStorage.setItem("achievementsList", JSON.stringify(achievements));
   }
 
   // COUNTRIES VISITED
   if (!localStorage.getItem("countriesVisitedList")) {
-    // Usar uma chave específica
     localStorage.setItem(
       "countriesVisitedList",
       JSON.stringify(countriesVisited)
@@ -194,10 +192,11 @@ function initdata() {
     const defaultDestinations = [
       { name: "Paris, France", tourismTypes: ["cultural", "film"] },
       { name: "Bali, Indonesia", tourismTypes: ["beach"] },
+      { name: "Cannes, France", tourismTypes: ["cultural", "adventure"] },
+      { name: "Tokyo, Japan", tourismTypes: ["cultural", "gastronomic"] },
+      { name: "Seoul, South Korea", tourismTypes: ["cultural", "winter"] },
       { name: "Cannes, France", tourismTypes: ["cultural", "history"] },
-      { name: "Tokyo, Japan", tourismTypes: ["cultural", "modern"] },
-      { name: "Seoul, South Korea", tourismTypes: ["cultural", "film"] },
-      { name: "Cannes, France", tourismTypes: ["cultural", "history"] }
+      { name: "Oporto, Portugal", tourismTypes: ["cultural", "history"] }
     ];
 
     defaultDestinations.forEach((dest) => {
