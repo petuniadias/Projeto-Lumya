@@ -11,7 +11,7 @@ export class TourismType {
     if (storedData) {
       this.tourismType = JSON.parse(storedData);
     } else {
-      this.tourismType = {}; // É um bjeto vazio se não houver nada no localStorage
+      this.tourismType = {}; // É um objeto vazio se não houver nada no localStorage
     }
   }
 
@@ -213,14 +213,14 @@ export class FlightManager {
 
     this.storageKey = 'flights';
     this.flightIdCounterKey = 'flightIdCounter';
-    // Initialize flights from localStorage or empty array
+    // Inicializa os voos da localStorage
     this.flights = this.loadFlights();
-    // Initialize ID counter from localStorage or start at 1
+    // Inicializa contador de IDs da localStorage
     this.flightIdCounter = this.loadFlightIdCounter();
   }
 
 
-  // Load flights from localStorage
+  // Pega os voos da localStorage
   loadFlights() {
       const storedFlights = localStorage.getItem(this.storageKey);
       if (storedFlights) {
@@ -234,19 +234,19 @@ export class FlightManager {
       return [];
   }
 
-  // Load flight ID counter from localStorage
+  // Pega o ID dos voos da localStorage
   loadFlightIdCounter() {
       const storedCounter = localStorage.getItem(this.flightIdCounterKey);
       return storedCounter ? parseInt(storedCounter) : 1;
   }
 
-  // Save flights to localStorage
+  // Guarda os voos na localStorage
   saveFlights() {
       localStorage.setItem(this.storageKey, JSON.stringify(this.flights));
       localStorage.setItem(this.flightIdCounterKey, this.flightIdCounter.toString());
   }
 
-  // Add a new flight
+  // Adiciona um novo voo
   addFlight(airline, departure, destination, tourismType = [], cabin = 'Economy', schedules, airport, price, status = true) {
       const flight = {
           id: this.flightIdCounter++,
@@ -265,17 +265,17 @@ export class FlightManager {
       return flight;
   }
 
-  // List all flights
+  // Lista todos os voos
   listAllFlights() {
       return this.flights;
   }
 
-  // List flights by airline
+  // Lista os voos por companhia aerea
   listFlightsByAirline(airline) {
       return this.flights.filter(flight => flight.airline.toLowerCase() === airline.toLowerCase());
   }
 
-  // Search for a flight by ID
+  // Procura voo pelo ID
   searchFlightById(id) {
     /*
       for (const flight of this.flights) {
@@ -290,7 +290,7 @@ export class FlightManager {
     return this.flights.find(flight => flight.id === id) || null;
   }
 
-  // Delete a flight by ID
+  // Remove um voo pelo ID
   deleteFlight(id) {
       const index = this.flights.findIndex(flight => flight.id === id);
       if (index !== -1) {
@@ -299,7 +299,7 @@ export class FlightManager {
       return null;
   }
 
-  // Update a flight by ID
+  // Atualiza um voo pelo ID
   updateFlight(id, updates) {
       const flight = this.searchFlightById(id);
       if (!flight) return null;
@@ -317,7 +317,7 @@ export class FlightManager {
       return flight;
   }
 
-  // Delete all flights
+  // Remove todos os voos
   deleteAllFlights() {
     const deletedFlights = [...this.flights];
     this.flights = [];
@@ -325,16 +325,15 @@ export class FlightManager {
     return deletedFlights;
   }
 
-  // Count all flights
+  // Conta todos os voos
   countAllFlights() {
     return this.flights.length;
   }
 
-  // Count flights by airline
+  // Conta os voos por companhia aerea
   countFlightsByAirline(airline) {
     return this.listFlightsByAirline(airline).length;
   }
-
 
   getFlightByInput(startDate, departure, destination, tourismType = []) {
     const date = { 
@@ -388,49 +387,13 @@ export class FlightManager {
   
 }
 
-// Example usage:
-/*
-const flightManager = new FlightManager();
-
-// Add flights
-flightManager.addFlight("TAP", "Paris", "Economic", ['2025-06-20T08:00:00', '2025-06-20T11:00:00'], "Lisbon Airport", 500);
-flightManager.addFlight("Lufthansa", "Tokyo", "Economic", ['2025-06-20T08:00:00', '2025-06-20T11:00:00'],, "Lisbon Airport", 800);
-flightManager.addFlight("Iberia", "London", "Economic", ['2025-06-20T08:00:00', '2025-06-20T11:00:00'],, "Lisbon Airport", 450);
-
-// List all flights
-console.log(flightManager.listAllFlights());
-
-// List TAP flights
-console.log(flightManager.listFlightsByAirline("TAP"));
-
-// Search for a flight
-console.log(flightManager.searchFlightById(1));
-
-// Update a flight
-console.log(flightManager.updateFlight(1, { price: 550, destination: "Rome", status: false }));
-
-// Delete a flight
-console.log(flightManager.deleteFlight(2));
-
-// Count flights
-console.log(flightManager.countAllFlights());
-console.log(flightManager.countFlightsByAirline("TAP"));
-
-// Delete all flights
-console.log(flightManager.deleteAllFlights());
-*/
-
 export class Stays {
-  /**
-   * CRIA UM VOO.
-   *
-   */
   
   constructor(destinations) {
     this.destinations = destinations;
     this.storageKey = 'stays';
     this.staysIdCounterKey = 'staysIdCounter';
-    // Initialize flights from localStorage or empty array
+    // Inicializa os alojamento da localStorage
     this.stays = this.loadStays();
     // Initialize ID counter from localStorage or start at 1
     this.StaysIdCounter = this.loadStaysIdCounter();
@@ -463,32 +426,14 @@ export class Stays {
       localStorage.setItem(this.staysIdCounterKey, this.staysIdCounter.toString());
   }
 
-  // Add a new flight
-  addStay(airline, departure, destination, tourismType = [], cabin = 'Economy', schedules, airport, price, status = true) {
-      const stay = {
-          id: this.stayIdCounter++,
-          airline,
-          departure,
-          destination,
-          tourismType: this.destinations.getTourismTypes(destination),
-          cabin: cabin,
-          schedules: schedules.map(schedule => new Date(schedule)),
-          airport: airport,
-          price: parseFloat(price),
-          status: status,
-      };
-      this.stays.push(stay);
-      return stay;
+  // Add a new stay
+  addStay() {
+
   }
 
   // List all stays
   listAllStays() {
       return this.stays;
-  }
-
-  // List flights by airline
-  listFlightsByAirline(airline) {
-      return this.stays.filter(stay => stay.airline.toLowerCase() === airline.toLowerCase());
   }
 
   // Search for a flight by ID
@@ -517,20 +462,6 @@ export class Stays {
 
   // Update a stay by ID
   updateStay(id, updates) {
-      const stay = this.searchStayById(id);
-      if (!stay) return null;
-
-      if (updates.airline) flight.airline = updates.airline;
-      if (updates.departure) flight.departure = updates.departure;
-      if (updates.destination) flight.destination = updates.destination;
-      if (updates.tourismType) flight.tourismType = updates.tourismType;
-      if (updates.cabin) flight.cabin = updates.cabin;
-      if (updates.schedules) flight.schedules = updates.schedules.map(schedule => new Date(schedule));
-      if (updates.airport) flight.airport = updates.airport;
-      if (updates.price) flight.price = parseFloat(updates.price);
-      if (updates.status !== undefined) flight.status = updates.status;
-
-      return flight;
   }
 
   // Delete all stays

@@ -30,7 +30,7 @@ function initdata() {
       "Ryanair",
       "Madrid, Spain",
       "Paris, France",
-      ["cultural"],
+      destination.getTourismTypes("Paris, France"),
       "Business",
       [new Date("2025-06-22T10:00:00"), new Date("2025-06-22T12:30:00")],
       "Madrid Barajas Airport",
@@ -40,7 +40,7 @@ function initdata() {
       "TAP Air Portugal",
       "Lisbon, Portugal",
       "Bali, Indonesia",
-      ["beach"],
+      destination.getTourismTypes("Bali, Indonesia"),
       "Economy",
       [new Date("2025-06-22T10:00:00"), new Date("2025-06-22T12:30:00")],
       "Lisbon Airport",
@@ -50,7 +50,7 @@ function initdata() {
       "Ryanair",
       "London, UK",
       "Paris, France",
-      ["cultural"],
+      destination.getTourismTypes("Paris, France"),
       "Economy",
       [new Date("2025-06-22T10:00:00"), new Date("2025-06-22T12:30:00")],
       "London Heathrow Airport",
@@ -60,7 +60,7 @@ function initdata() {
       "Iberia",
       "Berlin, Germany",
       "Bali, Indonesia",
-      ["beach"],
+      destination.getTourismTypes("Bali, Indonesia"),
       "Business",
       [new Date("2025-06-22T10:00:00"), new Date("2025-06-22T12:30:00")],
       "Berlin Brandenburg Airport",
@@ -91,7 +91,6 @@ function initdata() {
   );
   // Se this.destination estiver vazio, significa que o localStorage estava vazio.
   if (Object.keys(destination.getAll()).length === 0) {
-    console.log("Initializing default destinations...");
     const defaultDestinations = [
       { name: "Paris, France", tourismTypes: ["cultural", "film"] },
       { name: "Bali, Indonesia", tourismTypes: ["beach"] },

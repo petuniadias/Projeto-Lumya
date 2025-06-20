@@ -242,9 +242,6 @@ flatpickr("#calendar", {
 
 /* STEP FOUR */
 
-
-
-  //const cardsContainer = document.querySelector('.suggestions-flights-grid');
   let currentSuggestedFlights = [];
 
   /* RENDER FLIGHTS BASED ON USER INPUT */
