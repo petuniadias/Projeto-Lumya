@@ -245,7 +245,6 @@ export const flights = new FlightManager(destination);
 // CART
 export const cart = new Cart();
 
-
 // ACHIEVEMENTS
 
 export const achievements = [
