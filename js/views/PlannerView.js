@@ -74,7 +74,7 @@ function renderTourismTypes() {
     card.className = 'tourism-type-card d-flex flex-column align-items-center';
     card.setAttribute('data-tourism-type-key', key); // Adicionar a chave do tipo de turismo como atributo
     card.innerHTML = `
-      <img src="${type.img}" alt="${type.name}">
+      <img class="tourism-type-img" src="${type.img}" alt="${type.name}">
       <div class="tourism-type-name">${type.name}</div>
     `;
 

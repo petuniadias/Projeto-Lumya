@@ -395,48 +395,48 @@ export class Stays {
     this.staysIdCounterKey = 'staysIdCounter';
     // Inicializa os alojamento da localStorage
     this.stays = this.loadStays();
-    // Initialize ID counter from localStorage or start at 1
+    // Inicializa o contador de ID da localStorage
     this.StaysIdCounter = this.loadStaysIdCounter();
   }
 
 
-  // Load stays from localStorage
+  // Carrega alojamentos da localStorage
   loadStays() {
       const storedStays = localStorage.getItem(this.storageKey);
       if (storedStays) {
           const stays = JSON.parse(storedStays);
-          // Convert schedules strings back to Date objects
+          
           return stays.map(stay => ({
-              ...stay, // create a shallow copy of the flight object's properties
+              ...stay, 
               schedules: stay.schedules.map(schedule => new Date(schedule))
           }));
       }
       return [];
   }
 
-  // Load stay ID counter from localStorage
+  // Carrega o contador de ID da localStorage
   loadStayIdCounter() {
       const storedCounter = localStorage.getItem(this.stayIdCounterKey);
       return storedCounter ? parseInt(storedCounter) : 1;
   }
 
-  // Save flights to localStorage
+  // Guarda os alojamentos na localStorage
   saveStays() {
       localStorage.setItem(this.storageKey, JSON.stringify(this.stays));
       localStorage.setItem(this.staysIdCounterKey, this.staysIdCounter.toString());
   }
 
-  // Add a new stay
+  // Adiciona um novo alojamento
   addStay() {
 
   }
 
-  // List all stays
+  // Retorna todos os voos
   listAllStays() {
       return this.stays;
   }
 
-  // Search for a flight by ID
+  // Procura voos pelo ID
   searchStaysById(id) {
     /*
       for (const flight of this.flights) {
@@ -451,7 +451,7 @@ export class Stays {
     return this.stays.find(stay => stay.id === id) || null;
   }
 
-  // Delete a stay by ID
+  // Remove um alojamento pelo ID
   deleteStay(id) {
       const index = this.stays.findIndex(stay => stay.id === id);
       if (index !== -1) {
@@ -460,11 +460,11 @@ export class Stays {
       return null;
   }
 
-  // Update a stay by ID
+  // Atualiza um alojamento pelo ID
   updateStay(id, updates) {
   }
 
-  // Delete all stays
+  // Remove todos os alojamentos
   deleteAllStays() {
     const deletedStays = [...this.stays];
     this.stays = [];
@@ -472,66 +472,11 @@ export class Stays {
     return deletedStays;
   }
 
-  // Count all stays
+  // Conta todos os alojamentos
   countAllStays() {
     return this.stays.length;
   }
 
-  // Count stays by airline
-  countStaysByAirline(airline) {
-    return this.listFlightsByAirline(airline).length;
-  }
-
-
-  getFlightByInput(startDate, departure, destination, tourismType = []) {
-    const date = { 
-      year: 'numeric', 
-      month: '2-digit', 
-      day: '2-digit' 
-    };
-
-    const dateStart = new Date(startDate).toLocaleDateString('en-GB', date);;
-    
-    function checkTypes(types) {
-      let count = 0;
-      for (const ft in types) {
-        for (const f in tourismType) {
-          if (types[ft] === tourismType[f].toLowerCase()) {
-            count++;
-          }
-        }
-      }
-      return count === tourismType.length;
-    }
-
-    const matchingFlights = [];
-
-    for (const f in this.flights) {
-
-      const flightStartDate = this.flights[f].schedules[0].toLocaleDateString('en-GB', date);
-      
-      console.log(
-          'SCHEDULES flight:', flightStartDate,
-          'DATE INPUT:', dateStart,
-          'DEPARTURE FLIGHT:', this.flights[f].departure,
-          'DEPARTURE INPUT:', departure,
-          'DESTINATION INPUT:', destination,
-          'DESTINATION FLIGHT:', this.flights[f].destination,
-          'TOURISM TYPE:', checkTypes(this.flights[f].tourismType),
-          'TOURISM TYPE INPUT:', tourismType,
-          'TOURISM TYPE FLIGHT:', this.flights[f].tourismType
-      );
-
-      if (
-        flightStartDate === dateStart &&
-        this.flights[f].departure === departure &&
-        this.flights[f].destination === destination &&
-        checkTypes(this.flights[f].tourismType)) {
-        matchingFlights.push(this.flights[f]);
-      }
-    }
-    return matchingFlights;
-  }
 }
 
 /* STEP FIVE */

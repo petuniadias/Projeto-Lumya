@@ -257,6 +257,11 @@ label {
     padding: 10px 30px;
 }
 
+.tourism-type-img {
+  width: 110px;
+  height: 110px;
+}
+
 /* SCROLL BUTTONS */
 .scroll-btns {
   position: absolute;

@@ -116,7 +116,9 @@ function initdata() {
       const defaultTourismTypes = [
         { key: "beach", name: "Beach", status: true },
         { key: "cultural", name: "Cultural", status: true },
-        { key: "film", name: "Film", status: true },
+        { key: "adventure", name: "Adventure", status: true },
+        { key: "gastronomic", name: "Gastronomnic", status: true },
+        { key: "winter", name: "Winter", status: true }
       ];
 
       defaultTourismTypes.forEach((type) => {
