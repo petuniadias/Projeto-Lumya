@@ -66,6 +66,106 @@ function initdata() {
       "Berlin Brandenburg Airport",
       980.0
     );
+    flights.addFlight(
+      "Iberia",
+      "Berlin, Germany",
+      "Bali, Indonesia",
+      destination.getTourismTypes("Bali, Indonesia"),
+      "Business",
+      [new Date("2025-06-22T10:00:00"), new Date("2025-06-22T12:30:00")],
+      "Berlin Brandenburg Airport",
+      980.0
+    );
+    flights.addFlight(
+      "Ryanair",
+      "Oporto, Portugal",
+      "Paris, France",
+      destination.getTourismTypes("Paris, France"),
+      "Business",
+      [new Date("2025-06-22T10:00:00"), new Date("2025-06-22T12:30:00")],
+      "Madrid Barajas Airport",
+      220.0
+    );
+    flights.addFlight(
+      "TAP Air Portugal",
+      "Lisbon, Portugal",
+      "Bali, Indonesia",
+      destination.getTourismTypes("Bali, Indonesia"),
+      "Economy",
+      [new Date("2025-06-23T10:00:00"), new Date("2025-06-23T12:30:00")],
+      "Lisbon Airport",
+      750.0
+    );
+    flights.addFlight(
+      "Ryanair",
+      "London, UK",
+      "Paris, France",
+      destination.getTourismTypes("Paris, France"),
+      "Business",
+      [new Date("2025-06-23T10:00:00"), new Date("2025-06-23T12:30:00")],
+      "London Heathrow Airport",
+      120.0
+    );
+    flights.addFlight(
+      "Iberia",
+      "Berlin, Germany",
+      "Bali, Indonesia",
+      destination.getTourismTypes("Bali, Indonesia"),
+      "Economy",
+      [new Date("2025-06-23T10:00:00"), new Date("2025-06-23T12:30:00")],
+      "Berlin Brandenburg Airport",
+      120.0
+    );
+    flights.addFlight(
+      "Iberia",
+      "Berlin, Germany",
+      "Bali, Indonesia",
+      destination.getTourismTypes("Bali, Indonesia"),
+      "Economy",
+      [new Date("2025-06-23T10:00:00"), new Date("2025-06-23T12:30:00")],
+      "Berlin Brandenburg Airport",
+      980.0
+    );
+    flights.addFlight(
+      "TAP Air Portugal",
+      "Lisbon, Portugal",
+      "Bali, Indonesia",
+      destination.getTourismTypes("Bali, Indonesia"),
+      "Business",
+      [new Date("2025-06-23T10:00:00"), new Date("2025-06-23T12:30:00")],
+      "Lisbon Airport",
+      750.0
+    );
+    flights.addFlight(
+      "Ryanair",
+      "London, UK",
+      "Paris, France",
+      destination.getTourismTypes("Paris, France"),
+      "Business",
+      [new Date("2025-06-23T10:00:00"), new Date("2025-06-23T12:30:00")],
+      "London Heathrow Airport",
+      920.0
+    );
+    flights.addFlight(
+      "Iberia",
+      "Berlin, Germany",
+      "Bali, Indonesia",
+      destination.getTourismTypes("Bali, Indonesia"),
+      "Economy",
+      [new Date("2025-06-23T10:00:00"), new Date("2025-06-23T12:30:00")],
+      "Berlin Brandenburg Airport",
+      180.0
+    );
+    flights.addFlight(
+      "Iberia",
+      "Berlin, Germany",
+      "Bali, Indonesia",
+      destination.getTourismTypes("Bali, Indonesia"),
+      "Economy",
+      [new Date("2025-06-23T10:00:00"), new Date("2025-06-23T12:30:00")],
+      "Berlin Brandenburg Airport",
+      180.0
+    );
     flights.saveFlights();
   }
 
@@ -97,7 +197,7 @@ function initdata() {
       { name: "Cannes, France", tourismTypes: ["cultural", "history"] },
       { name: "Tokyo, Japan", tourismTypes: ["cultural", "modern"] },
       { name: "Seoul, South Korea", tourismTypes: ["cultural", "film"] },
-      { name: "Cannes, France", tourismTypes: ["cultural", "history"] },
+      { name: "Cannes, France", tourismTypes: ["cultural", "history"] }
     ];
 
     defaultDestinations.forEach((dest) => {
